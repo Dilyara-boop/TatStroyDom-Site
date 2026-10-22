@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Альфапласт для парилок — герметик для бань и саун | ТатСтройДом</title>
+<style>
+    /* Палитра цветов Максипласт-136 */
+
+.sealant-palette {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.sealant-color {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e7e0d7;
+    border-radius: 18px;
+    padding: 12px;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sealant-color:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(20, 43, 68, 0.13);
+    z-index: 10;
+}
+
+.color-sample {
+    display: block;
+    width: 100%;
+    height: 82px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+}
+
+.sealant-color strong {
+    display: block;
+    color: #142b44;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.sealant-color::after {
+    content: "Максипласт-136";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(5px);
+    width: 180px;
+    padding: 12px 14px;
+    background: #142b44;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .2s ease;
+    box-shadow: 0 12px 30px rgba(20, 43, 68, .22);
+}
+
+.sealant-color:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 900px) {
+    .sealant-palette {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sealant-palette {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .color-sample {
+        height: 70px;
+    }
+}
+    
+/* v3: компактный общий блок фото и характеристик */
+.product-details-compact { background:#fff; padding:34px 0 40px; }
+.details-layout { display:grid; grid-template-columns:minmax(0,0.83fr) minmax(0,1.17fr); gap:36px; align-items:start; }
+.details-photo { border-radius:16px; overflow:hidden; height:440px; background:#f5f1eb; }
+.details-photo img { width:100%; height:100%; object-fit:cover; }
+.details-copy .label { margin-bottom:8px; }
+.details-copy h2 { font-size:clamp(25px,2.7vw,35px); line-height:1.18; margin-bottom:10px; letter-spacing:-.6px; }
+.details-intro { color:#617080; font-size:14px; line-height:1.55; margin-bottom:17px; }
+.spec-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; margin:0; }
+.spec-line { padding:8px 0; border-bottom:1px solid #eae6e0; min-width:0; }
+.spec-line dt { font-size:12px; color:#7b858d; margin-bottom:2px; }
+.spec-line dd { margin:0; font-size:14px; font-weight:700; line-height:1.3; color:#142b44; }
+.details-disclaimer { font-size:11px; line-height:1.45; color:#7b858d; margin-top:14px; }
+@media(max-width:850px) { .details-layout {grid-template-columns:1fr;gap:20px;} .details-photo {height:300px;} }
+@media(max-width:480px) { .product-details-compact {padding:22px 0;} .details-photo {height:220px;} .spec-list {gap:0 12px;} .spec-line dd {font-size:13px;} }
+
+</style>
+<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #142b44;
+            background: #f7f4ef;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 88%);
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 28px 0;
+            color: #142b44;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: #c62f35;
+        }
+
+        /* HERO */
+
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 540px;
+            box-shadow: 0 20px 55px rgba(20,43,68,.08);
+        }
+
+        .hero-content {
+            padding: 65px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            display: inline-block;
+            color: #c62f35;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 5vw, 70px);
+            line-height: 1;
+            margin-bottom: 22px;
+        }
+
+        .hero-description {
+            color: #66727d;
+            font-size: 19px;
+            max-width: 540px;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            margin-bottom: 30px;
+        }
+
+        .price strong {
+            display: block;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .price span {
+            color: #7b858d;
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .btn-primary {
+            background: #c62f35;
+            color: white;
+        }
+
+        .btn-secondary {
+            border: 1px solid #d9dfe4;
+            color: #142b44;
+            background: white;
+        }
+
+        .hero-image {
+            padding: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #faf9f7;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+        }
+
+        /* QUICK INFO */
+
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0 85px;
+        }
+
+        .quick-card {
+            padding: 24px;
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e7e0d7;
+        }
+
+        .quick-card span {
+            display: block;
+            color: #7b858d;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .quick-card strong {
+            font-size: 18px;
+        }
+
+        /* REAL HOUSE */
+
+        .result-section {
+            padding: 90px 0;
+            background: #142b44;
+            color: white;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .result-image {
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .result-image img {
+            width: 100%;
+            height: 620px;
+            object-fit: cover;
+        }
+
+        .result-content h2 {
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .result-content p {
+            color: rgba(255,255,255,.72);
+            font-size: 18px;
+        }
+
+        /* INFO */
+
+        .info-section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin-bottom: 42px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #6d7881;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 28px;
+            background: white;
+            border: 1px solid #e7e0d7;
+            border-radius: 18px;
+        }
+
+        .info-card span {
+            display: block;
+            color: #7b858d;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .info-card strong {
+            font-size: 18px;
+        }
+
+        /* COLORS */
+
+        .colors-section {
+            padding: 90px 0;
+            background: white;
+        }
+
+        .colors-note {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 4px;
+    border-radius: 12px;
+    background: #f7f4ef;
+    color: #66727d;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+        /* CALCULATOR */
+
+        .calculate-section {
+            padding: 90px 0;
+        }
+
+        .calculate-box {
+            padding: 55px;
+            border-radius: 26px;
+            background: #142b44;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .calculate-box h2 {
+            font-size: 38px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .calculate-box p {
+            color: rgba(255,255,255,.7);
+            max-width: 650px;
+        }
+
+        /* AI */
+
+        .ai-section {
+            padding: 0 0 90px;
+        }
+
+        .ai-box {
+            padding: 50px;
+            background: white;
+            border-radius: 26px;
+            border: 1px solid #e7e0d7;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .ai-box h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .ai-box p {
+            color: #68737c;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .product-hero,
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 38px 28px;
+            }
+
+            .hero-image {
+                padding: 30px;
+            }
+
+            .quick-info,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-image img {
+                height: 450px;
+            }
+
+            .calculate-box,
+            .ai-box {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 35px 28px;
+            }
+        }
+
+/* v2: compact product card — changes limited to top card */
+.product-hero {
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    min-height: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 32px rgba(20,43,68,.07);
+}
+.product-hero .hero-image {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 300px;
+    padding: 22px;
+    background: #faf9f7;
+}
+.product-hero .hero-image img { max-height: 285px; }
+.product-hero .hero-content {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 30px 34px;
+}
+.product-hero .label { font-size: 11px; letter-spacing: 1.2px; margin-bottom: 9px; }
+.product-hero h1 { font-size: clamp(29px, 3.2vw, 43px); line-height: 1.13; margin-bottom: 12px; }
+.product-hero .hero-description { font-size: 15px; line-height: 1.5; margin-bottom: 16px; }
+.product-hero .price { margin-bottom: 16px; }
+.product-hero .price strong { font-size: 31px; }
+.product-hero .price span { font-size: 13px; }
+.product-hero .hero-buttons { gap: 9px; }
+.product-hero .btn { padding: 11px 15px; font-size: 13px; }
+.product-hero .quick-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    align-items: center;
+    padding: 13px 24px;
+    margin: 0;
+    background: #fff;
+    border-top: 1px solid #eee8e2;
+}
+.product-hero .quick-card {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+.product-hero .quick-card + .quick-card { border-left: 1px solid #e7e0d7; padding-left: 20px; }
+.product-hero .quick-card span { margin: 0; font-size: 12px; }
+.product-hero .quick-card strong { font-size: 13px; }
+@media (max-width: 800px) {
+    .product-hero { grid-template-columns: 1fr; }
+    .product-hero .hero-image { grid-column: 1; grid-row: 1; min-height: 0; padding: 16px; }
+    .product-hero .hero-image img { max-height: 245px; }
+    .product-hero .hero-content { grid-column: 1; grid-row: 2; padding: 24px; }
+    .product-hero .quick-info { grid-column: 1; grid-row: 3; padding: 13px 20px; }
+    .product-hero .quick-card + .quick-card { border: 0; padding-left: 0; }
+}
+
+/* v4 — характеристики как компактное продолжение карточки, без фотографии дома */
+.product-details-compact { background:#f7f4ef; padding: 22px 0 38px; }
+.product-details-compact .details-layout { display:block; width:min(1180px, 88%); margin:auto; }
+.product-details-compact .details-copy { width:100%; max-width:none; padding:26px 32px 24px; background:#fff; border:1px solid #eae5df; border-radius:18px; }
+.product-details-compact h2 { font-size:clamp(24px,2.5vw,32px); line-height:1.2; margin:4px 0 10px; }
+.product-details-compact .details-intro { font-size:14px; line-height:1.55; color:#68737c; margin-bottom:18px; max-width:850px; }
+.product-details-compact .spec-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:36px; row-gap:0; margin:0; }
+.product-details-compact .spec-line { display:block; padding:9px 0; border-bottom:1px solid #eee9e4; min-width:0; }
+.product-details-compact dt { font-size:12px; color:#7b858d; margin-bottom:2px; }
+.product-details-compact dd { font-size:14px; font-weight:650; color:#142b44; margin:0; overflow-wrap:anywhere; }
+.product-details-compact .details-disclaimer { font-size:12px; color:#7b858d; margin-top:14px; }
+@media(max-width:650px){
+ .product-details-compact {padding:14px 0 28px;}
+ .product-details-compact .details-copy {padding:22px 20px;}
+ .product-details-compact .spec-list {grid-template-columns:1fr;}
+}
+
+    </style>
+<style>
+/* v5: компактная палитра только Максипласт-136 */
+.colors-section {padding:34px 0 42px; background:#fff;}
+.colors-section .section-heading {max-width:none; margin-bottom:15px;}
+.colors-section .section-heading .label {margin-bottom:6px; font-size:11px;}
+.colors-section .section-heading h2 {font-size:clamp(24px,2.7vw,34px); line-height:1.18; margin-bottom:7px;}
+.colors-section .section-heading p {font-size:13px; line-height:1.5; max-width:820px;}
+.colors-section .sealant-palette {display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:10px; margin-top:14px;}
+.colors-section .sealant-color {border:1px solid #eee8e1; border-radius:12px; padding:8px 5px 10px; text-align:center; box-shadow:none;}
+.colors-section .sealant-color:hover {transform:translateY(-2px); box-shadow:0 5px 16px rgba(20,43,68,.08);}
+.colors-section .color-sample {display:block; width:82px; max-width:100%; height:82px; object-fit:contain; margin:0 auto 5px; border-radius:0; box-shadow:none; background:transparent;}
+.colors-section .sealant-color strong {font-size:12px; line-height:1.25; font-weight:600;}
+.colors-section .sealant-color::after {display:none;}
+.colors-section .colors-note {padding:8px 0 0; margin:2px 0 0; border-radius:0; background:transparent; font-size:11px;}
+@media(max-width:1000px) {.colors-section .sealant-palette {grid-template-columns:repeat(6,minmax(0,1fr));}}
+@media(max-width:650px) {.colors-section .sealant-palette {grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px;} .colors-section .color-sample {width:65px;height:65px;} .colors-section .sealant-color strong {font-size:11px;}}
+@media(max-width:380px) {.colors-section .sealant-palette {grid-template-columns:repeat(3,minmax(0,1fr));}}
+</style>
+<style>
+/* v7 — единая сетка и компактные завершающие блоки */
+.colors-section { background:#f7f4ef; padding:10px 0 22px; }
+.colors-section .container { background:#fff; border:1px solid #eae5df; border-radius:18px; padding:26px 32px 24px; }
+.calculate-section { padding:0 0 18px; }
+.calculate-box { padding:28px 32px; border-radius:18px; gap:22px; background:#142b44; }
+.calculate-box h2 { font-size:clamp(23px,2.5vw,30px); line-height:1.2; margin:3px 0 8px; }
+.calculate-box p { font-size:14px; line-height:1.5; max-width:720px; }
+.calculate-box .label, .ai-box .label { font-size:11px; margin-bottom:5px; letter-spacing:1.4px; }
+.calculate-box .btn, .ai-box .btn { padding:12px 17px; font-size:13px; flex-shrink:0; white-space:nowrap; }
+.ai-section { padding:0 0 36px; }
+.ai-box { padding:26px 32px; border-radius:18px; gap:22px; }
+.ai-box h2 { font-size:clamp(23px,2.5vw,30px); line-height:1.2; margin:3px 0 8px; }
+.ai-box p { font-size:14px; line-height:1.5; max-width:720px; }
+@media(max-width:800px) {
+ .calculate-box,.ai-box { padding:23px 22px; gap:16px; align-items:flex-start; }
+ .calculate-box .btn,.ai-box .btn { white-space:normal; }
+}
+@media(max-width:650px) {
+ .colors-section .container {padding:22px 20px;}
+}
+</style>
+<style>.colors-section .sealant-palette{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}@media(max-width:800px){.colors-section .sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:420px){.colors-section .sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))}}.palette-placeholder{padding:20px;background:#f7f4ef;border-radius:12px;font-size:14px;color:#617080}.colors-section .colors-note{margin-top:12px}</style><style>
+/* Максипласт-136: единый стиль товарных страниц ТатСтройДом */
+.colors-section .sealant-palette {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:18px}
+.colors-section .sealant-color {min-width:0;padding:12px 6px 11px;border:1px solid #eee8e1;border-radius:13px;background:#fff;text-align:center;cursor:default}
+.colors-section .color-sample {display:block;width:100px;max-width:100%;height:100px;object-fit:contain;margin:0 auto 7px;background:transparent;border:0;box-shadow:none}
+.colors-section .sealant-color strong {display:block;font-size:13px;line-height:1.3;color:#142b44}
+.colors-section .sealant-color::after {display:none}
+@media(max-width:800px){.colors-section .sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.colors-section .color-sample{width:85px;height:85px}}
+@media(max-width:480px){.colors-section .sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.colors-section .color-sample{width:76px;height:76px}.colors-section .sealant-color strong{font-size:11px}}
+</style><style>.mast-subheading{font-size:18px;color:#142b44;margin:22px 0 8px}.mast-application{font-size:14px;line-height:1.65;color:#455769;max-width:940px}.product-details-compact .spec-list{margin-bottom:10px}</style><style>.maxi-swatch{width:92px;height:92px;margin:0 auto 10px;border-radius:50%;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.55),transparent 45%),var(--swatch);box-shadow:inset -7px -9px 12px rgba(0,0,0,.15),0 4px 12px rgba(20,43,68,.12);border:4px solid #fff}.sealant-color{display:flex;flex-direction:column;justify-content:center;align-items:center}</style><style>
+.colors-section .maxi-swatch-photo{display:block;width:112px;height:112px;object-fit:cover;border-radius:50%;margin:0 auto 8px;filter:drop-shadow(0 3px 3px rgba(20,43,68,.08))}
+.colors-section .sealant-color{min-width:0;text-align:center;align-items:center}
+.colors-section .sealant-color strong{font-size:13px;line-height:1.3;color:#142b44}
+@media(max-width:650px){.colors-section .maxi-swatch-photo{width:88px;height:88px}}
+@media(max-width:380px){.colors-section .maxi-swatch-photo{width:76px;height:76px}}
+</style><style>.sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr))!important}.sealant-color img{object-fit:cover;border-radius:50%}@media(max-width:680px){.sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))!important}}</style><style>.hero-image-pending{display:flex;align-items:center;justify-content:center;min-height:300px;background:linear-gradient(135deg,#f6f3ef,#eae6e0)}.pending-product-photo{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;text-align:center;padding:35px;color:#142b44}.pending-product-photo span{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:.1em}.pending-product-photo small{font-size:14px;color:#667085}</style><style>
+/* Remmers palette */
+.sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))!important;max-width:850px;margin-left:auto;margin-right:auto}.sealant-color img{border-radius:50%;object-fit:cover}@media(max-width:600px){.sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))!important}.sealant-color img{width:100%;height:auto;aspect-ratio:1}}
+</style><style>.sealant-palette{grid-template-columns:repeat(2,minmax(0,230px))!important;justify-content:center}.sealant-color img{border-radius:50%;object-fit:cover}@media(max-width:520px){.sealant-palette{grid-template-columns:repeat(2,minmax(0,1fr))!important}}</style><style>
+/* Clean centered swatches without any label fragments from the source image */
+.sealant-palette .sealant-color{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:214px;padding:18px 12px!important;overflow:hidden}
+.sealant-palette .sealant-color img{display:block;width:142px!important;height:142px!important;max-width:100%;object-fit:contain!important;object-position:center;border-radius:50%;margin:0 auto!important}
+.sealant-palette .sealant-color strong{display:block;text-align:center;line-height:1.3}
+@media(max-width:520px){.sealant-palette .sealant-color{min-height:176px;padding:12px 8px!important}.sealant-palette .sealant-color img{width:112px!important;height:112px!important}}
+</style></head>
+<body>
+<div class="container">
+<a class="back-link" href="index.html#products">
+        ← Вернуться к продукции
+    </a>
+<section class="product-hero">
+<div class="hero-content">
+<span class="label">АЛЬФАПЛАСТ · ДЛЯ ПАРИЛОК</span>
+<h1>Альфапласт для парилок</h1>
+<p class="hero-description">Герметик для парных и помывочных отделений бань и саун, рассчитанный на повышенную влажность и температуру.</p>
+<div class="price">850 ₽</div>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#colors">
+                    Подобрать цвет
+                </a>
+<a class="btn btn-secondary" href="#calculate">
+                    Рассчитать количество
+                </a>
+</div>
+</div>
+<div class="hero-image hero-image-pending"><div class="pending-product-photo"><img alt="Фотография товара" src="images/alfaplast-sauna.webp" style="display:block;max-width:100%;max-height:340px;object-fit:contain;margin:auto"/></div></div>
+<div class="quick-info">
+<div class="quick-card">
+<span>Фасовка</span>
+<strong>Уточняйте у менеджера</strong>
+</div>
+<div class="quick-card">
+<span>Основа</span>
+<strong>Акриловая</strong>
+</div>
+<div class="quick-card">
+<span>Применение</span>
+<strong>Бани, сауны, деревянные швы</strong>
+</div>
+</div>
+</section>
+</div>
+<section aria-labelledby="details-heading" class="product-details-compact">
+<div class="container details-layout">
+<div class="details-copy"><span class="label">АЛЬФАПЛАСТ ДЛЯ ПАРИЛОК · ХАРАКТЕРИСТИКИ</span><p class="details-intro">Характеристики и область применения по предоставленному скриншоту страницы продукта.</p><dl class="spec-list"><div class="spec-line"><dt>Назначение</dt><dd>Парные и помывочные отделения бань и саун</dd></div><div class="spec-line"><dt>Срок службы</dt><dd>Прогнозируемый — не менее 15 лет</dd></div><div class="spec-line"><dt>Температура эксплуатации</dt><dd>От −50 до +100 °C, кратковременно до +160 °C</dd></div><div class="spec-line"><dt>Эластичность</dt><dd>Относительное удлинение при разрыве — не менее 300%</dd></div><div class="spec-line"><dt>Термо- и водостойкость</dt><dd>По информации продавца, выдерживает воздействие кипящей воды в течение нескольких часов</dd></div><div class="spec-line"><dt>Паропроницаемость</dt><dd>Высокая, обеспечивает отвод водяного пара</dd></div><div class="spec-line"><dt>Состав</dt><dd>Без растворителей, пластификаторов и органических смол; заявлено отсутствие APEO и VOC</dd></div><div class="spec-line"><dt>Контроль компонентов</dt><dd>Для наполнителя заявлены радиационный и химический контроль</dd></div><div class="spec-line"><dt>Дополнительные свойства</dt><dd>В составе заявлены компоненты для защиты при хранении и коллоидное серебро</dd></div></dl><p class="mast-application">Рекомендуется для герметизации швов в парных и помывочных отделениях бань и саун при повышенной влажности и температуре. Также применяется для долговременной герметизации швов в деревянных конструкциях, заделки трещин, сколов и деформационных зазоров на поверхностях из дерева и других материалов.</p></div>
+</div>
+</section>
+<section class="colors-section" id="colors">
+<div class="container">
+<div class="section-heading">
+<span class="label">ЦВЕТА</span>
+<h2>Цвета Альфапласта для парилок</h2>
+<p>Два оттенка: Бук и Золотая сосна.</p>
+</div>
+<div class="sealant-palette"><div class="sealant-color"><img alt="Альфапласт для парилок — Бук" class="maxi-swatch-photo" src="data:image/webp;base64,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"/><strong>Бук</strong></div><div class="sealant-color"><img alt="Альфапласт для парилок — Золотая сосна" class="maxi-swatch-photo" src="data:image/webp;base64,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"/><strong>Золотая сосна</strong></div></div><div class="colors-note">
+            Цвет на экране может отличаться от фактического оттенка материала.
+            Перед заказом рекомендуем уточнить цвет у менеджера.
+        </div>
+</div>
+</section>
+<section class="calculate-section" id="calculate">
+<div class="container">
+<div class="calculate-box">
+<div>
+<span class="label">РАСЧЁТ МАТЕРИАЛА</span>
+<h2>Сколько герметика понадобится?</h2>
+<p>
+                    Укажите параметры дома и швов.
+                    Мы поможем рассчитать необходимое количество материала
+                    перед оформлением заказа.
+                </p>
+</div>
+<a class="btn btn-primary" href="index.html#calculator">
+                Рассчитать мой дом →
+            </a>
+</div>
+</div>
+</section>
+<section class="ai-section">
+<div class="container">
+<div class="ai-box">
+<div>
+<span class="label">УМНЫЙ ПОДБОР</span>
+<h2>Есть вопрос по Альфапласт для парилок?</h2>
+<p>
+                    ИИ-помощник поможет разобраться с применением,
+                    цветом и предварительным расчётом материала.
+                </p>
+</div>
+<a class="btn btn-primary" href="index.html#contacts">
+                Спросить ИИ-помощника →
+            </a>
+</div>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Torvens — герметик для деревянного дома | ТатСтройДом</title>
+<style>
+    /* Палитра цветов Максипласт-136 */
+
+.sealant-palette {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.sealant-color {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e7e0d7;
+    border-radius: 18px;
+    padding: 12px;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sealant-color:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(20, 43, 68, 0.13);
+    z-index: 10;
+}
+
+.color-sample {
+    display: block;
+    width: 100%;
+    height: 82px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+}
+
+.sealant-color strong {
+    display: block;
+    color: #142b44;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.sealant-color::after {
+    content: "Максипласт-136";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(5px);
+    width: 180px;
+    padding: 12px 14px;
+    background: #142b44;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 12px;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .2s ease;
+    box-shadow: 0 12px 30px rgba(20, 43, 68, .22);
+}
+
+.sealant-color:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 900px) {
+    .sealant-palette {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .sealant-palette {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .color-sample {
+        height: 70px;
+    }
+}
+    
+/* v3: компактный общий блок фото и характеристик */
+.product-details-compact { background:#fff; padding:34px 0 40px; }
+.details-layout { display:grid; grid-template-columns:minmax(0,0.83fr) minmax(0,1.17fr); gap:36px; align-items:start; }
+.details-photo { border-radius:16px; overflow:hidden; height:440px; background:#f5f1eb; }
+.details-photo img { width:100%; height:100%; object-fit:cover; }
+.details-copy .label { margin-bottom:8px; }
+.details-copy h2 { font-size:clamp(25px,2.7vw,35px); line-height:1.18; margin-bottom:10px; letter-spacing:-.6px; }
+.details-intro { color:#617080; font-size:14px; line-height:1.55; margin-bottom:17px; }
+.spec-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 22px; margin:0; }
+.spec-line { padding:8px 0; border-bottom:1px solid #eae6e0; min-width:0; }
+.spec-line dt { font-size:12px; color:#7b858d; margin-bottom:2px; }
+.spec-line dd { margin:0; font-size:14px; font-weight:700; line-height:1.3; color:#142b44; }
+.details-disclaimer { font-size:11px; line-height:1.45; color:#7b858d; margin-top:14px; }
+@media(max-width:850px) { .details-layout {grid-template-columns:1fr;gap:20px;} .details-photo {height:300px;} }
+@media(max-width:480px) { .product-details-compact {padding:22px 0;} .details-photo {height:220px;} .spec-list {gap:0 12px;} .spec-line dd {font-size:13px;} }
+
+</style>
+<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #142b44;
+            background: #f7f4ef;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1180px, 88%);
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 28px 0;
+            color: #142b44;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            color: #c62f35;
+        }
+
+        /* HERO */
+
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            background: #ffffff;
+            border-radius: 28px;
+            overflow: hidden;
+            min-height: 540px;
+            box-shadow: 0 20px 55px rgba(20,43,68,.08);
+        }
+
+        .hero-content {
+            padding: 65px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            display: inline-block;
+            color: #c62f35;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 5vw, 70px);
+            line-height: 1;
+            margin-bottom: 22px;
+        }
+
+        .hero-description {
+            color: #66727d;
+            font-size: 19px;
+            max-width: 540px;
+            margin-bottom: 30px;
+        }
+
+        .price {
+            margin-bottom: 30px;
+        }
+
+        .price strong {
+            display: block;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .price span {
+            color: #7b858d;
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        .btn-primary {
+            background: #c62f35;
+            color: white;
+        }
+
+        .btn-secondary {
+            border: 1px solid #d9dfe4;
+            color: #142b44;
+            background: white;
+        }
+
+        .hero-image {
+            padding: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #faf9f7;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+        }
+
+        /* QUICK INFO */
+
+        .quick-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0 85px;
+        }
+
+        .quick-card {
+            padding: 24px;
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e7e0d7;
+        }
+
+        .quick-card span {
+            display: block;
+            color: #7b858d;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .quick-card strong {
+            font-size: 18px;
+        }
+
+        /* REAL HOUSE */
+
+        .result-section {
+            padding: 90px 0;
+            background: #142b44;
+            color: white;
+        }
+
+        .result-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .result-image {
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .result-image img {
+            width: 100%;
+            height: 620px;
+            object-fit: cover;
+        }
+
+        .result-content h2 {
+            font-size: clamp(34px, 4vw, 52px);
+            line-height: 1.1;
+            margin-bottom: 22px;
+        }
+
+        .result-content p {
+            color: rgba(255,255,255,.72);
+            font-size: 18px;
+        }
+
+        /* INFO */
+
+        .info-section {
+            padding: 90px 0;
+        }
+
+        .section-heading {
+            max-width: 760px;
+            margin-bottom: 42px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: #6d7881;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .info-card {
+            padding: 28px;
+            background: white;
+            border: 1px solid #e7e0d7;
+            border-radius: 18px;
+        }
+
+        .info-card span {
+            display: block;
+            color: #7b858d;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .info-card strong {
+            font-size: 18px;
+        }
+
+        /* COLORS */
+
+        .colors-section {
+            padding: 90px 0;
+            background: white;
+        }
+
+        .colors-note {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 14px 20px;
+    margin-top: 4px;
+    border-radius: 12px;
+    background: #f7f4ef;
+    color: #66727d;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+        /* CALCULATOR */
+
+        .calculate-section {
+            padding: 90px 0;
+        }
+
+        .calculate-box {
+            padding: 55px;
+            border-radius: 26px;
+            background: #142b44;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .calculate-box h2 {
+            font-size: 38px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .calculate-box p {
+            color: rgba(255,255,255,.7);
+            max-width: 650px;
+        }
+
+        /* AI */
+
+        .ai-section {
+            padding: 0 0 90px;
+        }
+
+        .ai-box {
+            padding: 50px;
+            background: white;
+            border-radius: 26px;
+            border: 1px solid #e7e0d7;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .ai-box h2 {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .ai-box p {
+            color: #68737c;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .product-hero,
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 38px 28px;
+            }
+
+            .hero-image {
+                padding: 30px;
+            }
+
+            .quick-info,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .result-image img {
+                height: 450px;
+            }
+
+            .calculate-box,
+            .ai-box {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 35px 28px;
+            }
+        }
+
+/* v2: compact product card — changes limited to top card */
+.product-hero {
+    grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+    min-height: 0;
+    border-radius: 20px;
+    box-shadow: 0 10px 32px rgba(20,43,68,.07);
+}
+.product-hero .hero-image {
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 300px;
+    padding: 22px;
+    background: #faf9f7;
+}
+.product-hero .hero-image img { max-height: 285px; }
+.product-hero .hero-content {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 30px 34px;
+}
+.product-hero .label { font-size: 11px; letter-spacing: 1.2px; margin-bottom: 9px; }
+.product-hero h1 { font-size: clamp(29px, 3.2vw, 43px); line-height: 1.13; margin-bottom: 12px; }
+.product-hero .hero-description { font-size: 15px; line-height: 1.5; margin-bottom: 16px; }
+.product-hero .price { margin-bottom: 16px; }
+.product-hero .price strong { font-size: 31px; }
+.product-hero .price span { font-size: 13px; }
+.product-hero .hero-buttons { gap: 9px; }
+.product-hero .btn { padding: 11px 15px; font-size: 13px; }
+.product-hero .quick-info {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    align-items: center;
+    padding: 13px 24px;
+    margin: 0;
+    background: #fff;
+    border-top: 1px solid #eee8e2;
+}
+.product-hero .quick-card {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+}
+.product-hero .quick-card + .quick-card { border-left: 1px solid #e7e0d7; padding-left: 20px; }
+.product-hero .quick-card span { margin: 0; font-size: 12px; }
+.product-hero .quick-card strong { font-size: 13px; }
+@media (max-width: 800px) {
+    .product-hero { grid-template-columns: 1fr; }
+    .product-hero .hero-image { grid-column: 1; grid-row: 1; min-height: 0; padding: 16px; }
+    .product-hero .hero-image img { max-height: 245px; }
+    .product-hero .hero-content { grid-column: 1; grid-row: 2; padding: 24px; }
+    .product-hero .quick-info { grid-column: 1; grid-row: 3; padding: 13px 20px; }
+    .product-hero .quick-card + .quick-card { border: 0; padding-left: 0; }
+}
+
+/* v4 — характеристики как компактное продолжение карточки, без фотографии дома */
+.product-details-compact { background:#f7f4ef; padding: 22px 0 38px; }
+.product-details-compact .details-layout { display:block; width:min(1180px, 88%); margin:auto; }
+.product-details-compact .details-copy { width:100%; max-width:none; padding:26px 32px 24px; background:#fff; border:1px solid #eae5df; border-radius:18px; }
+.product-details-compact h2 { font-size:clamp(24px,2.5vw,32px); line-height:1.2; margin:4px 0 10px; }
+.product-details-compact .details-intro { font-size:14px; line-height:1.55; color:#68737c; margin-bottom:18px; max-width:850px; }
+.product-details-compact .spec-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:36px; row-gap:0; margin:0; }
+.product-details-compact .spec-line { display:block; padding:9px 0; border-bottom:1px solid #eee9e4; min-width:0; }
+.product-details-compact dt { font-size:12px; color:#7b858d; margin-bottom:2px; }
+.product-details-compact dd { font-size:14px; font-weight:650; color:#142b44; margin:0; overflow-wrap:anywhere; }
+.product-details-compact .details-disclaimer { font-size:12px; color:#7b858d; margin-top:14px; }
+@media(max-width:650px){
+ .product-details-compact {padding:14px 0 28px;}
+ .product-details-compact .details-copy {padding:22px 20px;}
+ .product-details-compact .spec-list {grid-template-columns:1fr;}
+}
+
+    </style>
+<style>
+/* v5: компактная палитра только Максипласт-136 */
+.colors-section {padding:34px 0 42px; background:#fff;}
+.colors-section .section-heading {max-width:none; margin-bottom:15px;}
+.colors-section .section-heading .label {margin-bottom:6px; font-size:11px;}
+.colors-section .section-heading h2 {font-size:clamp(24px,2.7vw,34px); line-height:1.18; margin-bottom:7px;}
+.colors-section .section-heading p {font-size:13px; line-height:1.5; max-width:820px;}
+.colors-section .sealant-palette {display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); gap:10px; margin-top:14px;}
+.colors-section .sealant-color {border:1px solid #eee8e1; border-radius:12px; padding:8px 5px 10px; text-align:center; box-shadow:none;}
+.colors-section .sealant-color:hover {transform:translateY(-2px); box-shadow:0 5px 16px rgba(20,43,68,.08);}
+.colors-section .color-sample {display:block; width:82px; max-width:100%; height:82px; object-fit:contain; margin:0 auto 5px; border-radius:0; box-shadow:none; background:transparent;}
+.colors-section .sealant-color strong {font-size:12px; line-height:1.25; font-weight:600;}
+.colors-section .sealant-color::after {display:none;}
+.colors-section .colors-note {padding:8px 0 0; margin:2px 0 0; border-radius:0; background:transparent; font-size:11px;}
+@media(max-width:1000px) {.colors-section .sealant-palette {grid-template-columns:repeat(6,minmax(0,1fr));}}
+@media(max-width:650px) {.colors-section .sealant-palette {grid-template-columns:repeat(4,minmax(0,1fr)); gap:7px;} .colors-section .color-sample {width:65px;height:65px;} .colors-section .sealant-color strong {font-size:11px;}}
+@media(max-width:380px) {.colors-section .sealant-palette {grid-template-columns:repeat(3,minmax(0,1fr));}}
+</style>
+<style>
+/* v7 — единая сетка и компактные завершающие блоки */
+.colors-section { background:#f7f4ef; padding:10px 0 22px; }
+.colors-section .container { background:#fff; border:1px solid #eae5df; border-radius:18px; padding:26px 32px 24px; }
+.calculate-section { padding:0 0 18px; }
+.calculate-box { padding:28px 32px; border-radius:18px; gap:22px; background:#142b44; }
+.calculate-box h2 { font-size:clamp(23px,2.5vw,30px); line-height:1.2; margin:3px 0 8px; }
+.calculate-box p { font-size:14px; line-height:1.5; max-width:720px; }
+.calculate-box .label, .ai-box .label { font-size:11px; margin-bottom:5px; letter-spacing:1.4px; }
+.calculate-box .btn, .ai-box .btn { padding:12px 17px; font-size:13px; flex-shrink:0; white-space:nowrap; }
+.ai-section { padding:0 0 36px; }
+.ai-box { padding:26px 32px; border-radius:18px; gap:22px; }
+.ai-box h2 { font-size:clamp(23px,2.5vw,30px); line-height:1.2; margin:3px 0 8px; }
+.ai-box p { font-size:14px; line-height:1.5; max-width:720px; }
+@media(max-width:800px) {
+ .calculate-box,.ai-box { padding:23px 22px; gap:16px; align-items:flex-start; }
+ .calculate-box .btn,.ai-box .btn { white-space:normal; }
+}
+@media(max-width:650px) {
+ .colors-section .container {padding:22px 20px;}
+}
+</style>
+<style>.colors-section .sealant-palette{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}@media(max-width:800px){.colors-section .sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:420px){.colors-section .sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))}}.palette-placeholder{padding:20px;background:#f7f4ef;border-radius:12px;font-size:14px;color:#617080}.colors-section .colors-note{margin-top:12px}</style><style>
+/* Максипласт-136: единый стиль товарных страниц ТатСтройДом */
+.colors-section .sealant-palette {display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:18px}
+.colors-section .sealant-color {min-width:0;padding:12px 6px 11px;border:1px solid #eee8e1;border-radius:13px;background:#fff;text-align:center;cursor:default}
+.colors-section .color-sample {display:block;width:100px;max-width:100%;height:100px;object-fit:contain;margin:0 auto 7px;background:transparent;border:0;box-shadow:none}
+.colors-section .sealant-color strong {display:block;font-size:13px;line-height:1.3;color:#142b44}
+.colors-section .sealant-color::after {display:none}
+@media(max-width:800px){.colors-section .sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.colors-section .color-sample{width:85px;height:85px}}
+@media(max-width:480px){.colors-section .sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.colors-section .color-sample{width:76px;height:76px}.colors-section .sealant-color strong{font-size:11px}}
+</style><style>.mast-subheading{font-size:18px;color:#142b44;margin:22px 0 8px}.mast-application{font-size:14px;line-height:1.65;color:#455769;max-width:940px}.product-details-compact .spec-list{margin-bottom:10px}</style><style>.maxi-swatch{width:92px;height:92px;margin:0 auto 10px;border-radius:50%;background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.55),transparent 45%),var(--swatch);box-shadow:inset -7px -9px 12px rgba(0,0,0,.15),0 4px 12px rgba(20,43,68,.12);border:4px solid #fff}.sealant-color{display:flex;flex-direction:column;justify-content:center;align-items:center}</style><style>
+.colors-section .maxi-swatch-photo{display:block;width:112px;height:112px;object-fit:cover;border-radius:50%;margin:0 auto 8px;filter:drop-shadow(0 3px 3px rgba(20,43,68,.08))}
+.colors-section .sealant-color{min-width:0;text-align:center;align-items:center}
+.colors-section .sealant-color strong{font-size:13px;line-height:1.3;color:#142b44}
+@media(max-width:650px){.colors-section .maxi-swatch-photo{width:88px;height:88px}}
+@media(max-width:380px){.colors-section .maxi-swatch-photo{width:76px;height:76px}}
+</style><style>.sealant-palette{grid-template-columns:repeat(4,minmax(0,1fr))!important}.sealant-color img{object-fit:cover;border-radius:50%}@media(max-width:680px){.sealant-palette{grid-template-columns:repeat(3,minmax(0,1fr))!important}}</style><style>.hero-image-pending{display:flex;align-items:center;justify-content:center;min-height:300px;background:linear-gradient(135deg,#f6f3ef,#eae6e0)}.pending-product-photo{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;text-align:center;padding:35px;color:#142b44}.pending-product-photo span{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:.1em}.pending-product-photo small{font-size:14px;color:#667085}</style></head>
+<body>
+<div class="container">
+<a class="back-link" href="index.html#products">
+        ← Вернуться к продукции
+    </a>
+<section class="product-hero">
+<div class="hero-content">
+<span class="label">TORVENS · ГЕРМЕТИК ДЛЯ ДЕРЕВА</span>
+<h1>Torvens</h1>
+<p class="hero-description">Акриловый герметик для межвенцовых швов, трещин и стыков деревянных домов.</p>
+<div class="price">
+<strong>от 590 ₽</strong>
+<span>Уточняйте у менеджера</span>
+</div>
+<div class="hero-buttons">
+<a class="btn btn-primary" href="#colors">
+                    Подобрать цвет
+                </a>
+<a class="btn btn-secondary" href="#calculate">
+                    Рассчитать количество
+                </a>
+</div>
+</div>
+<div class="hero-image hero-image-pending"><div class="pending-product-photo"><img alt="Фотография товара" src="images/torvens.webp" style="display:block;max-width:100%;max-height:340px;object-fit:contain;margin:auto"/></div></div>
+<div class="quick-info">
+<div class="quick-card">
+<span>Фасовка</span>
+<strong>Уточняйте у менеджера</strong>
+</div>
+<div class="quick-card">
+<span>Основа</span>
+<strong>Акриловая</strong>
+</div>
+<div class="quick-card">
+<span>Применение</span>
+<strong>Деревянные конструкции</strong>
+</div>
+</div>
+</section>
+</div>
+<section aria-labelledby="details-heading" class="product-details-compact">
+<div class="container details-layout">
+<div class="details-copy"><span class="label">Torvens · О ТОВАРЕ</span><p class="details-intro">Герметик Torvens для деревянных домов: эластичный шов, защита от продувания и влаги при сезонных подвижках древесины.</p><dl class="spec-list"><div class="spec-line"><dt>Работы</dt><dd>Для наружного и внутреннего применения</dd></div><div class="spec-line"><dt>Эластичность</dt><dd>Относительное удлинение до 700%</dd></div><div class="spec-line"><dt>Температура эксплуатации</dt><dd>От −50 до +80 °C</dd></div><div class="spec-line"><dt>Температура нанесения</dt><dd>Рекомендуется от +5 до +35 °C; допускается от −10 °C</dd></div><div class="spec-line"><dt>Паропроницаемость</dt><dd>Высокая: шов пропускает водяной пар</dd></div><div class="spec-line"><dt>Основание</dt><dd>Возможно нанесение на влажные, но не мокрые поверхности</dd></div><div class="spec-line"><dt>Нанесение</dt><dd>Не течёт на вертикальных, наклонных и потолочных поверхностях</dd></div><div class="spec-line"><dt>Отделка</dt><dd>Допускается поверхностная окраска</dd></div><div class="spec-line"><dt>Защитные свойства</dt><dd>Защита от УФ, атмосферных воздействий и плесени</dd></div><div class="spec-line"><dt>Назначение</dt><dd>Перекрывает продувание и сквозняки через швы</dd></div></dl><p class="mast-application">Основная область применения Torvens — герметизация межвенцовых швов деревянных строений по технологии «тёплый шов». Состав учитывает естественную усадку и движение древесины: шов сохраняет целостность при сезонных подвижках. Для наружных работ герметик защищает фасады и срубы бань, а при внутренних работах закрывает швы и трещины внутри дома.</p></div>
+</div>
+</section>
+<section class="colors-section" id="colors">
+<div class="container">
+<div class="section-heading">
+<span class="label">ЦВЕТА</span>
+<h2>Цвета Torvens</h2>
+<p>12 оттенков Torvens по предоставленной палитре. Цвет на экране может отличаться от реального.</p>
+</div>
+<div class="sealant-palette"><div class="sealant-color"><img alt="Torvens, цвет Грецкий орех" class="maxi-swatch-photo" src="data:image/webp;base64,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"/><strong>Грецкий орех</strong></div><div class="sealant-color"><img alt="Torvens, цвет Белый" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRrYEAABXRUJQVlA4IKoEAADwMwCdASqaAJoAPmEskEYkJ6GhKVRsmPAMCWls9siuABiDpp0qyEk6mmkz/FUmB759h/s/NHDA5ROlKSb+jnNmI75NMT1e9FI+PVQLwUxI54IzOT0WIShevo0M2T7y22MogET1hDlG867SPNa7scJafzXZjXAeY44OqURAkeBrMGMoSN7W9cVryyohlUMNdj612G02jKiAqFdRB65SwUaj/lP2aT9zugFq9v8WHZkOYZDqu8tZ89HyxRDi6TKYkTK982e9d68zuGjCjkEVnsAAgb6kGhN3v8pCy0zDMYr9LB17VSDR8VHjFmSk91Rv3kmJZOwqO5FCt+8F2wkDrlzWMIgvr6RyOQ0TSiffcdNZqfvOFOj5ZT5iQjAzALY0fjkYU1tAgfmemhmUupHro0kaFzTE+sL2YH62Lp5OlfNujtPcrlzjh05xLY3qhOUi6BHMlzeNxnJaFqWZvC0jemajVNM6pkSikZRvSNCeert7ui8q2J60sWTLiXpaaJzOuktNHmmVStu0PHfFESwBe8gj9J+ndkxIhDrNKLqBnxalC08sMuMaJiuAAP2OfC37uYdYvLtpaMorisd3jT26aj4Hs4D64GlInCeIltXI0N6BcXvQSruHUd/cgHejl+vpTg1FgtVpZYAxGnpXIS7a8uuKW/z0gvpSYu1pary2Pj6pIwqy7OK84SsMBcCxopexFvCRzTqxA7WOpmYF8MF7RKELt7ge1LuliVFOp2mUjnXQL2rrVOZi4efcIfredsa6Y/1nGOn4cCuDhlPNREDZYf5tToi04NJm4YLEh4MJR/+gwXcXdXrYU6W71x2yGNdK7yzDO032UKTZmltUhaLBP5Ge4gBcx6r8jNL8qGuRU7ChzCCTsR44SqidUf9RDwezgDYTzd329rWnXWJZMeXnJd35Cl35+sA0YznO9FVf1gjsQktqY1S+eztnfS0TgAqcsepKzn6BWA/BY0/wHnwQhjE6+pM9kZXWSghGmf+WWxO+4U9V8S+J3Hy6jx5fdAJBS9pKYqh6FhjjP7MCXFjgwY3CnxpGYbvuaBjCTEFew90YZ9fIdiTZJHwl0eBM+asp7nMsikAz+i0+5+j4Kciuey5bXMjhd/5vFiQlf05nNMYQ08ll8ANDM0BQEYBwKGHm4uNzoORcimlCtpqhUHmIhsFCe5yq19aW1Bjr2uMtsmyDIsDMcR0APMTMbVvx8ozI/ErA35c5dOW6GjqprF7extGm0SEvHcNQSsXng96yca0+A91DdUBqV9Ssg80SBUmcUmkoGGCgFzlBzC9woa4bJVM19rnNOiipsaq1vp2a8KtISGoh/6ZGT2B7qFi4ZeGf+b02FhpKztauwSgCxDnec4hwOaLg+j+9mIFn9l2tgrRezO89aWj4rsC2sopLsOE8ObYdz0owzKgu/F6SEn6RpEvHf20bGXrwq42L0J6bHSVQ9BXdr97xAjrrF/BGJMUT3QpQjFU0imKfUUidPaul4KrJ9K4DL6Z/m0Rz6itc/aDJdeiP+EpYGFWCtv1ezup9aIGqwabhBc7bQ4GbN8IuJENQRUmqeymoNZUf7BoxIPaRhcQizdN9vXAAAAA="/><strong>Белый</strong></div><div class="sealant-color"><img alt="Torvens, цвет Слоновая кость" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRgoGAABXRUJQVlA4IP4FAABwNwCdASqaAJoAPmEokEYkIiGhLDL8oIAMCWUAyUUAXZDpvXSBlNLW3r6Z8oPc6ZRCCbNlM+bXmN9LTDCZ8rbd0q2nwsyPuhNHnj4BWIBLOZ42ZLmEhpHe7K4sLuJOWFLrAcogkqZMSOJtAJUWCu0QzOfxKoqgSqspQZnYqNSCoBZ4d/fF4z864Fzkxpme/L9mqwZXHkhdOvWUTa/0qIkPSn86ykkgJapeCQgqEsUF/TMvbrt7oHxdnSSDAJdr9X94w1KyyrN8ZLsqHSqm3dNXanLxJkqC/9EorpwkZW+vH8VyAxYol+Beg23+YoP6ONAJ/UZWT6M2jVa/lKNnpLY1ECSf0XkTLJrxu+aweTev5yXmXMKyshl9gAY39goT8A5ukHrRMglWZ07dH5fnR5d/+ga/gcPCLKo7xsX9njurR3UI7VfNbrLR1MICpV95XykKq21PS3/YLkSIQrK5VgN7VrNXXTSXU6FehEeH4JvAn33n0pqg61BgBuOHISctMp9WyCjRmjqXANkA/ZXoIZmbr0wcKhsGxv5gdIKWtUdwoml6x7ZdRkffzFR6/ghinfxoz9uXhw8Rmg36QzdnJJJ4EBgwAAD++fGpgjpLAejzstS13IYd6q6F0y0IJfzp0F4kz/olHB8PBgzp49qp3KW7XQmrffdwZpbVmCnNmxdx1nxMR52YXz6hvIaSce7b5hleldQJ/FX4KuYzF6LDCanQP0j87S9bmDrxNq2jnKRY4R96HjcdAoYMZuvL7aXwkM5bp7/bgzpe1dc326Zxjm2ox6mFtsdVBOvoXTYK27kdJ5O+PWH+P628u3q8U+UeTg9EL2Kym5zTNuucaKWFmoakMDma+lcNUi6ZhTeIhYyZkQ0+F7rhjF5Ke6c7fBLl+Nqtu5JDFy3N5FE7mkLgUf/VeZwVdnIRJv0RNGdWpmfhWCvLmyz9PYlO4HPfTKdlVpjF+AZbTkjJzsQIHRFOvx5x3T1hQnrrfz7p3lJAWxm/Y/6FAeVk2JabVS4QAd+hZVTBrJqTHLZTGEpaIbGqmUR0Vi5CeUI9VHnvYy1wmxBYSpgH58j6wepxe2LHIHgbzjulKVgXO5z73Jv/tV34IilxtkfAMzu5gBIIfM/X0Iywr7/hLqmq3aC0CG5BYHIiT9Q4/X/Xa/98aiw8y0D8RNAy8zKweZ/CLqJWWo2h+VTZfA1G6S8gHybDHxHXcTPWLjXc0+mnr//07s/seb9B0jS1RAQPmvQOkY81Aetia2rrzAfbf+45nexCdmHyfrIbjmLzM/k9GqG1Pu5343fn7XNJz9hJr2DVn/trdRsjLKxX+N9CZTk3ZLvniaXXpM9+dpeI07KuRPoX3Uu7R4DxM6JPQE9gz3bqblk3M9jJODCi+EH2f0bDd99YSaC6c+qofZ/LHHKRE6zaqAZNdLjLZxDnlWNx/X6dfZHmmklmXcpMHlmRTf2WW+8qUY8WKvEZAD/hanM+/bsBlCmkwyqfHXUurHrbfZ4eCE7E1jNtGEjtJkBIj+ObRigI+VOuaLtMfITPVtECpxkbBjGNDHO8MJI/UpbO6wQFob8appQ5Ks6mdx4s/fB7PSmOZROCPHJI3l/EG0s21UDd8xEPfGqXVzK2xFe5SpAQPenKkqgeGiBh/MquattFlqzFnFYgWyBJVIXPuZRDwM4T5+MSDHZmkl7dMn3HltAVZi15BY1oloEjrvMPxCMyxUKc9iIqnCA9jGELYdXeqg8v2tHqhu1BBSYQsijM+AdhdJ/i2UWZO9MkR+9tMnyavBe+TOXNq4A0u68MtINRzcsOSqKj4L1uDkltlL7SApD60iMYAFLnzStc4ev1hwfTybRlA5LKjDYV9L5Vp5XrL0iAMdGy9hBtIv51EvkjNEutiEZzULfST75Dc02++yEqvuHw/JzLE6fc36000GQbHsDFHPRSWSmVv9wKyqdDPiy8JRLpHNSO1mkll8deMRScu+fYUm+H4VMnxjot/9wouzG95CPaSsIPJFGP7GKucQw6JhUsA6BHJnuL154RMMVM+h3ebJmjEgAA"/><strong>Слоновая кость</strong></div><div class="sealant-color"><img alt="Torvens, цвет Светлая сосна" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRjQFAABXRUJQVlA4ICgFAAAwOQCdASqaAJoAPmEqj0WkIqEWas6IQAYEs4BmoHQJYXK/DgopnMVaw5Jfc6GgZ+v1P/J/hrv2HCTtiywAX2kKVmaGvS5FaUhyY8MliSITnDzw41TFcIxeU6rdEij2rng7Q5ZoU37fUUsB80lK0WGKZ8LPGn7MY707NZmo2HIrXvf/L/bLEAy2zBZScZ3rCs8brB3Lsc5xV0POiuI33OgaD0FQI+Cgz3ZCYfzRqhbcxM+3Qbgrgmcx9t+YBhscnAhv2nwn0MRNs0gZcFTBmYPr10jBttLMCBegSM4NsbHE0a1fljieikHKhemPlyBKAy4nX2fk4GbK2w8FDifPj0lCskQ2xCykvAhnbuFWmmwpDcvKChyxHBfJl25azCZaC8GEQ8dDdoNlpd6dAgAyCVhQjk7kcSAm953arC4Q2/yOdd0B7YGm9yQILY35mWtHgMtm9mde5NGN0frgZBN4knM35/K2z4csIWHZxdgMoV34K79eVzJUEVT6o3Ui7K9oguBJBKx9kN+o3ZxHVaK4OSDtWQfTV1cCXwQ6Wvbt7paaTCEAhLOqn6oLq4BDdFxyHiPeraDhvSX6JpLoW0Lk2ISma3JoA1BQZ7Tw8m3vsAgOzVUEAP79uzLdncmhE+cstgKQYKCYWA2AXQ9KJp5NF2nu6ljteq/8SdL/MedEdrTUMt7C+TgyG3kOTAYszS9h047Gtpwz13WwoqbuIHEUb0W/qXYZAk2kf7UNLrUzibv1ng5ZR6KtzAFO+pJ1GMtSCdF99eV5QQAd4VnKw+3/c+dRGEcp+I3N2biJMTKmXnt54S+YNqri46lj8wIXpNnHtqY0nKUUlWxl1GE96P/3Qzg/T2xnsUQ8yyihDYaC8Nwg+fg/tm+SiUuaAAIHQKEUks9S3ZkKbSDEf8q5ttz1OmiG6vwWjl7HCorXk5955C2srEaChpz2S1IOAdrDEF4HEyr80/EwqbR4UXwMjelY5lcYlQSTsgAjQnxkqyDsNbW2RS6qRq+FufSXbL1eKVaea/dIX0YmxAc7VOtk0moUbNHOOUNibojkO8NJmRoUlPeGJnUa8agjEoR5X+3hBmVUb1TmixjmlwVryMNsqeoFvzAY02CxAPOu4SbV2EtWefASFt8Z1mANkNN67rYSExJaPs24B6RMdH8N5doVkHSdX0oGJwHr5AY9J/FRsR4JHraYpUAnW3YEG1rUKMfMDTNQmUJfMOOfYxpfdA+obyW2gkk8CtfdQRvH2xoxoEKqAwuWxADGWbO7HgPFt1js7IAgXPchWIIgCHkVVqppGpNMjN9/i1oL/NrhYcSgAkyuvQ4osv6O9LCnjwh/iOH1RP/DZ9wDt99k2q0CSDojxJGE0ZnrJOogSPkqgtuUXveECbBQMVvGXy7ok5piO+AbwYxGrOVzO0q8X0jBWnrX4hil1QQbbuCy3/koBbXNoaBXphbltsuLYo7w1o1HLu3L0qXQ6nNXhVWMRDK22gg8AOY1kzZH85XgIXX8Lhuy3JGBATvmLtrRpuPSaGz+wFqNWk4DI5qQ5KrfPHspL33DNxjLvodHypVtOvaWKK7DUY5hQzuGLM0S6RIsarI9dBBMAae4s4C9aODEBxNzGuw0fXSH0eiqFWKDgtZO9cvBLZtxFNEOn+Gw60xzjg8Kp5avxODDM/vYKvlElcZD/3qbQ6VnaiIsGOSXaw2eBSqU/WTHfyxANcFD4jAGrHvuvYw8PeTpOasnM+IfA8j3EepXjr9JDSRqL4x7ZLYQAAA="/><strong>Светлая сосна</strong></div><div class="sealant-color"><img alt="Torvens, цвет Серый" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRhgFAABXRUJQVlA4IAwFAABQMACdASqaAJoAPmEqkEUkIqGXqtWIQAYEtIBogTLCp2fNRsR7NXw/tDkFQTCrkRPw0kx9pxAtUWcUe2+F8zHB6Zv8uQyhvoQY50jwhAssGdE1sGMUhSlO1XJcp4y7cAfTb/ZCopCBMOhB2IZSLzN7jFkiInb2pDxxItHRTkxySf/aZYYmupu7TimlXycz2RIv3WrKsLZyLnWO7w9BmK1c5fwpM/2EgWaCpj5u0T9VvRlPvCclPg3qAQkbwAjIM2imYtklsuKEsuGDgoZWVhaXwRo40Z0KN5ihyxenCKEKIb7kf5GFgrhIe/VNqg9w4dTz6ps2A6jiqqnF5Hna3f2tYBOjMo4LtHnOFjN+5I0LoNiPoXcflS9fcpuhsdZXS1NPmxsTaqhu8doofKrafpWJxHX1pKz7yD7sZvqVZOUKmL+GiFHVF6h6M1Xl5ZaxIXj9xtY7GlIaqFusPb045E8p+b4puijogGRLCANgAXzcEQ526tLwPWm1LELtiG5DnyGe1827gnTbi9Vb0AD++huF3IMk+g26ywzVGw+/cm18+99L9W6KzoQG5VY+PeO8TqUtiatOd6M6f14sJhg59C8ER3uQ7Eoqsj+/FsnleYCOfphcRDoV++gxuerkos0PJvdeLoJo2x9Kg9X878JDPfMS+TiAHOcZB49pxkhzDFJUix8xVhhTCh0uWgWr3p5jpzHCK7NWCqjg4Nwbr3JgREoJJbvhEuI2oUOjyJ6WA2fcPSwAFpLDZScWNqTdPfFnPUPm/r1HmUWs0JqaG9YjPtu2p0fkJIYRwycCiFy24XZXnlB5hnP4+k4qKD9/P6A1Wmj2tfYOnBz1CqIe9rAivBaoS3wQa1h+F5MVXu/bcu5hzpGesq/j7TRUG3om1XIwpWL0ikHKuykHYj3M1Z/fFejtqoM5xTj7KSFqF83t5jnCipBUE+gMPt4/DQpUk0ZI2H6S5VEpZSeorGjTkUAYpqArCc4GetQR9rNJXyiww2cwD+B21Dnlw7oe92GzT0g9rU0bPZG6zjzIbL/T4OtxhJJkjFZgvolsMdQ5eQvM0vGrbk0bpNlKC2XLA32GhHYP4OmKBQUOPF0XX925enoP/DE0mEC9qynzjhkwvPqqnSkF8rHxOjlkxQZRwmuc2e7k546Daw0KT0Em/wx+53mTIugdx+ixfpvxljkxDfGQxZkmU28LnsLj56FzakedfF3ot7jO7UP4Mh3piS4nzUGkz09KVOkAuhZYoDqnP2fKEp0LeH50/U3ahLDgXHAUhaww19MYOGwukPlWAH9UHWHMZJJIdlXOhqUrrl0wsds8ed+v7jQzUVPk60bvCM4mDQ6rX6sXCX4TxewwOfSr0SHUhXmfBDIDSjv/DkUKMSK3xP7iRekIk69AusVEuzWQj8ibHPvhsSH6uTxCpjL8MEoF6fUhxzb5w/SroRT6rdc6MHMXYROryj58tA3QJldd+By46VrQXEV+Y61LSS9Ko4rM2seUjdCZ23gc12BBbSf55CJHMRMbPR6koG8ggyvVHFA62lc4wlCxLWmMu+7w/gJSXupMCl6Q2xNnMUoUvFo7GTz8692iJj2uV1Db04PPNFptWtGPMXdoYbAuoVIemnH9KlfLrmZBk6eEoBKGtD/Ihm4COppqugUmZpvk0h3rZwUYwcm5tuxKOdCEy7l04bdpPI5Jl9/GkX5K0fydMerLe6KxewfnMnbnXaV/HyBAAA=="/><strong>Серый</strong></div><div class="sealant-color"><img alt="Torvens, цвет Тёмный шоколад" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRvYFAABXRUJQVlA4IOoFAADQMQCdASqaAJoAPmEqj0UkIqEYWWVoQAYEtIHYDp3D//oR7k7bUEBXpKo9vDHlGbIZ0A6Zf4ok21X6Fehv6R2hlDhw9ma1ZYq4uq8QY25brV0RdBwjX3YDgE9cNIxrux+BcQE0UFssJNAXKeP/TBl7ma2zq0t3fm+CuiXu92vrRmYnNWrPDCsnOoIgd/05zCM45rr5i+9lPeqfSQmQ7oLvIn8CNsvIHCt61w7lGGQ1Svv6ln6p6Lnl0wTyDDPT6CBgGPBp0RRr7qmwgjOv6AU2qbNminWlY22qHqeE2Efo5n/rUPX9wfYdp8iIRaN6poFUaRqqw5KLLjcgHggUu9VVDDttKejSuNrZQJtsXb4PK9pGCdtATyeOs5Q1JjQ8OUi0AjNnnU2TXiY8ma36j3SQmwVfxsNYjmOhJ/FiJtDC9BNSyt5yilvyt9lBPQJUc3sXyfepD8E9s1M1GmihwyQNnyhd2iiPF8dJnVkGAdw2gTA93I/u3+0I2BUXm3PT44DEWZl+UDl+NqEceHYsy/60o+mwiUCiwAD++ROw0X+b6fCEjraNPu53SUQtuVFGqXSh0GX52CdJmquASPXpN3AqNpMO3ae9wlAGjA7kY2IWP2g0BTEtSOl04t8qohZOP74wuwSfMdXrz8sqaQTrpyrnQm3EKLwaUVZqHvaJBDVNq6d/UcNZu9c0BCZfwM5bhxoKd3ESrL/4TXr1H8z13xlIH8PvU2xtinlt4uKcnb3HpplT6QuMg9hayxiCRAnphR2gyMpWmxaCyDQEDBXxKDcfRK+u53f1Xg7sWH3GSDB3Df9PdIRLwDZPirZ/gFlk3y98TwkSi7aYtxn/ZNCx3yIdCXI0F/dPcwGCVawq5PXwoY2WPoJJwiO8DEXk200dMW7EHDfdlwfpxldQKzeJliQqKbyw0W24tOOrmwFsUVqAGlplBL2eY6JfyG4xiazPbAOzmoPV3iSbNp831gFYNaDPYWgsMl+PT7xJVVSM9Oo5NeXr14zOayaRoG0bhFosiu+Y8qi3Plklp13TZ5DtuUtgcUa5NBI2zbFfHBCaVyD8Lp7GOlIRzs3zZ+akpyGMTXUNPJ5bzqBGNSMdEoBtFLVTPVkq1EQw9/iZrICFq3nDA5iqSxcm9TAQrW9+ISxBzPPK0h0qN1RmZwb0XfTQfQkFEuKKE1A2TcCkJHPc2lWprf2/EGUIh7ZygyDN4nO8n6UaZNjcn8ICPknLqx8c/ADNTXtaC3aRjRX4Lo4hAXQfKghMwK8M+qLCB9GOKfwl9adR++LE0uabvXNICXVXr19Ju+SCKqttteeuqmFgJemH9pNgGQaUHuwAILbNvIOVXyZZ8WVrjTUetGEbthT0OcNICsOwSN8oF1r3Tp33a62PyCeROfs6fLKW4tuvv/mVbIgJPBm8KiUIFYUy6COf33hFKdJhl6h5ZKwDk7Io7xmeQwwSbNFeb2NTLsUtYUlQFSHbwvDymexPJFfSb9hEvc8aysXzXd6funZbIsYKY+SzQg9oZ5Cym8udzOQESf7vKXaprsZVxlR1TPIMnm4misE/X6D+M7j17YrPdkgftNOLV4No5p0UZxkFMOIkR1AwiBYgwZY7nffu78Zuj4xMhVOkrtZKi5+ZEM1iCvzS+PjcZdIdFxWXtqNhsNC8d0e8gbKDFP+g8LqSv40TMYtvk8SgiQztZUrLANsETXR75PQkSs0QOY2hEcxBHjFfxMsXK9IeVzmHIifrg+yL/hJpFGo9QYpBsdJ6dZNaNw+nnGa4unzUgwKAagd1Mv63Y8KGal3/97iPcoPgKXpr7M/Fb1r6l7Vp0Alg5L07WJS2D3xu/eyUJa6RzAlP+oKDuUtlfPHuKENUk32CKuwqT0EEESkBAwRZYWKrTi+awjAR4d0RdutgddyjXNTkQI2iG5kmC982dvDEdfVgGkmiMzoJz5USQnK1XzaWhj+qIqwo8nx43MzYsWEyNP3X3x7aji7bUbcBJaaylRaOQFLbSAaFpOhB/UY+r094u8AAAA=="/><strong>Тёмный шоколад</strong></div><div class="sealant-color"><img alt="Torvens, цвет Сосна" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRigFAABXRUJQVlA4IBwFAADwNACdASqaAJoAPmEqjkUkIqEXXF3EQAYEsrZyQBRAK9qy1AJEMPSYAuWCNo6m8BNCouc3NrMJgmFuRZ0GwW4CaU7xOc71Bwp3bKKo8Jl/X4cwa4W1x42TUvogbaKiMhAXsgUyclakXwu3lRro+5LlSUh3Y3wHCBOTLCmWKzjt0+bGtPnnDSZMiAxxOCbC2RSCGjsye2QjUINrkkpS59JoBStZslozDiG6ZiA1Trdq4Ybm9vjY+YnidDP6F/F0/Y9kXqiHNCIX/1hJZXpm1PoNN/6YknJiMEn4p8MQ2qJGKFVgetGeZuEmfxqfW0EO8nVcw1mTuXUt7X64hW5Mo32rELC/rvrs2i7T2MfbVkL2biWoxhRIBOSyt85n0Sm/o0uP93G/SQGyHsy8OU/NAJobzbzCxUAVDVyV94UnnPhkB++2G3dZgMy5iR8JP6+l7m927CkZctDdvYle1vBAosQaEzy6BF/hYYATW2gQK5Ue7JZrG49ql7xaekJr0Bt+69BbtWSPIosbyCv+uXi28xJQhCJY/amWAz7t0BP3JM4cRdr4/3qh/Ouo2eo49/C1AAAA/vkPVX9USw3OA4wRDlH+hueO69fjtG6//Vg0Q+gNhichtWUG+gkr/Pqw+dGKDsnLNB0HboKBxY0Jhj25inJHvyzkefpVdkV2sv1VaUvCrLC9zP6RoKP399PIyibJyG9t67Rn560EB0HEaMbEoXnD/wRZjmm0KlcuBoykKwchCdyBOFuvZaLXMshAhytsN5trJV5qVxTO4CZJJNwp0pE6jlSo54K4ePRIZWh6Q9tQjDLcYglybJd4RjfKo3T3i0XX2Z2IIiXcppkPw6zlZ8n+5IOH0eoSJC5PAK233fREB0R4ymlc6dlTjwoVv1xWkMh4a74xgER8NqmXqijqvaK4zQTErmuaSxEaab6JM0XvbQWOpKQmPjYuFRxiJ6jY3ks7sbFHmylhssGuV0Y9odigoS9QilYsIcHSaiYgV2Ea5C/KKTgzW8OIwP3BseTqFRLuS6iKZFtnkBZB5dbuWYhvBdahBPr4MHMysmTlzpvtK0tijk3/lexL6HfxAim/ABCXDGAB/uhFli+kjXO+dD9nYCl3cM2uUYTdlYj9AA0BmVpRghTote8xo1iZnIcWLkxYYiGicWhrKF7ha0hCty9hKTq3YMmdxjFQHs7n2t2VA2k/Z7mrl2ghTjEaSvrwd8sKKfwnF4uGIau3Dzh5fM40P6y1rqabHLatdGHHVx7Qf4Ha8OiKqKTie4y7C+tNAO+6CWq2OiQ9vsGO4PZjC4Bw4Z8eVLRm4J8YOodLMPjTGRt8hSjHyHUtA3caDhrEh1mxHYMXMPAEgUdGlR5rQohKwgdU7aMkanFvIHZwhTiOgEeUBSxONWgeyYJegQQQ0139KPAmE1AqPIvYFZWUqy8P3PqqiY31MxZZWEFQ16gWbNRtei7PLt3Sh82FJmPAcPod64xRX/jnZbAzLWvQiWszsSUA7cXN2Nu4666onWzK9WoLb8cxPuYHSo7s47O0AbuA34qrmL04CZ+gOqtIiVhW48HjIOFltGloewjvBW4525NrrI/Gi/nuuT+dxQKU6my80R+HeeJ4tx/UoC9tqRGPP8dZcIOEK7BbnALfEYLBsLS9/1RojYu4qfPY47HLGz1A+KNqhbQwjltQQpeuuOsr4/j7zZWYrGTSIMCpekYLzIhLy6tdpPc59ScNpC3P1SlzVoklS7kXzAUrCAA="/><strong>Сосна</strong></div><div class="sealant-color"><img alt="Torvens, цвет Медовый" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRs4FAABXRUJQVlA4IMIFAAAwNwCdASqaAJoAPl0mjkUjoiEZa64MOAXEsbZoLBpLE1I+oEODiRcNNJROWfeo5Q0RzrZqBeZ3+oODlFb1aFgIKgyQn0bgahJ6C0aBsOJBHoCZQTWlsgTIflDXZt0kKsmaUTGaNRC6G7X42HlK1l9OqtS8O6B/eh4yQIgjoKtGdp1r4kDXdfizw543Gq+I9O4pQh32gXkmc9MvLTv6D9mFjoztr9CgquI6/k2aUCnc84ZBxNWy7tLpWh1hcvoO6gUvxlJUN/diqCSsUL0Fh97vlWN3VxSWsat3n/KuNOVAYK6APWc4rU2df6eIGGMP8xQg3ImGFWtoWmNNLsQr9VBzFmMtx14opCMGbOnL0Fiecz5Nw9eAYskvoWqse1mhaXcID8aN14Zg/QhaR6KrBWj1+C0ZKLPBE4HjQEvP7O3mBEL3w2bQSLZFJN4EUcqjO1PB207qqSAPryXoAASS/eqwxtJfCYY5gfq9TmxPRN4XbMhL5y0x9gruLwiHEYYvcvYldtnkdtdEuCep/P4CzHQ9Uk6PjHDZXm61HedBMz8SMiWNDXixFVPfL72T8Z6mov5kd4jy0/6vLcekTLAhDK0VPgAA/vnLUX9iwCnDJr6DH6LEAqtzyrFFlxZp+TC8ParYB+JBbGwMRW2bDKxHGJGD3P4rVYmp9jdYx2WqJZ6f0r5CECoKsW8cCU1s1tdjEjcG5iU/k/eAetw1oIi51swQTAzBJyef51R/DEAYoe0vcqJtja7v4a1ba0MVanhBtyDIiF5NhoEqGmRbxDlzSMACinhR7sQWZpCJC0qMp7BTZ4YStpt6WBOhRNw3I0xtlE16/HCjs9Z9r7zRY6ptxl7h0slnE1fHRc6kThkNt2kPl5l3VP/oEblCj1YgmMUHiiljW6i8njJ4w1mNzxckUmNfwD2goCl5Mps4uGyyWaUVLMpVscD34T901/Rmq2ZCpKZASz7Wxcwifl4hfuIxrwtdKb14PWRRhAKwktV5p7B+pzx+M0mkkiAmTsIDfNh/DIUx+YZrFcEoGPdN3C+kS/NTKHLWkKJlCCJxkIk/Pywe5ewpJeYXmzGmf7AGcwaOsHBN1EUhrD5YlnALv3yqzzVQ34cvzNQr+0Y1oQ0SG0Mz1w9eeNoKfALBi2tzuDG+tv7I0mDerXBNAUXvNdwNVJpGibPYlLJimhhfmXl/UGvCOVwx4hoUWuQF2ZSQfsB8OEOkSW3O1dTYNqdDFxex+LRsKMyIv2d+R1sMR9ZtmwI6rR4P7kBZjXrEAJ2c7zA4Ig3AoH8qMu3nRXnsS70PHoXw+xGXSqcpppCcI60qvoB0IONSUKx2RwEFP7qU9eBW90t5TpAWaHFCUSDjGssD2dU8bAHQHWvj/SJoo1Ph1O2hQLsFqQ63uzy0Ihe9ZZK7yUuefVHUeNlz4TTUwKsrF01exOTs+j9x7j/QUAu73VlVdOjjeMp4FZO+tv7lQJA5a+v4+yGOr/VV68R/xA5CKqR6lddbD/B8YOY/c4hZd9Y47YiydTamIBmTuT+dVZfhUi6g9l9kJRYFZEx2vP3LE6jgWN5OHxyHKLN6rtyan0l/GvN7/aYYc3AO5qUJAFQbNE5lnbs25J1LybTle9+/Vnjbnq/0tAEPtITsZO/4lj+mKKhUXpbMAvWkyLhZJc0DSjllNAdMHtiG4JCN3u+BoXfUv1ulGvL4YI+TNDodiv9sTGX6SLTZ/PaDzku6klzQ0b4EDKfmQ0ttI6vLwnLXAu1JcLgIX+DxphX48UQUK6sbV1/aWVhQs3KHVJIO6zP0yxtTtsRBuaD7fmzK0AngJyuF4uM09yTugiEVblkpjUYuAIyV+Wa0WZUAsaDq4S5J7DvKud3Dqes4bBTfu6HmSzYPfG7y1/fu9kGGJGIMkMWn2sMyxDWrnZopSmPESyATGZvKeyZyDxgzsyz5GKwMvvDG2QP1Ei/w2yvq7kyKFPgAAAAA"/><strong>Медовый</strong></div><div class="sealant-color"><img alt="Torvens, цвет Махагон" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRqwEAABXRUJQVlA4IKAEAABwKACdASqaAJoAPmEukUYkIqGhKzV6GIAMCWcG+IUEIayqpnloREZjAgY+G0aI8kPOTfs+3sz5SrA/TDovduVoGNhtoneArtmnZUr2imtNom2gYI9MJ6qfg9ABNZDq7UpWcNHNGq7HIEVPatM+NCo8277KnEyMggeopCckz3py0mJqzbXgXLTjqAl7d2OuLiPiq5gFL+BGdL3zLr42rNcdiy8v/DBcCQ6SipcSlUuGTHkmLXB8c/nw4tqJwSwA3iQMehyMoTu9Ico6WNFMCF4cKV3J0tIyvwHVM0qOdxeCSsMvbwEygEwYu5TWdBvhi9S+FyUr7qXkSB2E2ZrQP9uQ5zPBQUi7GS0z1Zn6E0+IgjwLFzam5sv+HN0ifV09KdPXSe81f566gVnOTkx9S2AjJ8TAQd+I/gRGC/wKAwvT53f68n2YJwM/BmloAAD++YigtIfyN7d+nIqtb76iVwlBLH94n2mBbxOIdLFZwbADNUatY+FhWoKtHySnAqWA2jolt+FSKmET3Hq6RjMJEs8JUyWOq0jvkVfWRZoZ80fPLdNbxJ2eQOn9fgTtER27XvtAh2vx/GHqNQHDt/7Ej2pChg8ebmhmO374SO8Xz+kQctMRbL1xhpla/ufIFDxwaGJSKyTE9Vw/vIfShsUyA6OC67sn+FaBV/h9mj4TGFuWtzMX3vmwKm51iAMhTWODynSiv+yzdchMG/rwjwH3fHnrOFy8EY7IOb5OoAVbek4cFIxijeehQFI0pM4k2X1BaUyGoBGYNkpoe5+NgmR8oTYO1+bOFD7iVpnVpLOUZPFo/Xpi27HnKrnitIyluGtuyt6fYUO8QcxMMzUofpya0Sc57hH5Mopm4a0gP3YnFdeCxsf7EYui6JB63J65zlGJMGlR9gluall5o3Was3EwYFOSsVMeWYeeOPAwv1Bd/TeIOxoMR1vjXULoEhjfG2zjWliTW/BRysoLJbq4+UCVFEiHZ89EbPuG3EnPsV/v4p4CxFBcOs0uK7NjNpXtav/VtDQZI/EapqHcG3h65tzl459dxpAkcBUaXQVLOR8df+hkkvmV3VFg17NILllNW7m3+LB9RriASJVAWk38DGPVa39LW+KxG8KeBCxU3//4mMlnkpS35bnHxiR2jQw0cI9DKqmiSg21KymwBSYKvMouqmueLHRhhraAQtUnrXFjmBSAOpSTj5Fknzk12Yf/xeD/WD/dn6GNctr1glfQhC9pJLQ3DXm4OB75FlYzGpABAKDHi1zynaz1w0jOyUN7Ms5Rx5Hduq4SUjPghIaGlhJpB38hizHsOmeTL0A73uqf6bCKYd8THk7jkOytk83p1pfCtpHyO6JHA/rl+bbgbR1EWCXwIacUqUCgQRpLoQyzCxKHZpeYRSkE7ZcG4n+kRbfdhiwyMUVWOtLrd5p2I1djVwDJeNAdOid/1OttNck3S+DSTZUrX3sb0EZv7sJuUV+4EFgILvXMvx4UeM4h0JXwW3itncp2JfMbZFa2bhLGIZSK0RxiaexM6uLczrdvTkKugx6cBXJXBOjwrfc9zhbkrzyFHJKDnmA5IEGcCFt2CFMAAA=="/><strong>Махагон</strong></div><div class="sealant-color"><img alt="Torvens, цвет Венге" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRrQFAABXRUJQVlA4IKgFAADwNgCdASqaAJoAPl0ojUUjoqEZm73MOAXEtIRIE8ilgEke6pJ7te+T5j2qjkf6B7Ab5kDdhJrRfv9Hn09Hq4D4KUvBy+PzNBAMIeZHhZZz6aFlfbOief9GRF6kwumohbdyT6jGZJb+qT5sm07eCwlqpm6QZdcUy3WUVMGK1BLYiLkayKQYbyOo30wILeI0XAph6Y50M/fByWS/JmsqsRDVR51KQt/tt2l0FKVdqCTnqUGSF5S2bg+Ga+nuZ1epE0JVKnOglGp6QqGHxUfwUXvPD1/zPYfOlJYlescx+/crlp/UUA0vS6FTcyjqCSHC8Anpk8vW3kQcLD19kRMihWhvSyPT5dQM+vuGLJ46mzjF0mPH5XdoKcK/+R8Y7GRcdTWP58s78tpzCbqUDqM2WLS2/hED71YJRYlH8z8JCi0+csJpQ+ReB2naAQyTp5csqOoK67ZAWtFFlqzy0ue13Chxz2oJAXmsgLbTu2JT7z8LP10GWm0G58sftJCMuZ1wAJ9HfwWp8ddlQQRRqjQwcGem5pYOa5PieeTzok6ISKcDZW3h0h1YWTuj2j9fY+DwUMZ/ynQSE77EJg0Fff/2pKzAAP7gRGSkaftTlZ8CCY9Y9DHaGlUUH64pT0LHBXVohDnLYPI3fZQAZpTYoP2eL39yaUG4x01DNMBQdDb3JvWwxtwhDVCvsgFiZClkcuDbRql3wEVREOe0k8iPcuLiP9oqGbcHSEMVUQGeqRxF6LPeaLmlpKtjGkcXO7KpTcHRh/0b/jh9AXEMqpwqgI5a17iLbTvaWoP8YT4JXd0ACpAJqBhFRKcerh8dirHZxr9UZOPxj4SfS+1vl/UvQDBoPkTn10oJANzZxslgZckt+h2p+BV4PwJMi2SOJmNe7I2XMioo8gIFEdBUAK72wHLytokN5w3rKdyaJyiPomEEynWu5SpKg+uFPIQzDIoyNkTTeGkt+B2bk94YEtPlNpoM72aW865iYWt1nc7HQyGssrZ9GYpqF4jKDt1BqXP6dnP8gCuwihvio0cIMZtH7VQIu/bdRvFEXRp84YUL+h4vePEDzhlau/Gvyx98cZv6q7LsljfXA+ex2IsvFaC5XXij9DlOq+tRfJQSh6tHE5uKFOv5vvTvMRak2qf1XjG18zDBqPchdiTesztzXYtT0MMzpoHf4vuRa/rVuTFqMp6q7AvZtUkcDGDuIuZPq2MbEOExDh7cladBI3NoV7r1tXXRr+4DGDHRDYp4nsSg5raJLIcGfPZatglfJ828yp3vGG+jWBBTEVbEWN3Wj8iub1LNfOF4fbYYmBaz3PLYmk5GKhiAA+Dc+3G/7QbUuhCTs+QkWCNdp/wwsLPG6onn4bbTFhEpcZdtoJHtnTyszb4Hot1jfhBq+GEkrMoudT6/VP7I4plW6uDfeQCtBKKwGzOf76fz0Ica4gvdXoqsSzoIovB5h5TDSW98BYdV2ap9RSXOscTXvixLLnmxfMxJsBhI9pIOiBBb6VO6hvphlG8w19tp+e4HG4SsZige/3BNwsGdaXS0DVdPUiAUxKT+e8I2gjrFx+mQO2RlpqtTHSIi4Uc1Nh4RYMkD2Or4lbJw1GRXX/N0wP+J9L47gwBTxENMzV2vNK7nYfnKPqui64gsgRiadeiOv+KZ2LXwl1XhoGNtlU3vWY2hhCq0/be2bQMugr9TJnix5tREXuVZc8avxpnPibC7b/p/e9Jv6T9YyN4VHITTbMNudNWBnukSlPNEpo0EDoXOfzTvDcUzJC/B1W5SVq3/AHsC2gwO0bHWHrrNC6II+6zYJbibfHNh6qPO37+xgm/3LXvbWaiLrdZrrq6Fz56UIjyhQrBuYg99ESq78BvMnN1VA406EVsdQnGs0zHYBCYVx+nssABdEJADi8GlxusEU4DYZHGQ+idbh/JUZwmp9wfwNy4UAA=="/><strong>Венге</strong></div><div class="sealant-color"><img alt="Torvens, цвет Каштан" class="maxi-swatch-photo" src="data:image/webp;base64,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"/><strong>Каштан</strong></div><div class="sealant-color"><img alt="Torvens, цвет Тик" class="maxi-swatch-photo" src="data:image/webp;base64,UklGRuwEAABXRUJQVlA4IOAEAADQKgCdASqaAJoAPmEukkakIqGkqbRJQJAMCWcIkLYFp7zSGB3ymO9YD9VuaufCNa7Hql5BMv7YuILv1sgoc9hYhWXGK/3KQFsVconJczlFky4Rh1e84MFX/yOZoow8nCWZlKx/8PCEi+YK+Ne/vGgGgRckOZhKV+iuRiTEK7UWxVUPyjN0o44F8/U4kcLMA6M2N2lkKJeU4ykxbiYJcfTfyiVoahnuKZCbPTC5vLc3i/EcAbhSdoU2xubVJP8QPuSmP0RGap9YbCF5JCruPL1UcQU9RXa++XSo5FwL6qQrVQnVtouyNxhErIHr02+8VuHS7nzGEF1WitgV9eqEJoiFrM9UjLcw+Rp4VFQy0NBwmotlIHxa0ZSrf6WVrWCFG9drBNs3I+hKBfZlOQNjSvwrUmzHahczGEl9v+EsORyvbVOuw3Avnmz53rbx0pZ63dYi9gj/ujUR64WR5Gnp3wAA/vulwShGE2xpyue5AEN25/LO6O/EyjlS2VP2zd9U2YWh/hujO42NSeeLSAhWPlTn13Ln1Zy43AjWVsaZvTWMYN6EPC5XVB0kaAwg7jj2wX1SiMbtJbUnS5PqqCXlpQQbTR8xDftTN1IRx5EE9wux9Y9LYIwckkCa/HkoYEEXsFOv02Cm8+THgVeYrpcO8TWuKFx6zsHTZbP8feBeJ5m67HAPSTRSQl9dTeA+lxUrTrau2bpbibjspj9UNpax5vJJgftZ4uAXApfYs+luWY7vpxGIEttnWFZ7PjKpYt0FC8vIC3i0QYBPvfnSc8VqSnaeFws+HrdiZ0udEiD0NBN7Qd2tgm6NlMlzFHdhViv/TRsNYW48ZlnRf3lFqMb+I4ZumTuRtXMahXhaCClFZButnH1IGMUY+eAaW3AV7fRYc1QSLAJJffAGsZMgXxjw01beaNC50i59zKL7HLKEEnRYDO3TsWIAIJGFZM1qYixacFjTq7MH0Q6QMunViCUjh8rlxYZ4J+n9hu8PpY8fgWnE4rTzIsDi3H7A+ZFoJUasrKvgOo8rV17EatRtYHyRv5Ub7Fdq8N3jf3H9M4pjdPTdXomOggcIWZOSz9m8lSHEeBHeZgKqPL66149uxe1jsgtAwLRBFnF/hkVynP8OCzIzhOnStNa02nK4hA32J6U5UMomgJfh+CL7Xx/WnqXcdD6wtYRijolWACKeaFSNE23yPDJtRYCBjPIS1rHoTv56Cs1Y4Z+9zFx6h/rw7eYYigfooOaJi8JrsCXcGACiHyTXjJs5EiTSfkGd3Cg2UjZh8Ho6ya8Te0tWG2SR8W5B8Lsxe0E7sRn0hWfkrUEAPpch2wzvrv6inoKbDLBQCTgsbxc0RQ0dsrc5XNgNgfEkQrQRWRZAc6dFrseVZHhLT7K9Mm739wK9LPAh4KPEr3VuqNbhLYvTw6aR6c1WZU7+la0VjFPd2ZHtJvxGGwbKgJqPX0yfp8CKp/SbLNjN8yAwhMAN2tAar2cCx71Zjj38ONI02uhhVb6bh3mHmw7P6ks6aR81x/KuyA1Ck5oHKD3iERaac92RTCht5158K61Xayrj5wrUw+PdzCIMZ4Idyjhljpxx5hm2TtF9ejG1jZib5XAlyxU+QvzZcJkAlOoWw2oUM3g3dAB7cIgPQDXqNB8ti+X9ogV9Gr0+StKbchDsAAA="/><strong>Тик</strong></div></div><div class="colors-note">
+            Цвет на экране может отличаться от фактического оттенка материала.
+            Перед заказом рекомендуем уточнить цвет у менеджера.
+        </div>
+</div>
+</section>
+<section class="calculate-section" id="calculate">
+<div class="container">
+<div class="calculate-box">
+<div>
+<span class="label">РАСЧЁТ МАТЕРИАЛА</span>
+<h2>Сколько герметика понадобится?</h2>
+<p>
+                    Укажите параметры дома и швов.
+                    Мы поможем рассчитать необходимое количество материала
+                    перед оформлением заказа.
+                </p>
+</div>
+<a class="btn btn-primary" href="index.html#calculator">
+                Рассчитать мой дом →
+            </a>
+</div>
+</div>
+</section>
+<section class="ai-section">
+<div class="container">
+<div class="ai-box">
+<div>
+<span class="label">УМНЫЙ ПОДБОР</span>
+<h2>Есть вопрос по Torvens?</h2>
+<p>
+                    ИИ-помощник поможет разобраться с применением,
+                    цветом и предварительным расчётом материала.
+                </p>
+</div>
+<a class="btn btn-primary" href="index.html#contacts">
+                Спросить ИИ-помощника →
+            </a>
+</div>
+</div>
+</section>
+</body>
+</html>
