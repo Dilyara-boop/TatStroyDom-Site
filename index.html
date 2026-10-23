@@ -3331,7 +3331,7 @@ body { background:#faf9f7; }
 <div class="partner-modal-panel" role="dialog" aria-modal="true" aria-labelledby="partner-modal-title" tabindex="-1">
 <button type="button" class="partner-modal-close" aria-label="Закрыть форму" data-close-partner-modal="true">×</button>
 <h2 id="partner-modal-title" style="color:#14263d">Запросить условия сотрудничества</h2><p>Заполните форму, чтобы отправить запрос менеджеру. После подключения сайта к серверу заявки будут поступать напрямую в компанию.</p>
-<form id="partnerForm" style="display:grid;gap:12px;margin-top:20px"><input name="name" placeholder="Ваше имя *" required=""/><input name="phone" placeholder="Телефон *" required="" type="tel"/><input name="company" placeholder="Компания (необязательно)"/><input name="products" placeholder="Интересующие материалы *" required=""/><input name="volume" placeholder="Ориентировочный объём закупки"/><label style="display:flex;gap:8px;align-items:start"><input required="" style="width:auto;margin-top:5px" type="checkbox"/> <span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label><button class="partners-btn" style="border:0;cursor:pointer;justify-self:start" type="submit">Отправить заявку →</button><small>Отправка станет доступна после подключения сайта к серверу. Пока заявку можно передать по телефону 8 (900) 325-60-90.</small></form></div></div><section class="calculator-section" id="calculator">
+<form id="partnerForm" style="display:grid;gap:12px;margin-top:20px"><input name="name" placeholder="Ваше имя *" required=""/><input name="phone" placeholder="Телефон *" required="" type="tel"/><input name="company" placeholder="Компания (необязательно)"/><input name="products" placeholder="Интересующие материалы *" required=""/><input name="volume" placeholder="Ориентировочный объём закупки"/><label style="display:flex;gap:8px;align-items:start"><input required="" style="width:auto;margin-top:5px" type="checkbox"/> <span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label><button class="partners-btn" style="border:0;cursor:pointer;justify-self:start" type="submit">Отправить заявку →</button><small>Заявка будет отправлена менеджеру через защищённую форму Formspree.</small></form></div></div><section class="calculator-section" id="calculator">
 <div class="section-container">
 <div class="calculator-box">
 <div class="calculator-text">
@@ -3889,23 +3889,29 @@ document.getElementById('copyCalcRequest').addEventListener('click',async()=>{co
 </script>
 
 <script>
-/* Единый интерфейс заявок. Для реальной доставки требуется сервер POST /api/requests. */
+/* Отправка заявок через Formspree с GitHub Pages. */
 window.tsdSendRequest=async function(form,payload){
  const button=form.querySelector('button[type="submit"]');
  let status=form.querySelector('[data-request-status]');
  if(!status){status=document.createElement('p');status.setAttribute('data-request-status','');status.setAttribute('role','status');status.style.cssText='margin:10px 0;color:#b52a32;font-size:14px;line-height:1.5';form.appendChild(status)}
- if(location.protocol==='file:'){
-  status.textContent='Автоматическая отправка пока не подключена: сайт открыт как файл на компьютере. После размещения на сервере подключим приём заявок. Сейчас позвоните 8 (900) 325-60-90.';
-  return;
- }
  const original=button.textContent;button.disabled=true;button.textContent='Отправляем…';status.textContent='';
+ const kinds={wholesale:'Оптовое сотрудничество',calculation:'Запрос расчёта материалов',price_request:'Запрос цены'};
+ const fields=new FormData();
+ fields.append('_subject','ТатСтройДом — '+(kinds[payload.kind]||'Новая заявка'));
+ fields.append('Тип заявки',kinds[payload.kind]||payload.kind||'Заявка');
+ const labels={name:'Имя',phone:'Телефон',company:'Компания',products:'Интересующие материалы',volume:'Объём закупки',details:'Параметры и результат расчёта',brand:'Производитель',product:'Товар',quantity:'Количество'};
+ for(const [key,value] of Object.entries(payload)){
+  if(key==='kind'||value==null)continue;
+  fields.append(labels[key]||key,String(value));
+ }
+ fields.append('Источник','Сайт ТатСтройДом');
  try{
-  const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,source:'tatstroydom-website'})});
-  if(!response.ok)throw new Error('Сервер не подтвердил приём заявки');
-  const data=await response.json();
-  if(data.success!==true)throw new Error('Нет подтверждения доставки');
-  status.style.color='#17643b';status.textContent='Заявка принята! Менеджер свяжется с вами.';form.reset();
- }catch(error){status.style.color='#b52a32';status.textContent='Заявка не отправлена. Пожалуйста, позвоните 8 (900) 325-60-90 или попробуйте позже.'}
+  const response=await fetch('https://formspree.io/f/mqppzvrb',{
+   method:'POST',body:fields,headers:{'Accept':'application/json'}
+  });
+  if(!response.ok)throw new Error('Formspree отклонил заявку');
+  status.style.color='#17643b';status.textContent='Заявка отправлена! Менеджер свяжется с вами.';form.reset();
+ }catch(error){status.style.color='#b52a32';status.textContent='Не удалось отправить заявку. Позвоните 8 (900) 325-60-90 или попробуйте позже.';}
  finally{button.disabled=false;button.textContent=original}
 };
 </script>
@@ -3925,7 +3931,7 @@ window.tsdSendRequest=async function(form,payload){
       <label>Телефон *<input name="phone" required type="tel" autocomplete="tel"></label>
       <label style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" required style="width:auto;margin-top:5px"><span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label>
       <button class="partners-btn" type="submit" style="border:0;cursor:pointer">Отправить запрос цены →</button>
-      <small>Автоматическая отправка будет доступна после подключения серверного приёма заявок. Пока можно связаться по телефону 8 (900) 325-60-90.</small>
+      <small>Отправим запрос менеджеру через защищённую форму Formspree.</small>
     </form>
   </div>
 </div>
