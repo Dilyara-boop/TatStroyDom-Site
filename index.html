@@ -3782,6 +3782,57 @@ if (showAllColorsBtn) {
     });
 }
 </script>
+       
+<div id="selectedColorProducts" style="display:none; max-width:1030px; margin:24px auto; padding:24px; background:#fff; border:1px solid #e5e0d9; border-radius:16px;" aria-live="polite">
+  <h3 id="selectedColorTitle" style="margin:0 0 14px; color:#14263e;"></h3>
+  <div id="selectedColorLinks" style="display:flex; flex-wrap:wrap; gap:12px;"></div>
+</div>
+
+<script>
+(() => {
+  const pages = {
+    'Альфапласт-136': 'alfaplast-136.html',
+    'Мастигерм-136': 'mastigerm-136.html',
+    'МаксиПласт-136': 'maxiplast-136.html',
+    'Альфапласт для парилок': 'alfaplast-sauna.html',
+    'Remmers Acryl 100': 'remmers.html',
+    'Торвенс': 'torvens.html'
+  };
+
+  const panel = document.getElementById('selectedColorProducts');
+  const title = document.getElementById('selectedColorTitle');
+  const links = document.getElementById('selectedColorLinks');
+
+  document.querySelectorAll('.sealant-color').forEach(color => {
+    color.addEventListener('click', () => {
+      const name = color.querySelector('strong')?.textContent.trim() || '';
+      const products = (color.dataset.products || '')
+        .split(',')
+        .map(item => item.trim())
+        .filter(Boolean);
+
+      title.textContent = 'Герметики в цвете «' + name + '»';
+      links.replaceChildren();
+
+      products.forEach(product => {
+        const page = pages[product];
+        if (!page) return;
+
+        const link = document.createElement('a');
+        link.href = page;
+        link.textContent = product + ' →';
+        link.style.cssText =
+          'display:inline-block;padding:12px 16px;background:#14263e;' +
+          'color:white;text-decoration:none;border-radius:8px;font-weight:600;';
+        links.appendChild(link);
+      });
+
+      panel.style.display = links.children.length ? 'block' : 'none';
+    });
+  });
+})();
+</script>
+
 </section>
 
 <!-- POPULAR SEALANTS -->
