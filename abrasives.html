@@ -1027,7 +1027,7 @@ form.addEventListener('submit',async e=>{
 e.preventDefault();const status=document.getElementById('disc-lead-status');
 if(location.protocol==='file:'){status.textContent='Автоматическая отправка пока недоступна: сайт открыт с компьютера. После публикации потребуется настроить серверный обработчик /api/requests.';return}
 status.textContent='Проверяем подключение отправки…';
-try{const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'abrasives',name:form.elements.name.value,phone:form.elements.phone.value,details:form.elements.details.value})});if(!response.ok)throw Error('Нет подтверждения отправки');status.textContent='Заявка отправлена. Спасибо!';form.reset()}catch(_){status.textContent='Отправка не настроена или временно недоступна. Позвоните: 8 (900) 325-60-90.'}
+try{const response=await fetch('https://formspree.io/f/mqppzvrb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'abrasives',name:form.elements.name.value,phone:form.elements.phone.value,details:form.elements.details.value})});if(!response.ok)throw Error('Нет подтверждения отправки');status.textContent='Заявка отправлена. Спасибо!';form.reset()}catch(_){status.textContent='Отправка не настроена или временно недоступна. Позвоните: 8 (900) 325-60-90.'}
 });
 })();
 </script>
