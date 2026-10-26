@@ -2642,6 +2642,10 @@ footer {
 #tsd-assistant .tsd-messages{padding:16px;overflow-y:auto;flex:1;background:#f5f7fa;display:flex;flex-direction:column;gap:10px}
 #tsd-assistant .tsd-msg{max-width:92%;padding:11px 13px;border-radius:14px;background:#fff;font-size:13px;line-height:1.55;box-shadow:0 1px 5px #10243d0b;white-space:pre-wrap}
 #tsd-assistant .tsd-msg.user{background:#dceaf7;align-self:flex-end}
+#tsd-assistant .tsd-modes{display:flex;gap:6px;padding:9px 10px;background:#fff;border-bottom:1px solid #e7edf2}
+#tsd-assistant .tsd-mode{flex:1;min-width:0;border:1px solid #d5dee7;border-radius:9px;background:#f5f7fa;color:#142b44;font-size:12px;font-weight:700;padding:9px 4px;cursor:pointer}
+#tsd-assistant .tsd-mode.active{background:#142b44;color:#fff;border-color:#142b44}
+#tsd-assistant .tsd-compose button:disabled{opacity:.55;cursor:wait}
 #tsd-assistant .tsd-quick{display:flex;gap:6px;flex-wrap:wrap;padding:10px 12px;background:#fff;border-top:1px solid #edf0f3}
 #tsd-assistant .tsd-quick button{border:1px solid #d6e0ea;background:#f7fafc;color:#142b44;border-radius:16px;padding:7px 10px;font-size:12px;cursor:pointer}
 #tsd-assistant .tsd-compose{display:flex;padding:10px;gap:7px;border-top:1px solid #e7edf2;background:#fff}
@@ -4096,6 +4100,7 @@ window.tsdSendRequest=async function(form,payload){
  <button type="button" class="tsd-launch" id="tsd-launch" aria-expanded="false" aria-controls="tsd-window"><img class="tsd-face" src="images/dilyara-consultant.png" alt="Диляра — консультант"><span><span class="tsd-dot"></span>Диляра<br>Онлайн-консультант</span></button>
  <section class="tsd-window" id="tsd-window" aria-label="Чат с консультантом">
   <div class="tsd-head"><img src="images/dilyara-consultant.png" alt="Фото Диляры"><div><strong>Диляра</strong><small>Виртуальный консультант ТатСтройДом</small></div><button type="button" class="tsd-close" id="tsd-close" aria-label="Закрыть чат">×</button></div>
+  <div class="tsd-modes" role="group" aria-label="Режим консультации"><button type="button" class="tsd-mode active" data-mode="simple" aria-pressed="true">Диляра · консультант</button><button type="button" class="tsd-mode" data-mode="expert" aria-pressed="false">ИИ-эксперт</button></div>
   <div class="tsd-messages" id="tsd-messages" role="log" aria-live="polite"><div class="tsd-msg">Здравствуйте! Я виртуальный консультант ТатСтройДом. Помогу сориентироваться в материалах и передать вопрос менеджеру. Что вас интересует?</div></div>
   <div class="tsd-quick"><button type="button" data-topic="sealant">Подобрать герметик</button><button type="button" data-topic="vilaterm">Вилатерм</button><button type="button" data-topic="wholesale">Оптовые цены</button><button type="button" data-topic="lead">Связаться с менеджером</button></div>
   <form class="tsd-lead" id="tsd-lead"><strong style="font-size:13px">Передать вопрос менеджеру</strong><input name="name" required maxlength="100" placeholder="Ваше имя *"><input name="phone" required type="tel" maxlength="40" placeholder="Телефон *"><textarea name="message" rows="2" maxlength="1000" placeholder="Что вас интересует?"></textarea><label><input type="checkbox" required>Согласен(на) на обработку данных для ответа на заявку</label><button type="submit">Отправить заявку</button><span class="tsd-status" id="tsd-status" aria-live="polite"></span></form>
@@ -4105,18 +4110,52 @@ window.tsdSendRequest=async function(form,payload){
 <script>
 (function(){
  const root=document.getElementById('tsd-assistant'), launch=document.getElementById('tsd-launch'), close=document.getElementById('tsd-close'), messages=document.getElementById('tsd-messages'), input=document.getElementById('tsd-input'), lead=document.getElementById('tsd-lead');
+ const endpoint='https://functions.yandexcloud.net/d4e54iuf21dkalrkhdu3';
+ let mode='simple',busy=false;
+ const compose=document.getElementById('tsd-compose');
+ const sendButton=compose.querySelector('button[type="submit"]');
  const answers={
  sealant:'Для деревянного дома у нас есть Альфапласт-136, МаксиПласт-136, Мастигерм-136, Torvens и Remmers Acryl100. Для точного подбора напишите, что герметизируете: межвенцовые швы, трещины или другое. Менеджер уточнит совместимость и расход.',
- vilaterm:'Вилатерм — уплотнительный шнур для подготовки шва перед герметизацией. На сайте представлены диаметры 6–50 мм. Для подбора диаметра и количества лучше уточнить ширину и длину швов у менеджера.',
+ vilaterm:'Вилатерм — уплотнительный шнур для подготовки шва перед герметизацией. Уточните ширину шва, чтобы подобрать диаметр. Точные параметры подтвердит менеджер.',
  wholesale:'Для оптовых покупателей и партнёров предусмотрены индивидуальные условия в зависимости от материалов и объёма. Оставьте заявку — менеджер подготовит предложение.',
  lead:'Открою форму связи с менеджером. Укажите имя, телефон и ваш вопрос.'
  };
- function add(text,who){const node=document.createElement('div');node.className='tsd-msg'+(who?' user':'');node.textContent=text;messages.appendChild(node);messages.scrollTop=messages.scrollHeight;}
- function topic(key){add(({sealant:'Подобрать герметик',vilaterm:'Вилатерм',wholesale:'Оптовые цены',lead:'Связаться с менеджером'})[key],true);add(answers[key]);if(key==='lead'){lead.classList.add('tsd-visible');document.getElementById('tsd-compose').style.display='none';}}
+ function add(text,who){const node=document.createElement('div');node.className='tsd-msg'+(who?' user':'');node.textContent=text;messages.appendChild(node);messages.scrollTop=messages.scrollHeight;return node;}
+ function showLead(question=''){lead.classList.add('tsd-visible');compose.style.display='none';if(question)lead.elements.message.value=question;}
+ root.querySelectorAll('[data-mode]').forEach(button=>button.addEventListener('click',()=>{
+  mode=button.dataset.mode;
+  root.querySelectorAll('[data-mode]').forEach(b=>{const active=b===button;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});
+  add(mode==='expert'?'Режим «ИИ-эксперт»: спрашивайте о подготовке швов, Вилатерме и технологии нанесения. Рекомендации нужно сверять с инструкциями производителя.':'Режим «Диляра»: помогу выбрать материалы, узнать условия заказа и передать заявку менеджеру.');
+ }));
+ async function ask(question){
+  if(busy)return;
+  add(question,true);busy=true;sendButton.disabled=true;
+  const placeholder=add('Подбираю ответ…');
+  try{
+   const controller=new AbortController();
+   const timeout=setTimeout(()=>controller.abort(),29000);
+   let response;
+   try{response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:question,mode}),signal:controller.signal});}
+   finally{clearTimeout(timeout);}
+   if(!response.ok)throw new Error('HTTP '+response.status);
+   const data=await response.json();
+   if(!data.answer||typeof data.answer!=='string')throw new Error('Empty AI response');
+   placeholder.textContent=data.answer;
+  }catch(error){
+   console.warn('TSD assistant request failed',error);
+   placeholder.textContent='Не удалось получить ответ ИИ. Вы можете оставить вопрос менеджеру через кнопку «Связаться с менеджером».';
+  }finally{busy=false;sendButton.disabled=false;messages.scrollTop=messages.scrollHeight;}
+ }
+ function topic(key){
+  const labels={sealant:'Подобрать герметик',vilaterm:'Вилатерм',wholesale:'Оптовые цены',lead:'Связаться с менеджером'};
+  if(key==='lead'){add(labels[key],true);add(answers.lead);showLead();return;}
+  const questions={sealant:'Помоги выбрать герметик для деревянного дома. Какие уточнения нужны?',vilaterm:'Как подобрать Вилатерм для герметизации межвенцовых швов?',wholesale:'Какие условия для оптовых покупателей и партнёров?'};
+  ask(questions[key]);
+ }
  launch.addEventListener('click',()=>{const open=root.classList.toggle('tsd-open');launch.setAttribute('aria-expanded',String(open));if(open)input.focus();});
  close.addEventListener('click',()=>{root.classList.remove('tsd-open');launch.setAttribute('aria-expanded','false');launch.focus();});
  root.querySelectorAll('[data-topic]').forEach(b=>b.addEventListener('click',()=>topic(b.dataset.topic)));
- document.getElementById('tsd-compose').addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q)return;add(q,true);input.value='';const s=q.toLowerCase();let key=s.includes('вилатерм')||s.includes('шнур')?'vilaterm':s.includes('опт')||s.includes('партн')?'wholesale':s.includes('герметик')||s.includes('шов')||s.includes('трещин')?'sealant':'lead';add(key==='lead'?'Пока я отвечаю только на типовые вопросы. Оставьте заявку, и менеджер ответит лично.':answers[key]);if(key==='lead'){lead.classList.add('tsd-visible');document.getElementById('tsd-compose').style.display='none';lead.elements.message.value=q;}});
+ compose.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(!q||busy)return;input.value='';ask(q);});
  lead.addEventListener('submit',async e=>{e.preventDefault();const status=document.getElementById('tsd-status'),btn=lead.querySelector('button[type=submit]');status.textContent='Отправляем…';btn.disabled=true;const data=new FormData(lead);data.append('_subject','Заявка из чата Диляра — ТатСтройДом');data.append('source','Чат-консультант на главной странице');try{const r=await fetch('https://formspree.io/f/mqppzvrb',{method:'POST',body:data,headers:{Accept:'application/json'}});if(!r.ok)throw Error('send');status.textContent='Спасибо! Заявка отправлена менеджеру.';lead.reset();}catch(err){status.textContent='Не удалось отправить. Попробуйте ещё раз или воспользуйтесь контактами на сайте.';}finally{btn.disabled=false;}});
 })();
 </script>
