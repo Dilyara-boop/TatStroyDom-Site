@@ -3267,6 +3267,11 @@ body { background:#faf9f7; }
             Перед заказом рекомендуем уточнить цвет у специалиста ТатСтройДом.
         </p>
 </div>
+<div id="selectedColorProducts" style="display:none; max-width:1030px; margin:24px auto; padding:24px; background:#fff; border:1px solid #e5e0d9; border-radius:16px;" aria-live="polite">
+  <h3 id="selectedColorTitle" style="margin:0 0 14px; color:#14263e;"></h3>
+  <div id="selectedColorLinks" style="display:flex; flex-wrap:wrap; gap:12px;"></div>
+</div>
+
 </section><section class="finishing-section" id="finishing">
 <div class="section-container">
 <div class="section-heading">
@@ -3783,10 +3788,6 @@ if (showAllColorsBtn) {
 }
 </script>
        
-<div id="selectedColorProducts" style="display:none; max-width:1030px; margin:24px auto; padding:24px; background:#fff; border:1px solid #e5e0d9; border-radius:16px;" aria-live="polite">
-  <h3 id="selectedColorTitle" style="margin:0 0 14px; color:#14263e;"></h3>
-  <div id="selectedColorLinks" style="display:flex; flex-wrap:wrap; gap:12px;"></div>
-</div>
 
 <script>
 (() => {
@@ -3828,12 +3829,13 @@ if (showAllColorsBtn) {
       });
 
       panel.style.display = links.children.length ? 'block' : 'none';
+      if (links.children.length) {
+        panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
   });
 })();
 </script>
-
-</section>
 
 <!-- POPULAR SEALANTS -->
 
