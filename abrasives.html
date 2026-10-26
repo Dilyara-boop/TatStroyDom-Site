@@ -713,6 +713,7 @@ section{padding:30px 0}
 .lead-close{position:absolute;right:16px;top:10px;border:0;background:none;font-size:30px;cursor:pointer;color:#142b44}
 .lead-status{margin-top:12px;font-size:13px}
 @media(max-width:700px){.calc-grid{grid-template-columns:1fr}.calc-panel{padding:21px}}
+.hero-actions{display:flex;gap:9px;align-items:stretch;flex-wrap:nowrap;margin-top:12px}.hero-actions .hero-button{display:inline-flex;align-items:center;justify-content:center;text-align:center;font-size:13px;padding:12px 13px;border:0;cursor:pointer;min-width:0;flex:1;line-height:1.25}.hero-button-secondary{background:#142b44}.hero-button-secondary:hover{background:#244765}@media(max-width:450px){.hero-actions{gap:6px}.hero-actions .hero-button{font-size:11px;padding:11px 6px}}
 </style></head>
 <body>
 <div class="container">
@@ -733,9 +734,7 @@ section{padding:30px 0}
 <span>Для дерева</span>
 <span>P36–P120</span>
 </div>
-<a class="hero-button" href="#grit">
-                    Подобрать зернистость
-                </a>
+<div class="hero-actions"><button class="hero-button" type="button" id="open-disc-lead-top">Заказать диски</button><a class="hero-button hero-button-secondary" href="#disc-calculator">Рассчитать количество</a></div>
 </div>
 <div class="hero-image">
 <img alt="Шлифовальные диски 125 мм для дерева" src="images/abrasive-main.webp"/>
@@ -1000,13 +999,14 @@ section{padding:30px 0}
 </div>
 </div>
 </section>
-<div class="lead-modal" id="disc-lead-modal" hidden role="dialog" aria-modal="true" aria-labelledby="disc-lead-title"><div class="lead-dialog"><button class="lead-close" type="button" id="close-disc-lead" aria-label="Закрыть">×</button><h2 id="disc-lead-title">Запросить предложение</h2><p>Укажите контакты и нужные диски. Автоматическая отправка станет доступна после подключения сайта к серверу.</p><form id="disc-lead-form"><label>Имя *<input name="name" required autocomplete="name"></label><label>Телефон *<input name="phone" type="tel" required autocomplete="tel"></label><label>Зернистость и количество<textarea name="details" rows="4" placeholder="Например: P40 — 100 шт., P80 — 100 шт."></textarea></label><label class="consent"><input type="checkbox" required> Согласен(на) на обработку данных для ответа на запрос</label><button class="lead-submit" type="submit">Отправить заявку</button><div class="lead-status" id="disc-lead-status" aria-live="polite"></div></form></div></div>
+<div class="lead-modal" id="disc-lead-modal" hidden role="dialog" aria-modal="true" aria-labelledby="disc-lead-title"><div class="lead-dialog"><button class="lead-close" type="button" id="close-disc-lead" aria-label="Закрыть">×</button><h2 id="disc-lead-title">Заказать шлифовальные диски</h2><p>Укажите контакты и нужные диски. Отправим заявку менеджеру ТатСтройДом для уточнения наличия и стоимости.</p><form id="disc-lead-form"><label>Имя *<input name="name" required autocomplete="name"></label><label>Телефон *<input name="phone" type="tel" required autocomplete="tel"></label><label>Зернистость *<select name="grit" required><option value="">Выберите зернистость</option><option>P36</option><option>P40</option><option>P60</option><option>P80</option><option>P100</option><option>P120</option><option>Несколько видов (укажу в комментарии)</option></select></label><label>Количество, шт. *<input name="quantity" type="number" min="100" step="1" value="100" required></label><label>Исполнение<select name="perforation"><option>Уточнить у менеджера</option><option>С перфорацией</option><option>Без перфорации</option></select></label><label>Комментарий<textarea name="details" rows="3" placeholder="Например: P40 — 100 шт., P80 — 100 шт."></textarea></label><label class="consent"><input type="checkbox" required> Согласен(на) на обработку данных для ответа на запрос</label><button class="lead-submit" type="submit">Отправить заявку</button><div class="lead-status" id="disc-lead-status" aria-live="polite"></div></form></div></div>
 <script>
 (()=>{
 const modal=document.getElementById('disc-lead-modal'),form=document.getElementById('disc-lead-form'),out=document.getElementById('disc-output');
 const open=()=>{modal.hidden=false;document.body.style.overflow='hidden';};
 const close=()=>{modal.hidden=true;document.body.style.overflow='';};
 document.getElementById('open-disc-lead').addEventListener('click',open);
+document.getElementById('open-disc-lead-top').addEventListener('click',open);
 document.getElementById('close-disc-lead').addEventListener('click',close);
 modal.addEventListener('click',e=>{if(e.target===modal)close()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
@@ -1020,14 +1020,14 @@ summary=`Площадь: ${area} м²; ресурс: ${resource} м²/диск; 
 out.hidden=false;out.replaceChildren();
 const result=document.createElement('div');result.textContent=grits.map(g=>`${g}: ≈ ${qty} шт.`).join(' · ')+` | Всего ≈ ${qty*grits.length} шт.`;
 const note=document.createElement('p');note.textContent='Это оценка по указанному вами ресурсу, а не гарантированный расход. Цена от 8 ₽/шт. действует при заказе от 100 шт.; условия уточняются у менеджера.';
-const btn=document.createElement('button');btn.className='calc-action';btn.type='button';btn.textContent='Запросить предложение по расчёту →';btn.addEventListener('click',()=>{form.elements.details.value=summary;open()});
+const btn=document.createElement('button');btn.className='calc-action';btn.type='button';btn.textContent='Запросить предложение по расчёту →';btn.addEventListener('click',()=>{form.elements.details.value=summary;form.elements.grit.value='Несколько видов (укажу в комментарии)';form.elements.quantity.value=Math.max(100,qty*grits.length);open()});
 out.append(result,note,btn);
 });
 form.addEventListener('submit',async e=>{
 e.preventDefault();const status=document.getElementById('disc-lead-status');
-if(location.protocol==='file:'){status.textContent='Автоматическая отправка пока недоступна: сайт открыт с компьютера. После публикации потребуется настроить серверный обработчик /api/requests.';return}
+
 status.textContent='Проверяем подключение отправки…';
-try{const response=await fetch('https://formspree.io/f/mqppzvrb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'abrasives',name:form.elements.name.value,phone:form.elements.phone.value,details:form.elements.details.value})});if(!response.ok)throw Error('Нет подтверждения отправки');status.textContent='Заявка отправлена. Спасибо!';form.reset()}catch(_){status.textContent='Отправка не настроена или временно недоступна. Позвоните: 8 (900) 325-60-90.'}
+try{const response=await fetch('https://formspree.io/f/mqppzvrb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({source:'abrasives',name:form.elements.name.value,phone:form.elements.phone.value,grit:form.elements.grit.value,quantity:form.elements.quantity.value,perforation:form.elements.perforation.value,details:form.elements.details.value})});if(!response.ok)throw Error('Нет подтверждения отправки');status.textContent='Заявка отправлена. Спасибо!';form.reset()}catch(_){status.textContent='Отправка не настроена или временно недоступна. Позвоните: 8 (900) 325-60-90.'}
 });
 })();
 </script>
