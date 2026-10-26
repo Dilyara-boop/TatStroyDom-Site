@@ -573,7 +573,7 @@
  .colors-section .container {padding:22px 20px;}
 }
 </style>
-</head>
+<style id="order-style">.order-modal[hidden]{display:none!important}.order-modal{position:fixed;inset:0;background:rgba(10,25,42,.65);z-index:9999;display:grid;place-items:center;padding:15px}.order-dialog{position:relative;background:white;border-radius:18px;padding:26px;width:min(490px,100%);max-height:94vh;overflow:auto;box-shadow:0 20px 70px #0004}.order-dialog h2{margin:0 0 10px;font-size:25px}.order-dialog label{display:block;margin:12px 0 5px;font-size:14px;font-weight:700}.order-dialog input,.order-dialog select{width:100%;border:1px solid #ccd4dd;border-radius:9px;padding:12px;font-size:16px}.order-dialog .order-close{position:absolute;right:14px;top:9px;background:none;border:0;font-size:30px;cursor:pointer}.order-dialog .order-submit{border:0;cursor:pointer;width:100%;margin-top:14px}.order-dialog .order-consent{display:flex;align-items:flex-start;gap:8px;font-size:12px;font-weight:400}.order-dialog .order-consent input{width:auto;margin-top:3px}.order-total{font-weight:700;margin-top:14px}.order-note{font-size:12px;color:#66727d;margin-top:6px}</style></head>
 <body>
 <div class="container">
 <a class="back-link" href="index.html#products">
@@ -598,7 +598,7 @@
 <a class="btn btn-secondary" href="#calculate">
                     Рассчитать количество
                 </a>
-</div>
+<button class="btn btn-primary" id="open-order" style="border:0;cursor:pointer" type="button">Заказать герметик</button></div>
 </div>
 <div class="hero-image">
 <img alt="Фотография товара" src="images/alfaplast-136.webp"/>
@@ -754,5 +754,5 @@
 </div>
 </div>
 </section>
-</body>
+<div class="order-modal" hidden="" id="order-modal"><div aria-labelledby="order-title" aria-modal="true" class="order-dialog" role="dialog"><button aria-label="Закрыть" class="order-close" id="close-order" type="button">×</button><h2 id="order-title">Заказать Альфапласт-136</h2><p>Файл-пакет 600 мл · 690 ₽ за штуку</p><form action="https://formspree.io/f/mqppzvrb" id="alfaplast-order" method="POST"><input name="Товар" type="hidden" value="Альфапласт-136"/><input name="Цена за тубу" type="hidden" value="690 ₽"/><input id="order-total-field" name="Предварительная стоимость" type="hidden"/><label for="order-color">Цвет</label><select id="order-color" name="Цвет" required=""><option disabled="" selected="" value="">Выберите цвет</option><option value="Белый">Белый</option><option value="Бук">Бук</option><option value="Медовый">Медовый</option><option value="Венге">Венге</option><option value="Дуб">Дуб</option><option value="Светлая сосна">Светлая сосна</option><option value="Графит">Графит</option><option value="Орегон">Орегон</option><option value="Орех">Орех</option><option value="Палисандр">Палисандр</option><option value="Серый">Серый</option><option value="Сосна">Сосна</option><option value="Тик">Тик</option><option value="Ель">Ель</option><option value="Акация">Акация</option><option value="Шафран">Шафран</option></select><label for="order-qty">Количество туб (600 мл)</label><input id="order-qty" max="100000" min="1" name="Количество туб" required="" step="1" type="number" value="1"/><div class="order-total" id="order-total">Предварительная стоимость: 690 ₽</div><p class="order-note">Наличие, доставку и итоговую стоимость уточнит менеджер.</p><label for="order-name">Ваше имя</label><input autocomplete="name" id="order-name" name="Имя" required=""/><label for="order-phone">Телефон</label><input autocomplete="tel" id="order-phone" name="Телефон" required="" type="tel"/><label class="order-consent"><input required="" type="checkbox"/>Согласен(на) на обработку персональных данных для ответа на заявку</label><button class="btn btn-primary order-submit" type="submit">Отправить заявку</button></form></div></div><script>(function(){const modal=document.getElementById('order-modal'),qty=document.getElementById('order-qty'),total=document.getElementById('order-total'),field=document.getElementById('order-total-field');function update(){const n=Number(qty.value);const sum=Number.isInteger(n)&&n>0?n*690:0;total.textContent='Предварительная стоимость: '+sum.toLocaleString('ru-RU')+' ₽';field.value=sum+' ₽';}function close(){modal.hidden=true;document.body.style.overflow='';}document.getElementById('open-order').addEventListener('click',()=>{modal.hidden=false;document.body.style.overflow='hidden';document.getElementById('order-color').focus();});document.getElementById('close-order').addEventListener('click',close);modal.addEventListener('click',e=>{if(e.target===modal)close();});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close();});qty.addEventListener('input',update);update();})();</script></body>
 </html>
