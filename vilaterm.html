@@ -1,12 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Вилатерм — ТатСтройДом</title>
-
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Вилатерм — ТатСтройДом</title>
+<style>
         * {
             box-sizing: border-box;
         }
@@ -935,237 +934,252 @@
 @media(max-width:750px){.vilaterm-calc-cta{flex-direction:column;align-items:stretch;padding:25px 22px}.vilaterm-calc-cta a{white-space:normal;text-align:center}}
 
 </style>
-</head>
-
+<style>
+/* Вилатерм: оформление заказа */
+.vila-order-actions{display:flex;gap:12px;flex-wrap:nowrap;align-items:center;margin:18px 0 0}
+.vila-order-button{display:inline-flex;align-items:center;justify-content:center;background:#d9343a;color:#fff;border:0;border-radius:11px;padding:14px 21px;font:700 15px Arial,sans-serif;cursor:pointer;text-decoration:none}
+.vila-order-button:hover{background:#b9252c}
+.vila-calc-button{background:#fff;color:#142b44;border:1px solid #cbd4dc}
+.vila-calc-button:hover{background:#f0f4f8;color:#142b44}
+.price-row[data-diameter]{cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.price-row[data-diameter]:hover,.price-row[data-diameter]:focus-visible{border-color:#d9343a;box-shadow:0 4px 16px #142b4415;outline:none}
+.vila-order-modal[hidden]{display:none!important}
+.vila-order-modal{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:rgba(10,25,42,.65);padding:14px}
+.vila-order-dialog{position:relative;background:#fff;border-radius:18px;padding:26px;width:min(490px,100%);max-height:94dvh;overflow:auto;box-shadow:0 20px 70px #0004}
+.vila-order-dialog h2{font-size:25px;margin:0 0 8px}
+.vila-order-dialog p{font-size:13px;color:#66727d;line-height:1.5}
+.vila-order-dialog label:not(.vila-consent){display:block;margin:12px 0 5px;font-size:14px;font-weight:700}
+.vila-order-dialog input:not([type=checkbox]),.vila-order-dialog select,.vila-order-dialog textarea{width:100%;border:1px solid #ccd4dd;border-radius:9px;padding:11px;font:16px Arial,sans-serif;background:#fff}
+.vila-order-dialog textarea{resize:vertical}
+.vila-order-close{position:absolute;right:14px;top:8px;border:0;background:none;font-size:30px;cursor:pointer;color:#142b44}
+.vila-order-total{font-weight:800;margin-top:13px;font-size:17px}
+.vila-consent{display:flex;align-items:flex-start;gap:9px;margin-top:13px;font-size:12px;line-height:1.45}
+.vila-consent input{flex:none;margin-top:2px}
+.vila-order-submit{width:100%;margin-top:15px}
+@media(max-width:520px){.vila-order-dialog{padding:22px 18px}.vila-order-actions{gap:8px}.vila-order-actions .vila-order-button{width:auto;min-width:0;flex:1;padding:11px 7px;font-size:12px;white-space:nowrap}}
+</style></head>
 <body>
-
-    <main class="page">
-
-        <a href="index.html#accessories" class="back-link">
+<main class="page">
+<a class="back-link" href="index.html#accessories">
             ← Вернуться на главную
         </a>
-
-        <section class="hero">
-
-            <div>
-                <span class="hero-label">ВИЛАТЕРМ</span>
-
-                <h1>Уплотнительный шнур для тёплого шва</h1>
-
-                <p>
+<section class="hero">
+<div>
+<span class="hero-label">ВИЛАТЕРМ</span>
+<h1>Уплотнительный шнур для тёплого шва</h1>
+<p>
                     Используется при герметизации межвенцовых швов.
                     Помогает правильно сформировать шов и снизить расход герметика.
                 </p>
-
-                <div class="hero-note">
+<div class="hero-note">
                     Поставляется отрезками по 3 метра
                 </div>
-            </div>
-
-            <div class="hero-image">
-                <img src="images/vilaterm-main.webp" alt="Вилатерм разных диаметров">
-            </div>
-
-        </section>
-
-        <section class="price-section">
-
-            <div class="price-heading">
-                <span>РАЗМЕРЫ И ЦЕНЫ</span>
-                <h2>Выберите нужный диаметр</h2>
-            </div>
-
-            <div class="price-list">
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 8px;"></div>
-                    </div>
-                    <div class="diameter">6 мм</div>
-                    <div class="price">7 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 10px;"></div>
-                    </div>
-                    <div class="diameter">8 мм</div>
-                    <div class="price">8 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 12px;"></div>
-                    </div>
-                    <div class="diameter">10 мм</div>
-                    <div class="price">9 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 18px;"></div>
-                    </div>
-                    <div class="diameter">15 мм</div>
-                    <div class="price">10 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 22px;"></div>
-                    </div>
-                    <div class="diameter">20 мм</div>
-                    <div class="price">11 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 30px;"></div>
-                    </div>
-                    <div class="diameter">30 мм</div>
-                    <div class="price">13 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 40px;"></div>
-                    </div>
-                    <div class="diameter">40 мм</div>
-                    <div class="price">21 ₽ <small>/ м</small></div>
-                </div>
-
-                <div class="price-row">
-                    <div class="vilaterm-visual">
-                        <div class="rod" style="--rod-size: 50px;"></div>
-                    </div>
-                    <div class="diameter">50 мм</div>
-                    <div class="price">30 ₽ <small>/ м</small></div>
-                </div>
-
-            </div>
+<div class="vila-order-actions"><button class="vila-order-button" id="vila-open-order" type="button">Заказать Вилатерм</button><a class="vila-order-button vila-calc-button" href="index.html#calculator">Рассчитать количество</a></div>
+</div>
+<div class="hero-image">
+<img alt="Вилатерм разных диаметров" src="images/vilaterm-main.webp"/>
+</div>
+</section>
+<section class="price-section">
+<div class="price-heading">
+<span>РАЗМЕРЫ И ЦЕНЫ</span>
+<h2>Выберите нужный диаметр</h2>
+</div>
+<div class="price-list">
+<div aria-label="Заказать Вилатерм 6 мм, 7 рублей за метр" class="price-row" data-diameter="6" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 8px;"></div>
+</div>
+<div class="diameter">6 мм</div>
+<div class="price">7 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 8 мм, 8 рублей за метр" class="price-row" data-diameter="8" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 10px;"></div>
+</div>
+<div class="diameter">8 мм</div>
+<div class="price">8 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 10 мм, 9 рублей за метр" class="price-row" data-diameter="10" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 12px;"></div>
+</div>
+<div class="diameter">10 мм</div>
+<div class="price">9 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 15 мм, 10 рублей за метр" class="price-row" data-diameter="15" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 18px;"></div>
+</div>
+<div class="diameter">15 мм</div>
+<div class="price">10 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 20 мм, 11 рублей за метр" class="price-row" data-diameter="20" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 22px;"></div>
+</div>
+<div class="diameter">20 мм</div>
+<div class="price">11 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 30 мм, 13 рублей за метр" class="price-row" data-diameter="30" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 30px;"></div>
+</div>
+<div class="diameter">30 мм</div>
+<div class="price">13 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 40 мм, 21 рублей за метр" class="price-row" data-diameter="40" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 40px;"></div>
+</div>
+<div class="diameter">40 мм</div>
+<div class="price">21 ₽ <small>/ м</small></div>
+</div>
+<div aria-label="Заказать Вилатерм 50 мм, 30 рублей за метр" class="price-row" data-diameter="50" role="button" tabindex="0">
+<div class="vilaterm-visual">
+<div class="rod" style="--rod-size: 50px;"></div>
+</div>
+<div class="diameter">50 мм</div>
+<div class="price">30 ₽ <small>/ м</small></div>
+</div>
+</div>
 <section class="vilaterm-info-new">
-
-    <div class="vilaterm-story">
-
-        <img
-            src="images/vilaterm-process.webp"
-            alt="Укладка Вилатерма в межвенцовый шов"
-            class="vilaterm-story-image"
-        >
-
-        <div class="vilaterm-story-overlay">
-
-            <span class="story-label">ПОЛЕЗНО ЗНАТЬ</span>
-
-            <h2>Что такое Вилатерм и зачем он нужен?</h2>
-
-            <p>
-                <strong>Вилатерм</strong> — уплотнительный шнур из вспененного
+<div class="vilaterm-story">
+<img alt="Укладка Вилатерма в межвенцовый шов" class="vilaterm-story-image" src="images/vilaterm-process.webp"/>
+<div class="vilaterm-story-overlay">
+<span class="story-label">ПОЛЕЗНО ЗНАТЬ</span>
+<h2>Что такое Вилатерм и зачем он нужен?</h2>
+<p>
+<strong>Вилатерм</strong> — уплотнительный шнур из вспененного
                 полиэтилена. Его укладывают внутрь межвенцового шва перед
                 нанесением герметика.
             </p>
-
-            <div class="story-benefits">
-                <span>✓ Помогает снизить расход герметика</span>
-                <span>✓ Формирует основу для аккуратного шва</span>
-                <span>✓ Подбирается под ширину конкретного шва</span>
-            </div>
-
-            <div class="story-diameter">
-                <span>КАК ПОДОБРАТЬ ДИАМЕТР</span>
-
-                <p>
+<div class="story-benefits">
+<span>✓ Помогает снизить расход герметика</span>
+<span>✓ Формирует основу для аккуратного шва</span>
+<span>✓ Подбирается под ширину конкретного шва</span>
+</div>
+<div class="story-diameter">
+<span>КАК ПОДОБРАТЬ ДИАМЕТР</span>
+<p>
                     Вилатерм должен располагаться в шве достаточно плотно
                     и не проваливаться внутрь. Если вы не уверены в размере,
                     пришлите нам размеры или фотографию шва — поможем подобрать
                     подходящий диаметр.
                 </p>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="work-section-new">
-
-        <div class="work-heading-new">
-    <span>ТЕХНОЛОГИЯ ТЁПЛОГО ШВА</span>
-    <h2>От подготовки шва — до аккуратного результата</h2>
-    <p>Вилатерм формирует основу под герметик, в том числе на сложных участках и перерубах.</p>
 </div>
-
-        <div class="work-result-photo">
-            <img
-                src="images/perfect-seam.webp"
-                alt="Аккуратный герметизированный шов на перерубах деревянного дома"
-            >
-    
-    <div class="seam-caption">
-        <span>ГОТОВЫЙ РЕЗУЛЬТАТ</span>
-        <strong>Аккуратный шов на перерубах</strong>
-    </div>
 </div>
-        </div>
-
-        <div class="work-steps-new">
-
-            <div class="work-step-new">
-                <span>01</span>
-                <h3>Подготовка шва</h3>
-                <p>Шов очищают и подготавливают к дальнейшей работе.</p>
-            </div>
-
-            <div class="work-step-new">
-                <span>02</span>
-                <h3>Укладка Вилатерма</h3>
-                <p>Подбирают нужный диаметр и устанавливают шнур в шов.</p>
-            </div>
-
-            <div class="work-step-new">
-                <span>03</span>
-                <h3>Нанесение герметика</h3>
-                <p>Поверх Вилатерма наносят герметик и формируют аккуратный шов.</p>
-            </div>
-
-            <div class="work-step-new">
-                <span>04</span>
-                <h3>Готовый результат</h3>
-                <p>Получается ровный и аккуратно герметизированный шов.</p>
-            </div>
-
-        </div>
-
-    </div>
+</div>
+<div class="work-section-new">
+<div class="work-heading-new">
+<span>ТЕХНОЛОГИЯ ТЁПЛОГО ШВА</span>
+<h2>От подготовки шва — до аккуратного результата</h2>
+<p>Вилатерм формирует основу под герметик, в том числе на сложных участках и перерубах.</p>
+</div>
+<div class="work-result-photo">
+<img alt="Аккуратный герметизированный шов на перерубах деревянного дома" src="images/perfect-seam.webp"/>
+<div class="seam-caption">
+<span>ГОТОВЫЙ РЕЗУЛЬТАТ</span>
+<strong>Аккуратный шов на перерубах</strong>
+</div>
+</div>
+</div>
+<div class="work-steps-new">
+<div class="work-step-new">
+<span>01</span>
+<h3>Подготовка шва</h3>
+<p>Шов очищают и подготавливают к дальнейшей работе.</p>
+</div>
+<div class="work-step-new">
+<span>02</span>
+<h3>Укладка Вилатерма</h3>
+<p>Подбирают нужный диаметр и устанавливают шнур в шов.</p>
+</div>
+<div class="work-step-new">
+<span>03</span>
+<h3>Нанесение герметика</h3>
+<p>Поверх Вилатерма наносят герметик и формируют аккуратный шов.</p>
+</div>
+<div class="work-step-new">
+<span>04</span>
+<h3>Готовый результат</h3>
+<p>Получается ровный и аккуратно герметизированный шов.</p>
+</div>
+</div>
 
 </section>
-
-    <section class="vilaterm-calc-cta" aria-labelledby="vilaterm-calc-title">
-      <div>
-        <span class="calc-eyebrow">РАСЧЁТ МАТЕРИАЛА</span>
-        <h2 id="vilaterm-calc-title">Сколько Вилатерма понадобится?</h2>
-        <p>Укажите длину швов и необходимый диаметр шнура. Рассчитайте ориентировочное количество материала перед заказом.</p>
-      </div>
-      <a href="index.html#calculator" aria-label="Перейти к расчёту материалов на главной странице">Рассчитать количество →</a>
-    </section>
-
-            <div class="help-box">
-    <div class="help-box-text">
-        <span class="help-label">УМНЫЙ ПОДБОР</span>
-        <h3>Не уверены в диаметре? Спросите ИИ-помощника</h3>
-        <p>
+<section aria-labelledby="vilaterm-calc-title" class="vilaterm-calc-cta">
+<div>
+<span class="calc-eyebrow">РАСЧЁТ МАТЕРИАЛА</span>
+<h2 id="vilaterm-calc-title">Сколько Вилатерма понадобится?</h2>
+<p>Укажите длину швов и необходимый диаметр шнура. Рассчитайте ориентировочное количество материала перед заказом.</p>
+</div>
+<a aria-label="Перейти к расчёту материалов на главной странице" href="index.html#calculator">Рассчитать количество →</a>
+</section>
+<div class="help-box">
+<div class="help-box-text">
+<span class="help-label">УМНЫЙ ПОДБОР</span>
+<h3>Не уверены в диаметре? Спросите ИИ-помощника</h3>
+<p>
             Опишите ширину шва — помощник подскажет подходящий Вилатерм
             и объяснит, что понадобится для герметизации.
         </p>
-    </div>
-
-    <button class="ai-help-button" id="vilatermAiButton" type="button">
+</div>
+<button class="ai-help-button" id="vilatermAiButton" type="button">
         Спросить ИИ-помощника →
     </button>
 </div>
-
-        </section>
-
-    </main>
-
-</body>
+</section>
+</main>
+<div class="vila-order-modal" hidden="" id="vila-order-modal">
+<div aria-labelledby="vila-order-title" aria-modal="true" class="vila-order-dialog" role="dialog">
+<button aria-label="Закрыть" class="vila-order-close" id="vila-close-order" type="button">×</button>
+<h2 id="vila-order-title">Заказать Вилатерм</h2>
+<p>Шнур поставляется отрезками по 3 метра. Цена указана за метр.</p>
+<form action="https://formspree.io/f/mqppzvrb" id="vila-order-form" method="POST">
+<input name="Товар" type="hidden" value="Вилатерм — уплотнительный шнур"/>
+<input name="Длина одного отрезка" type="hidden" value="3 м"/>
+<input id="vila-meters-field" name="Всего метров" type="hidden"/>
+<input id="vila-unit-field" name="Цена за метр" type="hidden"/>
+<input id="vila-total-field" name="Предварительная стоимость" type="hidden"/>
+<label for="vila-diameter">Диаметр</label><select id="vila-diameter" name="Диаметр" required="">
+<option disabled="" selected="" value="">Выберите диаметр</option>
+<option value="6">6 мм — 7 ₽/м</option><option value="8">8 мм — 8 ₽/м</option>
+<option value="10">10 мм — 9 ₽/м</option><option value="15">15 мм — 10 ₽/м</option>
+<option value="20">20 мм — 11 ₽/м</option><option value="30">30 мм — 13 ₽/м</option>
+<option value="40">40 мм — 21 ₽/м</option><option value="50">50 мм — 30 ₽/м</option>
+</select>
+<label for="vila-qty">Количество отрезков по 3 м</label><input id="vila-qty" max="100000" min="1" name="Количество отрезков по 3 м" required="" step="1" type="number" value="1"/>
+<div aria-live="polite" class="vila-order-total" id="vila-total">Выберите диаметр</div>
+<p>Наличие, доставку и окончательную стоимость подтвердит менеджер.</p>
+<label for="vila-name">Ваше имя</label><input autocomplete="name" id="vila-name" name="Имя" required=""/>
+<label for="vila-phone">Телефон</label><input autocomplete="tel" id="vila-phone" name="Телефон" required="" type="tel"/>
+<label for="vila-comment">Комментарий (необязательно)</label><textarea id="vila-comment" name="Комментарий" rows="2"></textarea>
+<label class="vila-consent"><input required="" type="checkbox"/>Согласен(на) на обработку персональных данных для ответа на заявку</label>
+<button class="vila-order-button vila-order-submit" type="submit">Отправить заявку</button>
+</form></div></div><script>(function(){
+const prices={6:7,8:8,10:9,15:10,20:11,30:13,40:21,50:30};
+const modal=document.getElementById('vila-order-modal');
+const diameter=document.getElementById('vila-diameter');
+const qty=document.getElementById('vila-qty');
+const total=document.getElementById('vila-total');
+const fmt=n=>n.toLocaleString('ru-RU');
+let previousFocus=null;
+function update(){
+ const d=Number(diameter.value),n=Number(qty.value),p=prices[d];
+ const valid=!!p&&Number.isInteger(n)&&n>0&&n<=100000;
+ total.textContent=valid?'Всего: '+fmt(n*3)+' м · '+fmt(n*3*p)+' ₽':'Выберите диаметр и укажите количество';
+ document.getElementById('vila-meters-field').value=valid?String(n*3)+' м':'';
+ document.getElementById('vila-unit-field').value=p?String(p)+' ₽/м':'';
+ document.getElementById('vila-total-field').value=valid?String(n*3*p)+' ₽':'';
+}
+function open(d){previousFocus=document.activeElement;if(d)diameter.value=String(d);update();modal.hidden=false;document.body.style.overflow='hidden';diameter.focus();}
+function close(){modal.hidden=true;document.body.style.overflow='';if(previousFocus&&previousFocus.focus)previousFocus.focus();}
+document.getElementById('vila-open-order').addEventListener('click',()=>open());
+document.getElementById('vila-close-order').addEventListener('click',close);
+modal.addEventListener('click',e=>{if(e.target===modal)close();});
+document.addEventListener('keydown',e=>{if(modal.hidden)return;if(e.key==='Escape')close();if(e.key==='Tab'){const controls=[...modal.querySelectorAll('button,input,select,textarea')].filter(el=>!el.disabled);const first=controls[0],last=controls[controls.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+for(const row of document.querySelectorAll('.price-row[data-diameter]')){const act=()=>open(Number(row.dataset.diameter));row.addEventListener('click',act);row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();act();}});}
+diameter.addEventListener('change',update);qty.addEventListener('input',update);update();
+})();</script></body>
 </html>
