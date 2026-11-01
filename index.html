@@ -3548,16 +3548,16 @@ body { background:#faf9f7; }
 </div>
 </div>
 <script>
-            // Smooth scroll для навигации
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
+           // Smooth scroll только для внутренних ссылок
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
 
             // Интерактивность карточек
             const cards = document.querySelectorAll('.card');
