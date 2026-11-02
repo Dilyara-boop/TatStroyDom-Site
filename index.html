@@ -2663,6 +2663,25 @@ header { position:sticky; top:0; padding:0; }
 .compact-detail a{color:inherit;text-decoration:none}
 .compact-detail a:hover{text-decoration:underline}
 .compact-email{font-size:13px;overflow-wrap:anywhere}
+.mobile-phone {
+    display: none;
+}
+
+@media(max-width:768px) {
+    .mobile-phone {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        margin-left: auto;
+        border-radius: 50%;
+        background: #e8f2f8;
+        color: #2879a8;
+        font-size: 23px;
+        text-decoration: none;
+    }
+}
 .compact-nav{display:flex;justify-content:flex-end;gap:clamp(12px,1.8vw,28px);align-items:center;flex-wrap:wrap}
 .compact-nav a{font-size:14px;font-weight:650;white-space:nowrap}
 .hero{margin-top:0!important}
@@ -2993,6 +3012,9 @@ body { background:#faf9f7; }
 <div class="compact-header-inner">
 <a aria-label="ТатСтройДом — главная" class="compact-logo" href="#"><img alt="ТатСтройДом" src="images/logo.webp"/></a>
 <div class="compact-header-right">
+<a href="tel:+79036894128" class="mobile-phone" aria-label="Позвонить">
+   ☎
+</a>
 <div class="compact-details">
 <div class="compact-detail compact-address"><span class="compact-label">АДРЕС</span><strong>Казань, ул. Хусаина Мавлютова, 48Б</strong></div>
 <div class="compact-detail compact-hours"><span class="compact-label">РЕЖИМ РАБОТЫ</span><strong>Пн–Пт 9:00–18:00 · Сб 9:00–12:00</strong><span class="compact-notice">По предварительному звонку</span></div>
