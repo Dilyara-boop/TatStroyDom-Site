@@ -2835,8 +2835,43 @@ body { background:#faf9f7; }
 .catalog-search-results p{padding:10px;font-size:13px;color:#667085}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1200px){.header-bottom-row{flex-wrap:wrap;gap:8px}.catalog-search{flex:1 1 100%;max-width:390px}.header-bottom-row .compact-nav{justify-content:flex-start}}
-@media(max-width:768px){.header-bottom-row .compact-nav{display:flex;gap:8px 12px}.header-bottom-row .compact-nav a{font-size:12px}.catalog-search{max-width:none}}
-@media(max-width:480px){.catalog-search input{height:36px}.header-bottom-row .compact-nav a{font-size:11px}}
+
+@media(max-width:768px){
+    .compact-header-inner{
+        align-items:center;
+        min-height:0;
+        gap:12px;
+        padding:8px 16px;
+    }
+
+    .compact-logo{
+        flex:0 0 75px;
+    }
+
+    .compact-logo img{
+        max-height:55px;
+    }
+
+    .compact-header-right{
+        flex:1;
+        gap:0;
+    }
+
+    .compact-details{
+        display:none;
+    }
+
+    .compact-nav{
+        display:flex;
+        justify-content:flex-end;
+        gap:8px;
+    }
+
+    .compact-nav a{
+        font-size:12px;
+    }
+}
+.catalog-search input{height:36px}.header-bottom-row .compact-nav a{font-size:11px}}
 </style><style>
 /* Исправление отображения упаковок в каталоге — без обрезки */
 .popular-product-card .product-image {height:205px !important;min-height:205px !important;overflow:visible !important;margin-bottom:16px !important;background:#fff !important;}
