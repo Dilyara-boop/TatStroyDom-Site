@@ -1,0 +1,3956 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ТатСтройДом | Премиальные решения для деревянных домов</title>
+<link href="images/logo.webp" rel="icon" type="image/png"/>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background-color: #FAFAF8;
+            color: #2C2C2C;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(250, 248, 246, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+            padding: 0.8rem 2.5rem;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 90px;
+            margin-right: 1.5rem;
+        }
+
+        .logo img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        .logo-accent {
+            color: #A0826D;
+        }
+
+        nav {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2C2C2C;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #A0826D;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 110px;
+            min-height: 660px;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+            background-image: url('images/hero-house.webp');
+            background-size: cover;
+            background-position: right center;
+            background-attachment: fixed;
+            gap: 3rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 55%;
+            background: linear-gradient(90deg, rgba(20, 35, 55, 0.88) 0%, rgba(20, 35, 55, 0.72) 45%, rgba(20, 35, 55, 0.20) 78%, rgba(20, 35, 55, 0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            flex: 0 1 55%;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+            text-align: left;
+            padding: 2rem 0;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-title {
+            font-size: clamp(1.6rem, 4.2vw, 2.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+            color: #FFFFFF;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.1s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.9rem, 2.3vw, 1.05rem);
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            line-height: 1.65;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        .brand-accent {
+            color: #B52A32;
+            font-weight: 600;
+        }
+
+        .hero-image-wrapper {
+            display: none;
+        }
+
+        .hero-image {
+            display: none;
+        }
+
+        .hero-badge {
+            display: none;
+        }
+
+        .hero-badge-text {
+            display: none;
+        }
+
+        .hero-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+        }
+
+        .hero-benefit::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: #C9363E;
+            color: white;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.25s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #FF6B6B;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #A92830;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits {
+            background: #2C2C2C;
+            color: white;
+            padding: 2.5rem 2rem;
+            margin-top: -1px;
+            overflow-x: auto;
+        }
+
+        .benefits-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .benefit-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .benefit-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .benefit-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .benefit-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .benefit-item:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .benefit-item:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .benefit-dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background: #A0826D;
+            border-radius: 50%;
+            margin: 0 1.5rem;
+        }
+
+        /* ===== WHAT YOU NEED SECTION ===== */
+        .what-you-need {
+            padding: 6rem 2rem;
+            background: #FAFAF8;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2C2C2C;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-subtitle {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            font-weight: 400;
+            color: #666666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(44, 44, 44, 0.08);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(44, 44, 44, 0.05);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #A0826D;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(44, 44, 44, 0.12);
+            border-color: rgba(160, 130, 109, 0.15);
+        }
+
+        .card-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #A0826D;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #A0826D;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2C2C2C;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            color: #666666;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .card-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #A0826D;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .card-link:hover {
+            color: #2C2C2C;
+            gap: 0.7rem;
+        }
+
+        .card-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-arrow {
+            transform: translateX(4px);
+        }
+
+        /* ===== COMPLEX SOLUTIONS SECTION ===== */
+        .complex-solutions {
+            padding: 6rem 2rem;
+            background: #FAFAF8;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .solutions-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .solutions-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2C2C2C;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .solutions-subtitle {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            font-weight: 400;
+            color: #666666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease-out 0.1s forwards;
+            opacity: 0;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.2s forwards;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid rgba(44, 44, 44, 0.08);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(44, 44, 44, 0.05);
+        }
+
+        .solution-card.highlighted {
+            background: #FAFAF8;
+            border: 1px solid rgba(160, 130, 109, 0.2);
+            box-shadow: 0 4px 16px rgba(160, 130, 109, 0.1);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #A0826D;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(44, 44, 44, 0.12);
+            border-color: rgba(160, 130, 109, 0.15);
+        }
+
+        .solution-card.highlighted:hover {
+            box-shadow: 0 24px 60px rgba(160, 130, 109, 0.15);
+        }
+
+        .solution-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #A0826D;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .solution-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #2C2C2C;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .solution-description {
+            font-size: 0.95rem;
+            color: #666666;
+            line-height: 1.65;
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .solution-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .solution-list li {
+            font-size: 0.9rem;
+            color: #666666;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .solution-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: #A0826D;
+            font-weight: 600;
+        }
+
+        .solution-btn {
+            padding: 0.9rem 2rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: #2C2C2C;
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(44, 44, 44, 0.15);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            animation-delay: var(--delay);
+        }
+
+        .solution-btn:hover {
+            background: #A0826D;
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(160, 130, 109, 0.25);
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(20px);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #2C2C2C;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s forwards;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                height: 65px;
+                margin-right: 0;
+            }
+
+            .logo img {
+                height: 65px;
+            }
+
+            nav {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                margin-top: 160px;
+                min-height: 540px;
+                padding: 2rem 1.5rem;
+                background-position: right center;
+            }
+
+            .hero::before {
+                width: 70%;
+            }
+
+            .hero-content {
+                flex: 0 1 100%;
+                padding: 1.5rem 0;
+            }
+
+            .hero-label {
+                margin-bottom: 0.8rem;
+                font-size: 0.75rem;
+                color: rgba(255, 255, 255, 0.85);
+            }
+
+            .hero-title {
+                margin-bottom: 0.75rem;
+                font-size: clamp(1.4rem, 4vw, 2.2rem);
+                color: #FFFFFF;
+            }
+
+            .hero-subtitle {
+                margin-bottom: 1.2rem;
+                font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            .cta-group {
+                flex-direction: row;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .btn {
+                padding: 0.95rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .btn-primary {
+                background: #FF6B6B;
+                color: white;
+            }
+
+            .btn-secondary {
+                background: rgba(255, 255, 255, 0.15);
+                color: #FFFFFF;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+            }
+
+            .hero-benefits {
+                margin-top: 1.5rem;
+                gap: 0.75rem;
+            }
+
+            .hero-benefit {
+                color: rgba(255, 255, 255, 0.95);
+                font-size: 0.9rem;
+            }
+
+            .benefits-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .benefit-item {
+                white-space: normal;
+                justify-content: center;
+            }
+
+            .benefit-dot {
+                margin: 1rem 0;
+            }
+
+            .what-you-need {
+                padding: 3rem 1.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: clamp(1.8rem, 4.5vw, 2.5rem);
+                margin-bottom: 2rem;
+            }
+
+            .section-subtitle {
+                font-size: clamp(0.85rem, 2vw, 0.95rem);
+            }
+
+            .card-number {
+                font-size: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 1.2rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
+            }
+
+            .complex-solutions {
+                padding: 4rem 1.5rem;
+            }
+
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .solution-title {
+                font-size: 1.4rem;
+            }
+
+            .solution-description {
+                font-size: 0.9rem;
+            }
+
+            .solution-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                height: 55px;
+                margin-right: 0;
+            }
+
+            .logo img {
+                height: 55px;
+            }
+
+            .hero {
+                margin-top: 130px;
+                min-height: 480px;
+                padding: 1.5rem 1rem;
+                background-position: right center;
+            }
+
+            .hero::before {
+                width: 80%;
+                background: linear-gradient(135deg, rgba(20, 35, 55, 0.85) 0%, rgba(40, 55, 75, 0.65) 40%, rgba(60, 75, 95, 0.35) 100%);
+            }
+
+            .hero-content {
+                flex: 1 1 auto;
+                padding: 1rem 0;
+            }
+
+            .hero-label {
+                font-size: 0.7rem;
+                margin-bottom: 0.7rem;
+                letter-spacing: 0.8px;
+                color: rgba(255, 255, 255, 0.85);
+            }
+
+            .hero-title {
+                font-size: 1.6rem;
+                margin-bottom: 0.6rem;
+                line-height: 1.05;
+                color: #FFFFFF;
+            }
+
+            .hero-subtitle {
+                font-size: 0.85rem;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+            .cta-group {
+                gap: 0.8rem;
+                flex-direction: column;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+                width: 100%;
+            }
+
+            .btn-primary {
+                background: #FF6B6B;
+                color: white;
+            }
+
+            .btn-secondary {
+                background: rgba(255, 255, 255, 0.15);
+                color: #FFFFFF;
+                border: 2px solid rgba(255, 255, 255, 0.5);
+            }
+
+            .hero-benefits {
+                margin-top: 0.8rem;
+                gap: 0.6rem;
+            }
+
+            .hero-benefit {
+                font-size: 0.8rem;
+                gap: 0.5rem;
+                color: rgba(255, 255, 255, 0.95);
+            }
+
+            .hero-benefit::before {
+                width: 18px;
+                height: 18px;
+                font-size: 0.6rem;
+                background: #FF6B6B;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .what-you-need {
+                padding: 3rem 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card-number {
+                font-size: 2.2rem;
+            }
+
+            .card-category {
+                font-size: 0.7rem;
+            }
+
+            .card-title {
+                font-size: 1.1rem;
+            }
+
+            .card-description {
+                font-size: 0.85rem;
+            }
+
+            .benefits-content {
+                font-size: 0.95rem;
+            }
+
+            .complex-solutions {
+                padding: 3rem 1rem;
+            }
+
+            .solutions-title {
+                font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+                margin-bottom: 0.8rem;
+            }
+
+            .solutions-subtitle {
+                font-size: clamp(0.85rem, 2vw, 0.95rem);
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .solution-number {
+                font-size: 2.8rem;
+            }
+
+            .solution-title {
+                font-size: 1.2rem;
+            }
+
+            .solution-description {
+                font-size: 0.85rem;
+            }
+
+            .solution-list li {
+                font-size: 0.85rem;
+            }
+
+            .solution-btn {
+                padding: 0.8rem 1.6rem;
+                font-size: 0.9rem;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        section {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* ===== QUICK SOLUTION SELECTOR ===== */
+        .quick-selector {
+            padding: 28px 32px;
+            background: #f6f1eb;
+        }
+
+        .quick-selector-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 28px 30px;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(20, 35, 55, 0.08);
+            border-radius: 18px;
+            box-shadow: 0 18px 45px rgba(20, 35, 55, 0.10);
+            display: grid;
+            grid-template-columns: 0.9fr 1.4fr;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .quick-selector-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            color: #B52A32;
+        }
+
+        .quick-selector-text h2 {
+            margin: 0 0 8px;
+            font-size: clamp(1.6rem, 3vw, 2.3rem);
+            line-height: 1.15;
+            color: #172231;
+        }
+
+        .quick-selector-text p {
+            margin: 0;
+            color: #66707c;
+            line-height: 1.6;
+        }
+
+        .quick-selector-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 12px;
+        }
+
+        .quick-selector-form select,
+        .quick-selector-btn {
+            min-height: 54px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+
+        .quick-selector-form select {
+            width: 100%;
+            padding: 0 16px;
+            background: #ffffff;
+            border: 1px solid #d8dde3;
+            color: #263442;
+            outline: none;
+        }
+
+        .quick-selector-form select:focus {
+            border-color: #B52A32;
+            box-shadow: 0 0 0 3px rgba(181, 42, 50, 0.10);
+        }
+
+        .quick-selector-btn {
+            padding: 0 24px;
+            border: none;
+            background: #C9363E;
+            color: #ffffff;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.25s ease;
+        }
+
+        .quick-selector-btn:hover {
+            background: #A92830;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+            .quick-selector-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-selector-form {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-selector-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .quick-selector {
+                padding: 18px 14px;
+            }
+
+            .quick-selector-inner {
+                padding: 22px 18px;
+                border-radius: 14px;
+            }
+        }
+
+        /* ===== PRODUCTS SECTION ===== */
+
+        .products-section {
+            padding: 80px 6%;
+            background: #f7f4ef;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            max-width: 720px;
+            margin-bottom: 42px;
+        }
+
+        .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: #b52b32;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .section-heading h2 {
+            margin: 0 0 14px;
+            color: #142337;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.1;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: #5f6670;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .product-category {
+            min-height: 260px;
+            padding: 28px;
+            background: #ffffff;
+            border: 1px solid rgba(20, 35, 55, 0.08);
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .product-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 35px rgba(20, 35, 55, 0.10);
+        }
+
+        .product-number {
+            margin-bottom: 34px;
+            color: #b52b32;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .product-category h3 {
+            margin: 0 0 12px;
+            color: #142337;
+            font-size: 1.25rem;
+        }
+
+        .product-category p {
+            margin: 0 0 24px;
+            color: #68717b;
+            line-height: 1.55;
+        }
+
+        .product-category a {
+            margin-top: auto;
+            color: #b52b32;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .products-section {
+                padding: 55px 20px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-category {
+                min-height: 220px;
+            }
+        }
+/* ===== OILS & PAINTS ===== */
+
+.finishing-section {
+    padding: 90px 20px;
+    background: #ffffff;
+}
+
+.finishing-section .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.finishing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 45px;
+}
+
+.finishing-card {
+    position: relative;
+    min-height: 360px;
+    padding: 42px;
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.finishing-oils {
+    background:
+        linear-gradient(135deg, #142b44 0%, #25435f 100%);
+}
+
+.finishing-paints {
+    background:
+        linear-gradient(135deg, #6f342f 0%, #a65347 100%);
+}
+
+.finishing-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(20, 43, 68, 0.18);
+}
+
+.finishing-number {
+    color: rgba(255,255,255,.55);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.finishing-content {
+    max-width: 470px;
+}
+
+.finishing-type {
+    display: block;
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.finishing-card h3 {
+    color: #ffffff;
+    font-size: 34px;
+    line-height: 1.15;
+    margin: 0 0 18px;
+}
+
+.finishing-card p {
+    color: rgba(255,255,255,.78);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 28px;
+}
+
+.finishing-link {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+@media (max-width: 800px) {
+    .finishing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .finishing-card {
+        min-height: 300px;
+        padding: 30px;
+    }
+
+    .finishing-card h3 {
+        font-size: 28px;
+    }
+}
+/* ===== ACCESSORIES ===== */
+
+.accessories-section {
+    padding: 85px 6%;
+    background: #f7f4ef;
+}
+
+.accessories-section .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.accessories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 42px;
+}
+
+.accessory-image {
+    width: 100%;
+    height: 180px;
+    margin: 18px 0 22px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #f7f4ef;
+}
+
+.accessory-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.accessory-card {
+    position: relative;
+    min-height: 260px;
+    padding: 36px;
+    background: #ffffff;
+    border: 1px solid #e5ded5;
+    border-radius: 22px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.accessory-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px rgba(20, 43, 68, .12);
+}
+
+.accessory-number {
+    color: #d9343a;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 28px;
+}
+
+.accessory-card h3 {
+    margin: 0 0 14px;
+    color: #142b44;
+    font-size: 28px;
+}
+
+.accessory-card p {
+    margin: 0 0 26px;
+    color: #6d7b8d;
+    line-height: 1.7;
+    max-width: 520px;
+}
+
+.accessory-link {
+    margin-top: auto;
+    color: #142b44;
+    font-weight: 700;
+}
+
+.accessory-card:hover .accessory-link {
+    color: #d9343a;
+}
+
+@media (max-width: 750px) {
+    .accessories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .accessory-card {
+        min-height: 220px;
+        padding: 28px;
+    }
+}        
+/* ===== SERVICES SECTION ===== */
+
+        .services-section {
+            padding: 80px 6%;
+            background: #ffffff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .service-card {
+            min-height: 280px;
+            padding: 30px;
+            background: #142337;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(20, 35, 55, 0.18);
+        }
+
+        .service-number {
+            margin-bottom: 34px;
+            color: #d34147;
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 14px;
+            color: #ffffff;
+            font-size: 1.3rem;
+            line-height: 1.25;
+        }
+
+        .service-card p {
+            margin: 0 0 24px;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.6;
+        }
+
+        .service-card a {
+            margin-top: auto;
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .services-section {
+                padding: 55px 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                min-height: 220px;
+            }
+        }
+
+        #services {
+            scroll-margin-top: 120px;
+        }
+
+        /* ===== PRELIMINARY CALCULATOR ===== */
+
+        .calculator-section {
+            padding: 90px 32px;
+            background: #f6f2ed;
+            scroll-margin-top: 120px;
+        }
+
+        .calculator-box {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 55px;
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 18px 50px rgba(20, 35, 55, 0.10);
+
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .calculator-text h2 {
+            margin: 12px 0 18px;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.08;
+            color: #142337;
+        }
+
+        .calculator-text>p {
+            margin: 0 0 25px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #667085;
+        }
+
+        .calculator-note {
+            padding: 18px 20px;
+            background: #f6f2ed;
+            border-left: 3px solid #c62f35;
+            border-radius: 8px;
+            color: #667085;
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        .calculator-form {
+            padding: 35px;
+            background: #142337;
+            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .calculator-form label {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .calculator-form select,
+        .calculator-form input {
+            width: 100%;
+            padding: 15px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 10px;
+            background: #ffffff;
+            color: #142337;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .calculator-form .btn {
+            width: 100%;
+            margin-top: 5px;
+            padding: 16px 20px;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .calculator-form small {
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 800px) {
+            .calculator-section {
+                padding: 60px 20px;
+            }
+
+            .calculator-box {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                padding: 32px 24px;
+            }
+
+            .calculator-form {
+                padding: 25px 20px;
+            }
+        }
+
+        /* ===== PARTNERS SECTION ===== */
+
+        .partners-section {
+            padding: 90px 32px;
+            background: #f6f1eb;
+        }
+
+        .partners-container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 56px;
+            background: #14263d;
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1.5fr 0.7fr;
+            gap: 55px;
+            align-items: center;
+            box-shadow: 0 24px 60px rgba(20, 38, 61, 0.14);
+        }
+
+        .partners-content .section-label {
+            display: block;
+            margin-bottom: 16px;
+            color: #d3363c;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .partners-content h2 {
+            max-width: 720px;
+            margin: 0 0 18px;
+            color: #ffffff;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.08;
+        }
+
+        .partners-lead {
+            max-width: 680px;
+            margin: 0 0 32px;
+            color: rgba(255, 255, 255, 0.72);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .partners-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-bottom: 34px;
+        }
+
+        .partner-benefit {
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .partner-benefit strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #ffffff;
+            font-size: 15px;
+        }
+
+        .partner-benefit span {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .partners-btn {
+            display: inline-block;
+            padding: 16px 24px;
+            background: #d3363c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .partners-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .partners-side {
+            padding: 36px;
+            background: #ffffff;
+            border-radius: 18px;
+        }
+
+        .partners-number {
+            display: block;
+            margin-bottom: 40px;
+            color: #d3363c;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .partners-side h3 {
+            margin: 0 0 16px;
+            color: #14263d;
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        .partners-side p {
+            margin: 0;
+            color: #667085;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 800px) {
+            .partners-section {
+                padding: 55px 20px;
+            }
+
+            .partners-container {
+                padding: 32px 24px;
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .partners-benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-side {
+                padding: 26px;
+            }
+        }
+
+        /* ===== WHERE TO BUY ===== */
+
+        .where-buy-section {
+            padding: 90px 32px;
+            background: #ffffff;
+        }
+
+        .where-buy-container {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+           grid-template-columns: 0.9fr 1.1fr;
+           gap: 50px;
+            align-items: center;
+        }
+
+        .where-buy-content .section-label {
+            display: block;
+            margin-bottom: 18px;
+            color: #d3363c;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .where-buy-content h2 {
+            margin: 0 0 22px;
+            color: #14263d;
+            font-size: clamp(34px, 4vw, 50px);
+            line-height: 1.08;
+        }
+
+        .where-buy-lead {
+            margin: 0 0 32px;
+            color: #667085;
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+        .where-buy-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .where-buy-btn {
+            display: inline-block;
+            padding: 16px 26px;
+            background: #d3363c;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .where-buy-link {
+            color: #14263d;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 1px solid #14263d;
+        }
+
+        .where-buy-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    background: transparent;
+    padding: 0;
+
+        }
+
+       .where-buy-item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 180px;
+    padding: 24px;
+    background: #f6f1eb;
+    border-radius: 16px;
+    border: 1px solid rgba(20, 38, 61, 0.08);
+
+        }
+
+        .where-buy-item:first-child {
+            padding-top: 0;
+        }
+
+        .where-buy-item:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .where-buy-number {
+            color: #d3363c;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .where-buy-item strong {
+            display: block;
+            margin-bottom: 7px;
+            color: #14263d;
+            font-size: 18px;
+        }
+
+        .where-buy-item p {
+            margin: 0;
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 800px) {
+            .where-buy-section {
+                padding: 55px 20px;
+            }
+
+            .where-buy-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .where-buy-info {
+                padding: 26px;
+            }
+}
+            .where-buy-map {
+    margin-top: 36px;
+}
+
+.map-placeholder {
+    min-height: 320px;
+    padding: 48px;
+    border-radius: 24px;
+    background:
+        linear-gradient(135deg, rgba(20, 43, 68, 0.96), rgba(28, 55, 82, 0.92));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    box-shadow: 0 18px 45px rgba(20, 35, 55, 0.12);
+}
+
+.map-placeholder span {
+    color: #d32f36;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+}
+
+.map-placeholder h3 {
+    font-size: 30px;
+    margin: 0 0 12px;
+}
+
+.map-placeholder p {
+    max-width: 560px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+    .map-placeholder {
+        min-height: 260px;
+        padding: 30px 20px;
+        border-radius: 18px;
+    }
+
+    .map-placeholder h3 {
+        font-size: 24px;
+    }
+}
+
+/* ===== CONTACTS SECTION ===== */
+
+.contacts-section {
+    padding: 85px 32px;
+    background: #ffffff;
+}
+
+.contacts-container {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.contacts-section .section-label {
+    display: block;
+    margin-bottom: 14px;
+    color: #d3363c;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.contacts-section h2 {
+    margin: 0 0 18px;
+    color: #14263d;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.1;
+}
+
+.contacts-lead {
+    max-width: 720px;
+    margin: 0 0 36px;
+    color: #667085;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.contact-item {
+    padding: 26px;
+    background: #f6f1eb;
+    border: 1px solid rgba(20, 38, 61, 0.08);
+    border-radius: 16px;
+}
+
+.contact-item span {
+    display: block;
+    margin-bottom: 10px;
+    color: #d3363c;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.contact-item strong {
+    color: #14263d;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .contacts-section {
+        padding: 55px 20px;
+    }
+
+    .contacts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== PREMIUM FOOTER ===== */
+
+footer {
+    background: #14263d;
+    color: #ffffff;
+    padding: 60px 7% 0;
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 70px;
+    padding-bottom: 45px;
+}
+
+.footer-brand img {
+    width: 180px;
+    background: #ffffff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+}
+
+.footer-nav,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-nav strong,
+.footer-contact strong {
+    color: #ffffff;
+    margin-bottom: 8px;
+    font-size: 17px;
+}
+
+.footer-nav a,
+.footer-contact a {
+    color: rgba(255, 255, 255, 0.72);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.footer-nav a:hover,
+.footer-contact a:hover,
+.footer-legal a:hover {
+    color: #ffffff;
+}
+
+.footer-contact p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-legal {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-legal a {
+    color: rgba(255, 255, 255, 0.65);
+    text-decoration: none;
+}
+
+@media (max-width: 800px) {
+    footer {
+        padding: 45px 22px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .footer-legal {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* ===== LEGAL MODALS ===== */
+
+.legal-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(10, 22, 36, 0.72);
+    padding: 24px;
+    overflow-y: auto;
+}
+
+.legal-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legal-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    max-height: 86vh;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 38px;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
+}
+
+.legal-modal-content h2 {
+    margin: 8px 0 24px;
+    color: #14263d;
+    font-size: 32px;
+    line-height: 1.15;
+}
+
+.legal-modal-text {
+    color: #5f6b7a;
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.legal-modal-text p {
+    margin: 0 0 18px;
+}
+
+.legal-modal-text strong {
+    color: #14263d;
+}
+
+.legal-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: #f6f1eb;
+    color: #14263d;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.legal-modal-close:hover {
+    background: #ece4da;
+}
+
+@media (max-width: 600px) {
+    .legal-modal {
+        padding: 12px;
+    }
+
+    .legal-modal-content {
+        padding: 28px 20px;
+        border-radius: 16px;
+    }
+
+    .legal-modal-content h2 {
+        font-size: 25px;
+        padding-right: 35px;
+    }
+}
+/* ===== POPULAR PRODUCTS ===== */
+
+.popular-products {
+    padding: 90px 20px;
+    background: #f7f4ef;
+}
+
+.popular-products .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.popular-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 45px;
+}
+
+.popular-product-card {
+    background: #ffffff;
+    border: 1px solid #e7e0d7;
+    border-radius: 22px;
+    padding: 32px 28px;
+    min-height: 310px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: 100%;
+}
+
+.popular-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(20, 43, 68, 0.12);
+}
+.product-image {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+.product-price {
+    margin-top: auto;
+    margin-bottom: 12px;
+    color: #142b44;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.product-price span {
+    color: #7b8794;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.popular-product-card > a {
+    color: #d9343a;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.popular-product-card > a:hover {
+    text-decoration: underline;
+}
+/* ===== SEALANT COLOR PALETTE ===== */
+
+.sealant-colors {
+    padding: 90px 20px;
+    background: #f7f4ef;
+    scroll-margin-top: 100px;
+}
+
+.sealant-colors .section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.palette-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 34px;
+    margin-bottom: 22px;
+    padding: 18px 22px;
+    background: #ffffff;
+    border: 1px solid #e7e0d7;
+    border-radius: 16px;
+}
+
+.palette-current {
+    color: #142b44;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#showAllColors {
+    border: 1px solid #d9343a;
+    background: transparent;
+    color: #d9343a;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+#showAllColors:hover {
+    background: #d9343a;
+    color: #ffffff;
+}
+
+@media (max-width: 700px) {
+    .palette-filter-bar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #showAllColors {
+        width: 100%;
+    }
+}
+.sealant-palette {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 0;
+}
+
+.sealant-color {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e7e0d7;
+    border-radius: 18px;
+    padding: 12px;
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.sealant-color:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(20, 43, 68, 0.13);
+    z-index: 10;
+}
+
+.color-sample {
+    display: block;
+    width: 100%;
+    height: 82px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+}
+
+.sealant-color strong {
+    display: block;
+    color: #142b44;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.sealant-color::after {
+    content: "Есть у: " attr(data-products);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    transform: translateX(-50%) translateY(5px);
+    width: 230px;
+    padding: 14px 16px;
+    background: #142b44;
+    color: #ffffff;
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.55;
+    font-weight: 500;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .2s ease;
+    box-shadow: 0 12px 30px rgba(20, 43, 68, .22);
+}
+
+.sealant-color:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.sealant-color.active::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.sealant-color.color-muted {
+    opacity: 0.22;
+    filter: grayscale(0.6);
+    transform: scale(0.96);
+    pointer-events: none;
+}
+
+.palette-note {
+    margin-top: 28px;
+    color: #7b8794;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 1000px) {
+    .sealant-palette {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .sealant-colors {
+        padding: 65px 18px;
+    }
+
+    .sealant-palette {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .color-sample {
+        height: 70px;
+    }
+
+    .sealant-color::after {
+        width: 190px;
+    }
+}
+.product-brand {
+    color: #d9343a;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.popular-product-card h3 {
+    color: #142b44;
+    font-size: 25px;
+    margin: 0 0 16px;
+}
+
+.popular-product-card p {
+    color: #6d7b8d;
+    line-height: 1.7;
+    margin: 0 0 26px;
+}
+
+.popular-product-card a {
+    color: #142b44;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+}
+
+.popular-product-card a:hover {
+    color: #d9343a;
+}
+
+@media (max-width: 1000px) {
+    .popular-products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .popular-products {
+        padding: 60px 18px;
+    }
+
+    .popular-products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .popular-product-card {
+        min-height: auto;
+    }
+}
+    
+/* ===== Точечные изменения версии 3: порядок и компактность ===== */
+.hero {
+  margin-top: 0 !important;
+  min-height: 430px !important;
+  height: auto !important;
+  padding: 38px max(5%, 34px) !important;
+  background-attachment: scroll !important;
+}
+.hero::before {
+  width: 100% !important;
+  background: linear-gradient(90deg, rgba(16,32,53,.87) 0%, rgba(16,32,53,.68) 34%, rgba(16,32,53,.18) 66%, rgba(16,32,53,0) 100%) !important;
+}
+.hero-content { flex: 0 1 570px !important; padding: 12px 0 !important; }
+.hero-title { font-size: clamp(1.85rem,3.2vw,2.65rem) !important; }
+.hero-subtitle { font-size: 1rem !important; line-height: 1.5 !important; }
+.hero-benefits { gap: .35rem !important; margin-top: .65rem !important; }
+.products-section { padding: 36px 5% 44px !important; scroll-margin-top: 150px; }
+.products-section .section-heading { margin-bottom: 20px !important; }
+.products-section .section-heading h2 { font-size: clamp(1.65rem,2.6vw,2.3rem) !important; }
+.products-grid { gap: 14px !important; }
+.product-category { min-height: 0 !important; padding: 17px 18px 19px !important; border-radius: 13px !important; }
+.product-number { margin-bottom: 12px !important; }
+.product-photo-slot {
+  height: 78px; width: 100%; margin-bottom: 12px;
+  border: 1px dashed #d8d0c6; border-radius: 9px;
+  background: #faf8f5; display: flex; align-items: center; justify-content: center;
+  color: #938b83; font-size: .76rem; text-align: center;
+}
+.product-category h3 { font-size: 1.08rem !important; margin-bottom: 7px !important; line-height: 1.25; }
+.product-category p { font-size: .87rem !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
+.product-category a { font-size: .87rem !important; }
+@media(max-width:768px) {
+  .hero { min-height: 390px !important; padding: 28px 20px !important; }
+  .hero-content { flex: 1 1 100% !important; }
+  .hero::before { background: linear-gradient(90deg,rgba(16,32,53,.88),rgba(16,32,53,.38)) !important; }
+  .products-section { padding: 28px 18px 36px !important; }
+}
+@media(max-width:480px) {
+  .hero { min-height: 440px !important; }
+  .product-photo-slot { height: 92px; }
+}
+
+/* Natural sealant swatches, preserving the original palette/filter interactions */
+.sealant-color { text-align:center; }
+.sealant-color .color-sample { display:block; width:min(100%,132px); height:auto; aspect-ratio:1; object-fit:contain; border-radius:50%; margin:0 auto 10px; box-shadow:none; }
+.sealant-color strong { text-align:center; }
+
+/* ТатСтройДом: компактные карточки аксессуаров и услуг, версия 4 */
+.accessories-section { padding-top: 52px; padding-bottom: 52px; }
+.accessories-grid { gap: 18px; margin-top: 26px; }
+.accessory-card { min-height: 0; padding: 22px 24px; border-radius: 18px; box-shadow: 0 8px 24px rgba(20,35,55,.055); }
+.accessory-number { margin-bottom: 10px; }
+.accessory-image { height: 105px; margin: 6px 0 14px; border-radius: 12px; }
+.accessory-card h3 { font-size: 23px; margin-bottom: 8px; }
+.accessory-card p { font-size: 15px; line-height: 1.5; margin-bottom: 15px; }
+.services-section { padding-top: 52px; padding-bottom: 52px; }
+.services-grid { gap: 14px; }
+.service-card { min-height: 218px; padding: 22px 22px 20px; border-radius: 16px; background: linear-gradient(145deg,#192e49,#142337); border: 1px solid rgba(255,255,255,.08); box-shadow: 0 8px 22px rgba(20,35,55,.10); }
+.service-number { margin-bottom: 18px; }
+.service-card h3 { font-size: 1.12rem; line-height: 1.3; margin-bottom: 10px; }
+.service-card p { font-size: .9rem; line-height: 1.48; margin-bottom: 14px; }
+.service-card a { font-size: .9rem; }
+@media (max-width: 750px) {
+  .accessory-card { padding: 20px; }
+  .accessory-image { height: 100px; }
+}
+@media (max-width: 600px) {
+  .services-section, .accessories-section { padding: 40px 20px; }
+  .service-card { min-height: 0; padding: 22px; }
+  .service-number { margin-bottom: 12px; }
+}
+
+
+/* Ссылки на подробные страницы герметиков */
+.popular-product-card .product-detail-link {display:inline-flex;align-items:center;margin-top:12px;color:#142b44;font-weight:750;text-decoration:none;font-size:0.95rem;}
+.popular-product-card .product-detail-link:hover {color:#c9363e;}
+.popular-product-card .product-title-link {color:inherit;text-decoration:none;}
+.popular-product-card .product-title-link:hover {color:#c9363e;}
+</style>
+<style>
+/* ТатСтройДом — premium commerce refresh */
+:root{--premium-ink:#192d27;--premium-gold:#c9a56b}
+html{scroll-behavior:smooth}body{background:#f8f7f3}
+.hero{background:linear-gradient(120deg,#142a25 0%,#234137 55%,#334c3e 100%);color:#fff}
+.hero-title{font-size:clamp(42px,5.2vw,76px);line-height:1.07;letter-spacing:-.045em}
+.hero-subtitle{font-size:clamp(17px,1.55vw,21px);line-height:1.65;max-width:640px}
+.hero-label{letter-spacing:.14em;text-transform:uppercase;font-size:12px}
+.hero .brand-accent{color:#dfc396}
+.hero-image{object-fit:contain;filter:drop-shadow(0 24px 35px rgba(0,0,0,.24))}
+.hero .btn-primary,.partners-btn{background:#c9a56b!important;color:#182b25!important;border-radius:8px;font-weight:750}
+.hero .btn-secondary{border:1px solid #d7c5a9!important;color:#fff!important;border-radius:8px}
+.popular-products{background:#f8f7f3}
+.popular-product-card{background:#fff;border:1px solid #e8e3d9;border-radius:16px;box-shadow:0 12px 35px rgba(20,42,35,.055);transition:transform .2s,box-shadow .2s}
+.popular-product-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,42,35,.12)}
+.popular-product-card img{object-fit:contain}
+.partners-section{background:#19352c;color:#fff}
+.partners-section h2{letter-spacing:-.025em}
+a:focus-visible,button:focus-visible{outline:3px solid #d7a65c;outline-offset:3px}
+@media(max-width:768px){.hero-title{font-size:clamp(37px,10vw,54px)}.hero{padding-top:38px}.hero .cta-group{display:flex;flex-wrap:wrap;gap:12px}}
+
+/* Structured, readable business header */
+header { position:sticky; top:0; padding:0; }
+.contact-topbar { background:#f5f1e9; color:#192d27; border-bottom:1px solid #e2d9c9; }
+.contact-topbar-inner { max-width:1400px; margin:0 auto; padding:14px 2.5rem; display:grid; grid-template-columns:1.15fr 1fr 1.25fr; gap:24px; align-items:start; }
+.topbar-column { display:flex; flex-direction:column; gap:3px; min-width:0; }
+.topbar-heading { font-size:12px; font-weight:800; letter-spacing:.075em; text-transform:uppercase; color:#887253; margin-bottom:3px; }
+.topbar-main { font-size:16px; font-weight:700; line-height:1.45; color:#1a302a; }
+.topbar-main a { color:inherit; text-decoration:none; }
+.topbar-main a:hover { text-decoration:underline; }
+.topbar-note { font-size:14px; font-weight:700; color:#a02d32; margin-top:3px; }
+.topbar-email { font-size:14px; font-weight:500; overflow-wrap:anywhere; margin-top:3px; }
+.header-content { padding:8px 2.5rem; }
+.hero { margin-top:0 !important; }
+.contacts-section .contact-item a { color:inherit; text-decoration:none; }
+.contacts-section .contact-item a:hover { text-decoration:underline; }
+@media (max-width:900px) {
+  .contact-topbar-inner { gap:14px; padding:12px 20px; }
+  .topbar-main { font-size:14px; }
+  .topbar-email { font-size:13px; }
+  .header-content { padding:8px 20px; }
+}
+@media (max-width:600px) {
+  .contact-topbar-inner { grid-template-columns:1fr 1fr; gap:12px 16px; }
+  .topbar-column:last-child { grid-column:1 / -1; }
+  .topbar-heading { font-size:11px; }
+  .topbar-main { font-size:14px; }
+  .topbar-note { font-size:12px; }
+  .topbar-email { font-size:13px; }
+  .header-content { flex-direction:row; justify-content:center; padding:4px 16px; }
+  .logo, .logo img { height:54px; }
+}
+
+/* Compact integrated header: logo at left, details and menu at right */
+.compact-site-header{position:sticky;top:0;z-index:100;padding:0;background:rgba(250,248,246,.98);border-bottom:1px solid #e8e2d8;backdrop-filter:blur(10px)}
+.compact-header-inner{max-width:1500px;margin:auto;padding:12px 32px;display:flex;align-items:center;gap:38px;min-height:132px}
+.compact-logo{flex:0 0 175px;display:flex;align-items:center;justify-content:center}
+.compact-logo img{display:block;max-width:100%;max-height:105px;object-fit:contain}
+.compact-header-right{flex:1;min-width:0;display:flex;flex-direction:column;gap:14px}
+.compact-details{display:grid;grid-template-columns:1.1fr 1.08fr 1.22fr;gap:20px;align-items:start}
+.compact-detail{display:flex;flex-direction:column;gap:3px;min-width:0;font-size:14px;line-height:1.35;color:#192d27}
+.compact-detail strong{font-size:14px;font-weight:700}
+.compact-label{font-size:11px;letter-spacing:.09em;font-weight:800;color:#8c7354}
+.compact-notice{color:#ae3036;font-weight:700;font-size:13px}
+.compact-detail a{color:inherit;text-decoration:none}
+.compact-detail a:hover{text-decoration:underline}
+.compact-email{font-size:13px;overflow-wrap:anywhere}
+.compact-nav{display:flex;justify-content:flex-end;gap:clamp(12px,1.8vw,28px);align-items:center;flex-wrap:wrap}
+.compact-nav a{font-size:14px;font-weight:650;white-space:nowrap}
+.hero{margin-top:0!important}
+@media(max-width:1100px){.compact-header-inner{gap:20px;padding:10px 20px}.compact-logo{flex-basis:140px}.compact-details{gap:12px}.compact-detail strong{font-size:12px}.compact-nav{gap:12px}.compact-nav a{font-size:12px}}
+@media(max-width:768px){.compact-header-inner{align-items:flex-start;min-height:0;gap:12px}.compact-logo{flex-basis:100px}.compact-logo img{max-height:75px}.compact-details{grid-template-columns:1fr 1fr;gap:10px}.compact-phones{grid-column:1/-1}.compact-detail strong{font-size:12px}.compact-nav{display:flex;justify-content:flex-start;gap:8px 14px}.compact-nav a{font-size:12px}}
+@media(max-width:480px){.compact-header-inner{padding:9px 12px;gap:10px}.compact-logo{flex-basis:75px}.compact-logo img{max-height:60px}.compact-details{grid-template-columns:1fr;gap:6px}.compact-phones{grid-column:auto}.compact-label{font-size:10px}.compact-detail{gap:1px}.compact-detail strong{font-size:12px}.compact-notice,.compact-email{font-size:11px}.compact-header-right{gap:9px}.compact-nav{gap:5px 10px}.compact-nav a{font-size:11px}.phone-separator{display:none}}
+
+/* Компактная главная: больше полезного содержимого на первом экране */
+.products-section{padding:28px 5% 34px;background:#f7f4ef;scroll-margin-top:145px}
+.products-section .section-container{max-width:1320px}
+.products-section .section-heading{margin-bottom:19px;max-width:none}
+.products-section .section-label{margin-bottom:5px;font-size:12px}
+.products-section .section-heading h2{font-size:clamp(1.65rem,2.6vw,2.45rem);line-height:1.13;margin-bottom:7px}
+.products-section .section-heading p{font-size:.96rem;line-height:1.45}
+.products-grid{gap:14px}
+.product-category{min-height:176px;padding:19px 20px;border-radius:12px}
+.product-number{margin-bottom:15px;font-size:12px}
+.product-category h3{font-size:1.12rem;line-height:1.25;margin-bottom:8px}
+.product-category p{font-size:.88rem;line-height:1.42;margin-bottom:13px}
+.product-category a{font-size:.89rem}
+.hero{min-height:490px;height:auto;background-attachment:scroll;padding:40px 5%}
+.hero-title{font-size:clamp(2rem,3.5vw,3.25rem)}
+.hero-content{padding:16px 0}
+.popular-products,.sealant-colors,.finishing-section,.accessories-section,.services-section,.calculator-section,.partners-section,.where-buy-section{scroll-margin-top:145px}
+@media(max-width:900px){.products-section{padding:24px 20px 30px}.products-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-category{min-height:170px}}
+@media(max-width:600px){.products-section{padding:22px 16px 26px}.products-grid{grid-template-columns:1fr;gap:10px}.product-category{min-height:0;padding:15px 17px}.product-number{margin-bottom:7px}.product-category h3{margin-bottom:5px}.product-category p{margin-bottom:9px}.products-section .section-heading{margin-bottom:15px}.hero{min-height:420px;padding:26px 18px}}
+</style><style>
+
+/* === Version 3: agreed visual refinements, 13 October 2026 === */
+:root { --premium-ink:#14263d; --premium-gold:#c9a56b; }
+body { background:#faf9f7; }
+.compact-site-header { background:#faf8f6; }
+/* House comes out of shadow; keep existing images/hero-house.webp. */
+.hero {
+  min-height:440px; padding:35px 5%;
+  background-image: url('images/hero-house.webp') !important;
+  background-color:#18283b;
+  background-size:cover; background-position:center 48%;
+  background-attachment:scroll;
+}
+.hero::before {
+  width:100%;
+  background:linear-gradient(90deg,rgba(13,28,48,.93) 0%,rgba(18,35,55,.82) 29%,rgba(18,35,55,.43) 52%,rgba(18,35,55,.05) 79%,transparent 100%);
+}
+.hero-content { flex:0 1 52%; max-width:660px; padding:12px 0; }
+.hero-title { font-size:clamp(2rem,3.4vw,3.1rem); letter-spacing:-.03em; }
+.hero-subtitle { font-size:clamp(.95rem,1.2vw,1.06rem); line-height:1.55; }
+.hero .brand-accent { color:#f3d3a3; }
+.hero .btn-primary { background:#c9a56b!important; color:#17263a!important; }
+.hero-benefits { gap:.42rem; margin-top:.7rem; }
+.products-section { background:#f7f4ef; }
+/* Wholesale panel: compact navy on a neutral, non-green surround. */
+.partners-section { background:#f7f4ef !important; padding:40px 24px !important; }
+.partners-container {
+  max-width:1240px; padding:30px 36px; gap:30px;
+  grid-template-columns:minmax(0,1.6fr) minmax(230px,.65fr);
+  background:#14263d; border-radius:16px;
+  box-shadow:0 12px 30px rgba(20,38,61,.10);
+}
+.partners-content h2 { font-size:clamp(1.65rem,2.8vw,2.45rem); margin-bottom:10px; }
+.partners-content .section-label { margin-bottom:8px; }
+.partners-lead { font-size:15px; line-height:1.5; margin-bottom:18px; }
+.partners-benefits { gap:9px; margin-bottom:18px; }
+.partner-benefit { padding:12px 14px; border-radius:10px; }
+.partner-benefit strong { margin-bottom:3px; font-size:14px; }
+.partner-benefit span { font-size:12px; }
+.partners-btn { padding:12px 19px; background:#c9a56b!important; color:#14263d!important; }
+.partners-side { padding:22px; border-radius:12px; }
+.partners-number { margin-bottom:13px; }
+.partners-side h3 { font-size:21px; margin-bottom:9px; }
+.partners-side p { font-size:14px; line-height:1.5; }
+/* Round swatch slots: original shade data and interaction retained.
+   Optional real images can be added later via --swatch-image per color. */
+.sealant-palette { grid-template-columns:repeat(6,minmax(0,1fr)); gap:13px; }
+.sealant-color { text-align:center; padding:15px 9px 12px; }
+.color-sample {
+  width:min(100%,94px); height:auto; aspect-ratio:1;
+  margin:0 auto 10px; border-radius:50%;
+  background-image:var(--swatch-image,none);
+  background-size:cover; background-position:center;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.13),0 3px 8px rgba(0,0,0,.10);
+}
+@media(max-width:900px){
+  .hero { min-height:390px; }
+  .hero-content { flex-basis:68%; }
+  .partners-container { grid-template-columns:1fr; padding:25px; gap:18px; }
+  .sealant-palette { grid-template-columns:repeat(4,minmax(0,1fr)); }
+}
+@media(max-width:600px){
+  .hero { min-height:420px; padding:24px 18px; background-position:64% center; }
+  .hero::before { width:100%; background:linear-gradient(90deg,rgba(13,28,48,.92),rgba(13,28,48,.73) 65%,rgba(13,28,48,.36)); }
+  .hero-content { flex:1 1 100%; }
+  .partners-section { padding:24px 14px!important; }
+  .partners-container { padding:20px 17px; }
+  .partners-benefits { grid-template-columns:1fr 1fr; }
+  .partner-benefit { padding:10px; }
+  .partners-side { padding:16px; }
+  .sealant-palette { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+
+/* Согласованная правка: компактные шесть карточек герметиков */
+.popular-products-grid {gap:16px !important;margin-top:24px !important;}
+.popular-product-card {padding:18px 20px 20px !important;min-height:0 !important;border-radius:16px !important;}
+.popular-product-card .product-image {height:126px !important;margin-bottom:12px !important;}
+.popular-product-card .product-brand {margin-bottom:8px !important;letter-spacing:1.5px !important;}
+.popular-product-card h3 {font-size:21px !important;margin-bottom:8px !important;line-height:1.2 !important;}
+.popular-product-card p {font-size:14px !important;line-height:1.4 !important;margin-bottom:13px !important;}
+.popular-product-card .product-price {font-size:25px !important;margin-bottom:8px !important;}
+.popular-products {padding-top:45px !important;padding-bottom:50px !important;}
+@media(max-width:600px){.popular-product-card .product-image{height:110px !important;}.popular-product-card{padding:16px !important;}}
+
+/* v5 — компактные блоки расчёта и покупки, единый визуальный ритм */
+.calculator-section,.where-buy-section{padding:38px 24px!important;}
+.calculator-box{max-width:1240px;padding:30px 34px;gap:34px;grid-template-columns:minmax(0,1fr) minmax(360px,.88fr);border:1px solid #e9e2d9;border-radius:16px;box-shadow:0 10px 28px rgba(20,38,61,.06);}
+.calculator-text h2,.where-buy-content h2{font-size:clamp(1.7rem,2.5vw,2.35rem);line-height:1.16;margin:8px 0 12px;letter-spacing:-.025em;}
+.calculator-text>p,.where-buy-lead{font-size:15px;line-height:1.5;margin-bottom:16px;}
+.calculator-note{padding:12px 15px;font-size:13px;line-height:1.48;border-radius:9px;}
+.calculator-form{padding:22px 24px;border-radius:14px;gap:12px;}
+.calculator-form label{gap:5px;font-size:13px;}
+.calculator-form select,.calculator-form input{padding:11px 13px;font-size:14px;border-radius:8px;}
+.calculator-form .btn{padding:12px 16px;font-size:14px;}
+.calculator-form small{font-size:12px;line-height:1.4;}
+.where-buy-container{max-width:1240px;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:28px;align-items:center;}
+.where-buy-content .section-label{margin-bottom:7px;}
+.where-buy-actions{gap:15px;}
+.where-buy-btn{padding:12px 19px;border-radius:9px;font-size:14px;}
+.where-buy-link{font-size:14px;}
+.where-buy-info{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:0!important;}
+.where-buy-item,.where-buy-item:first-child,.where-buy-item:last-child{min-height:150px;padding:16px 14px;border-radius:13px;gap:10px;border:1px solid #e8dfd4;}
+.where-buy-number{font-size:12px;}
+.where-buy-item strong{font-size:15px;line-height:1.3;margin-bottom:6px;}
+.where-buy-item p{font-size:12px;line-height:1.45;}
+.where-buy-map{grid-column:1/-1;margin-top:8px;}
+@media(max-width:950px){.calculator-box,.where-buy-container{grid-template-columns:1fr;gap:20px}.calculator-box{padding:24px}.where-buy-info{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.calculator-section,.where-buy-section{padding:25px 14px!important}.calculator-box{padding:20px 17px}.calculator-form{padding:18px}.where-buy-info{grid-template-columns:1fr;gap:9px}.where-buy-item,.where-buy-item:first-child,.where-buy-item:last-child{min-height:0;padding:13px 15px}.where-buy-content h2,.calculator-text h2{font-size:1.65rem}}
+</style>
+<style>
+/* v6: единый компактный блок контактов и карты */
+.contacts-section{padding:56px 24px 64px!important;background:#f7f5f1!important}
+.contacts-container{max-width:1200px!important;margin:0 auto!important}
+.contacts-section h2{font-size:clamp(27px,3vw,38px)!important;line-height:1.16!important;margin:10px 0 10px!important}
+.contacts-lead{max-width:700px!important;margin:0 0 25px!important;font-size:15px!important;line-height:1.55!important}
+.contacts-layout-v6{display:grid;grid-template-columns:1fr 1.05fr;gap:22px;align-items:stretch}
+.contacts-grid-compact{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px!important;margin:0!important}
+.contact-item-compact{min-width:0!important;padding:18px!important;border:1px solid #e9e4de!important;border-radius:14px!important;background:#fff!important;box-shadow:none!important;display:flex;flex-direction:column;gap:9px;justify-content:center}
+.contact-item-compact span{font-size:11px!important;letter-spacing:1.1px!important;color:#c52c32!important}
+.contact-item-compact strong{font-size:15px!important;line-height:1.5!important;overflow-wrap:anywhere}
+.contact-item-compact a{color:#15283f!important;text-decoration:none}
+.contact-item-compact small{font-size:12px;color:#a1353b}
+.contacts-map-v6{background:#fff;border:1px solid #e9e4de;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.contacts-map-v6>div{flex:1;min-height:235px}
+.contacts-map-v6 iframe{display:block!important;width:100%!important;height:100%!important;min-height:235px!important;border:0!important}
+.contacts-map-v6>a{display:block;padding:11px 16px;font-size:13px;font-weight:700;color:#b82932;text-decoration:none}
+@media(max-width:850px){.contacts-layout-v6{grid-template-columns:1fr}.contacts-map-v6>div{height:260px}}
+@media(max-width:540px){.contacts-section{padding:38px 16px 46px!important}.contacts-grid-compact{grid-template-columns:1fr!important}.contact-item-compact{padding:14px!important}}
+</style><style>
+/* v7: compact product-first navigation and real on-page catalog search */
+.header-bottom-row{display:flex;align-items:center;gap:18px;justify-content:space-between;min-width:0}
+.header-bottom-row .compact-nav{flex:1;gap:clamp(8px,1.1vw,19px);justify-content:flex-end}
+.header-bottom-row .compact-nav a{font-size:13px}
+.catalog-search{position:relative;flex:0 1 280px;min-width:185px;z-index:110}
+.catalog-search input{width:100%;height:38px;border:1px solid #d9d5cf;border-radius:9px;background:white;color:#14263d;padding:0 12px 0 34px;font:inherit;font-size:12px;outline:none}
+.catalog-search::before{content:'⌕';position:absolute;top:2px;left:11px;color:#a3373c;font-size:25px;line-height:32px;pointer-events:none}
+.catalog-search input:focus{border-color:#b52a32;box-shadow:0 0 0 3px rgba(181,42,50,.09)}
+.catalog-search-results{position:absolute;top:calc(100% + 6px);left:0;width:min(440px,90vw);max-height:340px;overflow:auto;background:white;border:1px solid #e3ddd6;border-radius:12px;box-shadow:0 15px 38px rgba(20,38,61,.16);padding:7px}
+.catalog-search-results[hidden]{display:none}
+.catalog-search-results a{display:block;text-decoration:none;color:#14263d;padding:10px 12px;border-radius:8px;font-size:13px}
+.catalog-search-results a:hover,.catalog-search-results a:focus{background:#f7f1e9}
+.catalog-search-results small{display:block;color:#7b7d83;margin-top:2px}
+.catalog-search-results p{padding:10px;font-size:13px;color:#667085}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1200px){.header-bottom-row{flex-wrap:wrap;gap:8px}.catalog-search{flex:1 1 100%;max-width:390px}.header-bottom-row .compact-nav{justify-content:flex-start}}
+@media(max-width:768px){.header-bottom-row .compact-nav{display:flex;gap:8px 12px}.header-bottom-row .compact-nav a{font-size:12px}.catalog-search{max-width:none}}
+@media(max-width:480px){.catalog-search input{height:36px}.header-bottom-row .compact-nav a{font-size:11px}}
+</style><style>
+/* Исправление отображения упаковок в каталоге — без обрезки */
+.popular-product-card .product-image {height:205px !important;min-height:205px !important;overflow:visible !important;margin-bottom:16px !important;background:#fff !important;}
+.popular-product-card .product-image a {display:flex !important;align-items:center;justify-content:center;width:100%;height:100%;margin:0 !important;}
+.popular-product-card .product-image img {display:block;width:100% !important;height:100% !important;max-width:100%;max-height:100%;object-fit:contain !important;object-position:center !important;}
+@media(max-width:600px){.popular-product-card .product-image{height:175px !important;min-height:175px !important;}}
+</style>
+<style>#colors .color-sample, .sealant-color .color-sample {display:block;width:140px;max-width:100%;height:140px;object-fit:contain;margin:0 auto 12px;border-radius:50%;} @media(max-width:700px){#colors .color-sample,.sealant-color .color-sample{width:110px;height:110px;}}</style><style>
+/* Компактные карточки брендов BIOFA и Torvens */
+.finishing-section{padding:46px 20px;background:#fff;scroll-margin-top:130px}
+.finishing-section .section-heading{max-width:950px;margin-bottom:20px}
+.finishing-section .section-heading h2{font-size:clamp(25px,3vw,36px);line-height:1.2;margin-bottom:9px}
+.finishing-section .section-heading p{font-size:15px;line-height:1.6}
+.finish-brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.finish-brand-card{padding:25px 27px;border:1px solid #e7e0d7;border-radius:18px;background:#f8f6f2;color:#142b44;display:flex;flex-direction:column;gap:10px;min-width:0}
+.finish-brand-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.finish-brand-name{font-size:25px;font-weight:800;letter-spacing:.3px;color:#142b44}
+.finish-discount{background:#b52b32;color:#fff;padding:7px 12px;border-radius:10px;font-size:16px;font-weight:800}
+.finish-brand-card h3{font-size:20px;line-height:1.25;margin:3px 0 0}
+.finish-brand-card p{font-size:14px;line-height:1.55;color:#667586;margin:0;flex:1}
+.finish-brand-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:10px;align-items:center}
+.finish-brand-actions a{text-decoration:none;font-weight:700;font-size:13px;border-radius:10px;padding:11px 13px;display:inline-block}
+.finish-catalog{border:1px solid #d5dce2;color:#142b44;background:#fff}
+.finish-order{background:#142b44;color:#fff}
+.finish-brand-actions a:hover{filter:brightness(.93)}
+.finish-price-note{font-size:12px;line-height:1.6;color:#697585;margin-top:15px}
+@media(max-width:750px){.finishing-section{padding:35px 18px}.finish-brand-grid{grid-template-columns:1fr}.finish-brand-card{padding:21px}.finish-brand-name{font-size:23px}}
+</style>
+<style>
+/* TatStroyDom: unified premium sealant product cards */
+.popular-products-grid{gap:18px!important;align-items:stretch}
+.popular-product-card{padding:18px 20px 20px!important;border-radius:17px!important;border:1px solid #e6e0d7!important;box-shadow:0 3px 14px rgba(20,43,68,.035);overflow:hidden;transition:box-shadow .2s ease,transform .2s ease!important}
+.popular-product-card:hover{transform:translateY(-3px)!important;box-shadow:0 13px 30px rgba(20,43,68,.10)!important}
+.popular-product-card .product-image{height:190px!important;min-height:190px!important;width:100%!important;margin:0 0 17px!important;padding:12px!important;border-radius:12px!important;background:#f8f7f5!important;overflow:hidden!important}
+.popular-product-card .product-image a{height:100%!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important}
+.popular-product-card .product-image img{width:100%!important;height:100%!important;max-height:160px!important;max-width:100%!important;object-fit:contain!important;object-position:center!important;mix-blend-mode:multiply}
+.popular-product-card .product-brand{font-size:11px!important;letter-spacing:1.5px!important;margin-bottom:6px!important}
+.popular-product-card h3{font-size:20px!important;line-height:1.25!important;min-height:50px;margin-bottom:7px!important}
+.popular-product-card p{font-size:13px!important;line-height:1.5!important;min-height:40px;margin-bottom:12px!important}
+.popular-product-card .product-price{font-size:25px!important;margin-top:auto!important;margin-bottom:14px!important}
+.popular-product-card .product-detail-link{display:flex!important;justify-content:center!important;align-items:center!important;min-height:42px;padding:9px 10px!important;background:#142b44!important;color:#fff!important;border-radius:9px!important;font-size:13px!important;font-weight:700!important;text-decoration:none!important;margin:0!important;order:1}
+.popular-product-card .product-detail-link:hover{background:#233f5d!important;color:#fff!important}
+.popular-product-card .choose-color-link{display:flex!important;justify-content:center!important;align-items:center!important;min-height:32px;margin:6px 0 0!important;color:#a62e36!important;font-size:13px!important;text-decoration:none!important;order:2}
+.popular-product-card .choose-color-link:hover{text-decoration:underline!important}
+@media(max-width:600px){.popular-product-card .product-image{height:165px!important;min-height:165px!important}.popular-product-card .product-image img{max-height:140px!important}.popular-product-card h3{min-height:0}}
+</style>
+
+<style>
+/* ТатСтройДом — новый двухколоночный каталог герметиков */
+#popular-sealants.popular-products {padding:68px 24px;background:#f7f4ef}
+#popular-sealants .section-container {max-width:1280px}
+#popular-sealants .popular-products-grid {
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:18px!important;margin-top:32px!important;align-items:stretch;
+}
+#popular-sealants .popular-product-card {
+  display:grid!important;grid-template-columns:45% minmax(0,1fr)!important;
+  gap:20px!important;align-items:center!important;
+  padding:18px!important;min-height:252px!important;height:auto!important;
+  border-radius:18px!important;border:1px solid #e6e0d7!important;
+  background:#fff!important;box-shadow:0 4px 18px rgba(20,43,68,.045)!important;
+}
+#popular-sealants .popular-product-card:hover {
+  transform:translateY(-3px)!important;box-shadow:0 16px 35px rgba(20,43,68,.11)!important;
+}
+#popular-sealants .product-image {
+  height:214px!important;min-height:0!important;margin:0!important;
+  padding:15px!important;background:#f6f5f2!important;border-radius:13px!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;
+}
+#popular-sealants .product-image a {display:flex!important;width:100%;height:100%;align-items:center;justify-content:center}
+#popular-sealants .product-image img {
+  width:100%!important;height:100%!important;max-height:185px!important;
+  object-fit:contain!important;mix-blend-mode:multiply;
+}
+#popular-sealants .product-card-info {
+  min-width:0;display:flex;flex-direction:column;align-items:flex-start;height:100%;
+  justify-content:center;padding:3px 0;
+}
+#popular-sealants .product-brand {font-size:10px!important;letter-spacing:1.5px!important;margin:0 0 5px!important;color:#c02d38}
+#popular-sealants .popular-product-card h3 {
+  min-height:0!important;font-size:20px!important;line-height:1.2!important;margin:0 0 8px!important;
+}
+#popular-sealants .popular-product-card p {
+  min-height:0!important;font-size:12px!important;line-height:1.5!important;
+  color:#718092!important;margin:0 0 11px!important;
+}
+#popular-sealants .product-price {
+  margin:0 0 13px!important;font-size:25px!important;font-weight:850!important;
+}
+#popular-sealants .product-price span {font-size:12px!important}
+#popular-sealants .product-detail-link {
+  order:0!important;width:100%;min-height:38px!important;padding:8px 10px!important;
+  font-size:12px!important;margin:0!important;border-radius:8px!important;
+}
+#popular-sealants .choose-color-link {
+  order:0!important;width:100%;min-height:30px!important;
+  margin:5px 0 0!important;font-size:12px!important;
+}
+@media(max-width:1000px) {
+  #popular-sealants .popular-products-grid {grid-template-columns:1fr!important;max-width:700px;margin-left:auto;margin-right:auto}
+}
+@media(max-width:560px) {
+  #popular-sealants {padding:48px 15px}
+  #popular-sealants .popular-product-card {grid-template-columns:39% minmax(0,1fr)!important;gap:12px!important;padding:12px!important;min-height:190px!important}
+  #popular-sealants .product-image {height:165px!important;padding:7px!important}
+  #popular-sealants .product-image img {max-height:150px!important}
+  #popular-sealants .popular-product-card h3 {font-size:16px!important}
+  #popular-sealants .popular-product-card p {font-size:11px!important;margin-bottom:7px!important}
+  #popular-sealants .product-price {font-size:21px!important;margin-bottom:8px!important}
+  #popular-sealants .product-detail-link {font-size:11px!important}
+}
+</style>
+
+</head>
+<body>
+<!-- HEADER -->
+<header class="compact-site-header">
+<div class="compact-header-inner">
+<a aria-label="ТатСтройДом — главная" class="compact-logo" href="#"><img alt="ТатСтройДом" src="images/logo.webp"/></a>
+<div class="compact-header-right">
+<div class="compact-details">
+<div class="compact-detail compact-address"><span class="compact-label">АДРЕС</span><strong>Казань, ул. Хусаина Мавлютова, 48Б</strong></div>
+<div class="compact-detail compact-hours"><span class="compact-label">РЕЖИМ РАБОТЫ</span><strong>Пн–Пт 9:00–18:00 · Сб 9:00–12:00</strong><span class="compact-notice">По предварительному звонку</span></div>
+<div class="compact-detail compact-phones"><span class="compact-label">СВЯЗАТЬСЯ С НАМИ</span><strong><a href="tel:+79003256090">8 (900) 325-60-90</a> <span class="phone-separator">·</span> <a href="tel:+79036894128">8 (903) 689-41-28</a></strong><a class="compact-email" href="mailto:tatstroydom@yandex.ru">tatstroydom@yandex.ru</a></div>
+</div>
+<div class="header-bottom-row"><div class="catalog-search"><label class="sr-only" for="catalogSearch">Поиск по товарам и цветам</label><input aria-controls="catalogSearchResults" aria-expanded="false" autocomplete="off" id="catalogSearch" placeholder="Поиск: герметик, орех, вилатерм…" type="search"/><div class="catalog-search-results" hidden="" id="catalogSearchResults"></div></div><nav aria-label="Основное меню" class="compact-nav"><a href="#products">Продукция</a><a href="#partners">Оптовикам и партнёрам</a><a href="#calculator">Подбор и расчёт</a><a href="#where-buy">Где купить</a><a href="#services">Услуги</a><a href="#contacts">Контакты</a></nav></div>
+</div>
+</div>
+</header>
+<!-- HERO SECTION -->
+<section class="hero">
+<div class="hero-content">
+<div class="hero-label">ТатСтройДом · материалы для деревянных домов</div>
+<h1 class="hero-title">Защита и красота деревянного дома<br/><span class="brand-accent">Материалы с доставкой по России</span></h1>
+<p class="hero-subtitle">Герметики, масла, краски, шлифовальные материалы и комплектующие. Профессиональный подбор, розничные и оптовые поставки.</p>
+<div class="cta-group">
+<a class="btn btn-primary" href="#products">Смотреть каталог</a>
+<a class="btn btn-secondary" href="#partners">Оптовым партнёрам</a>
+</div>
+<div class="hero-benefits">
+<div class="hero-benefit">Профессиональный подбор</div>
+<div class="hero-benefit">Партнёрские цены</div>
+<div class="hero-benefit">Доставка по России</div>
+</div>
+</div>
+<div class="hero-image-wrapper">
+<img alt="Деревянный дом" class="hero-image" src="images/hero-house.webp"/>
+<div class="hero-badge">
+<div class="hero-badge-text">Герметики · тёплый шов · партнёрские поставки</div>
+</div>
+</div>
+</section><section class="products-section" id="products">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">ПРОДУКЦИЯ</span>
+<h2>Материалы для деревянных домов</h2>
+<p>
+                    Подберём профессиональные материалы для герметизации,
+                    защиты и отделки древесины.
+                </p>
+</div>
+<div class="products-grid">
+<div class="product-category">
+<span class="product-number">01</span>
+<h3>Герметики для дерева</h3>
+<p>Для межвенцовых швов, трещин и технологии «тёплый шов».</p>
+<a href="#popular-sealants">Смотреть герметики →</a>
+</div>
+<div class="product-category">
+<span class="product-number">02</span>
+<h3>Масла и краски</h3>
+<p>Для защиты фасадов, террас, бань и внутренних помещений.</p>
+<a href="#finishing">Смотреть материалы →</a>
+</div>
+<div class="product-category">
+<span class="product-number">03</span>
+<h3>Вилатерм</h3>
+<p>Уплотнительный материал для правильной подготовки швов.</p>
+<a href="vilaterm.html">Подобрать размер →</a>
+</div>
+<div class="product-category">
+<span class="product-number">04</span>
+<h3>Шлифовальные диски и абразивы</h3>
+<p>Круги и расходные материалы для шлифовки и подготовки деревянных поверхностей.</p>
+<a href="#accessories">Смотреть абразивы →</a>
+</div>
+</div>
+</div>
+</section><section class="popular-products" id="popular-sealants">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">ПОПУЛЯРНЫЕ ГЕРМЕТИКИ</span>
+<h2>Проверенные решения для тёплого шва</h2>
+<p>
+                Подберём герметик под ваш дом, условия эксплуатации
+                и необходимый объём работ.
+            </p>
+</div>
+<div class="popular-products-grid">
+<article class="popular-product-card">
+<div class="product-image">
+<a href="alfaplast-136.html">
+<img alt="Герметик Альфапласт-136" src="images/alfaplast-136.webp"/>
+</a>
+</div><div class="product-card-info">
+<span class="product-brand">ALFAPLAST</span>
+<h3>
+<a class="product-title-link" href="alfaplast-136.html">
+        Альфапласт-136
+    </a>
+</h3>
+<p>Герметик для дерева и герметизации межвенцовых швов.</p>
+<div class="product-price">690 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="Альфапласт-136" href="#colors">
+   Подобрать цвет →
+</a>
+<a class="product-detail-link" href="alfaplast-136.html">Подробнее о товаре →</a></div></article>
+<article class="popular-product-card"><div class="product-image">
+<a href="mastigerm-136.html">
+<img alt="Герметик МАСТИГЕРМ-136" src="images/mastigerm-136.webp"/>
+</a>
+</div><div class="product-card-info">
+<span class="product-brand">МАСТИГЕРМ</span>
+<h3>
+<a class="product-title-link" href="mastigerm-136.html">
+        МАСТИГЕРМ-136
+    </a>
+</h3>
+<p>Герметик для герметизации швов и трещин в деревянных домах.</p>
+<div class="product-price">480 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="Мастигерм-136" href="#colors">Подобрать цвет →</a>
+<a class="product-detail-link" href="mastigerm-136.html">Подробнее о товаре →</a></div></article>
+<article class="popular-product-card">
+<div class="product-image">
+<a href="maxiplast-136.html"><img alt="Герметик МаксиПласт-136" src="images/maxiplast-136.webp"/></a>
+</div><div class="product-card-info">
+<span class="product-brand">MAXIPLAST</span>
+<h3><a class="product-title-link" href="maxiplast-136.html">МаксиПласт-136</a></h3>
+<p>Герметик для герметизации деревянных домов.</p>
+<div class="product-price">480 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="МаксиПласт-136" href="#colors">Подобрать цвет →</a>
+<a class="product-detail-link" href="maxiplast-136.html">Подробнее о товаре →</a></div></article>
+<article class="popular-product-card">
+<div class="product-image">
+<a href="alfaplast-sauna.html"><img alt="Альфапласт для парилок" src="images/alfaplast-sauna.webp"/></a>
+</div><div class="product-card-info">
+<span class="product-brand">ALFAPLAST</span>
+<h3><a class="product-title-link" href="alfaplast-sauna.html">Альфапласт для парилок</a></h3>
+<p>Герметик для применения в банях и парилках.</p>
+<div class="product-price">850 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="Альфапласт для парилок" href="#colors">Подобрать цвет →</a>
+<a class="product-detail-link" href="alfaplast-sauna.html">Подробнее о товаре →</a></div></article>
+<article class="popular-product-card">
+<div class="product-image">
+<a href="torvens.html"><img alt="Герметик Торвенс" src="images/torvens.webp"/></a>
+</div><div class="product-card-info">
+<span class="product-brand">TORVENS</span>
+<h3><a class="product-title-link" href="torvens.html">Торвенс</a></h3>
+<p>Герметик для деревянных домов и межвенцовых соединений.</p>
+<div class="product-price">от 590 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="Торвенс" href="#colors">Подобрать цвет →</a>
+<a class="product-detail-link" href="torvens.html">Подробнее о товаре →</a></div></article>
+<article class="popular-product-card">
+<div class="product-image">
+<a href="remmers.html"><img alt="Герметик Реммерс Акрил-100" src="images/remmers-acryl-100.webp"/></a>
+</div><div class="product-card-info">
+<span class="product-brand">REMMERS</span>
+<h3><a class="product-title-link" href="remmers.html">Реммерс Акрил-100</a></h3>
+<p>Герметик для деревянных конструкций.</p>
+<div class="product-price">1 176 ₽ <span>/ 600 мл</span></div>
+<a class="choose-color-link" data-product="Remmers Acryl 100" href="#colors">Подобрать цвет →</a>
+<a class="product-detail-link" href="remmers.html">Подробнее о товаре →</a></div></article>
+</div>
+</div>
+</section><section class="sealant-colors" id="colors">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">ПАЛИТРА ГЕРМЕТИКОВ</span>
+<h2>Подберите цвет для вашего дома</h2>
+<p>
+                Наведите на оттенок, чтобы узнать, у каких герметиков он доступен.
+                На телефоне просто нажмите на цвет.
+            </p>
+</div>
+<div class="palette-filter-bar">
+<div class="palette-current" id="paletteCurrent">
+        Все доступные цвета герметиков
+    </div>
+<button id="showAllColors" type="button">
+        Показать все цвета
+    </button>
+</div>
+<div class="sealant-palette">
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Белый" class="color-sample" loading="lazy" src="images/palette-01.webp"/>
+<strong>Белый</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Remmers Acryl 100, Альфапласт для парилок">
+<img alt="Образец герметика: Бук" class="color-sample" loading="lazy" src="images/palette-02.webp"/>
+<strong>Бук</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Медовый" class="color-sample" loading="lazy" src="images/palette-03.webp"/>
+<strong>Медовый</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Венге" class="color-sample" loading="lazy" src="images/palette-04.webp"/>
+<strong>Венге</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136">
+<img alt="Образец герметика: Дуб" class="color-sample" loading="lazy" src="images/palette-05.webp"/>
+<strong>Дуб</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Торвенс">
+<img alt="Образец герметика: Светлая сосна" class="color-sample" loading="lazy" src="images/palette-06.webp"/>
+<strong>Светлая сосна</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136">
+<img alt="Образец герметика: Графит" class="color-sample" loading="lazy" src="images/palette-07.webp"/>
+<strong>Графит</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Remmers Acryl 100">
+<img alt="Образец герметика: Орегон" class="color-sample" loading="lazy" src="images/palette-08.webp"/>
+<strong>Орегон</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136">
+<img alt="Образец герметика: Орех" class="color-sample" loading="lazy" src="images/palette-09.webp"/>
+<strong>Орех</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136">
+<img alt="Образец герметика: Палисандр" class="color-sample" loading="lazy" src="images/palette-10.webp"/>
+<strong>Палисандр</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Серый" class="color-sample" loading="lazy" src="images/palette-11.webp"/>
+<strong>Серый</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Сосна" class="color-sample" loading="lazy" src="images/palette-12.webp"/>
+<strong>Сосна</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136, Мастигерм-136, МаксиПласт-136, Торвенс">
+<img alt="Образец герметика: Тик" class="color-sample" loading="lazy" src="images/palette-13.webp"/>
+<strong>Тик</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136">
+<img alt="Образец герметика: Ель" class="color-sample" loading="lazy" src="images/palette-14.webp"/>
+<strong>Ель</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136">
+<img alt="Образец герметика: Акация" class="color-sample" loading="lazy" src="images/palette-15.webp"/>
+<strong>Акация</strong>
+</div>
+<div class="sealant-color" data-products="Альфапласт-136">
+<img alt="Образец герметика: Шафран" class="color-sample" loading="lazy" src="images/palette-16.webp"/>
+<strong>Шафран</strong>
+</div>
+<div class="sealant-color" data-products="Мастигерм-136, МаксиПласт-136, Альфапласт для парилок">
+<img alt="Образец герметика: Золотая сосна" class="color-sample" loading="lazy" src="images/palette-17.webp"/>
+<strong>Золотая сосна</strong>
+</div>
+<div class="sealant-color" data-products="Торвенс">
+<img alt="Образец герметика: Грецкий орех" class="color-sample" loading="lazy" src="images/palette-18.webp"/>
+<strong>Грецкий орех</strong>
+</div>
+<div class="sealant-color" data-products="Торвенс">
+<img alt="Образец герметика: Слоновая кость" class="color-sample" loading="lazy" src="images/palette-19.webp"/>
+<strong>Слоновая кость</strong>
+</div>
+<div class="sealant-color" data-products="Торвенс">
+<img alt="Образец герметика: Тёмный шоколад" class="color-sample" loading="lazy" src="images/palette-20.webp"/>
+<strong>Тёмный шоколад</strong>
+</div>
+<div class="sealant-color" data-products="Торвенс">
+<img alt="Образец герметика: Махагон" class="color-sample" loading="lazy" src="images/palette-21.webp"/>
+<strong>Махагон</strong>
+</div>
+<div class="sealant-color" data-products="Торвенс">
+<img alt="Образец герметика: Каштан" class="color-sample" loading="lazy" src="images/palette-22.webp"/>
+<strong>Каштан</strong>
+</div>
+<div class="sealant-color" data-products="Remmers Acryl 100">
+<img alt="Образец герметика: Бронза" class="color-sample" loading="lazy" src="images/palette-23.webp"/>
+<strong>Бронза</strong>
+</div>
+</div>
+<p class="palette-note">
+            Цвет на экране может отличаться от фактического оттенка материала.
+            Перед заказом рекомендуем уточнить цвет у специалиста ТатСтройДом.
+        </p>
+</div>
+</section><section class="finishing-section" id="finishing">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">ДОПОЛНИТЕЛЬНЫЙ АССОРТИМЕНТ</span>
+<h2>Масла и краски BIOFA и Torvens</h2>
+<p>Выбирайте защитные и декоративные покрытия в каталогах производителей, а заказывайте через ТатСтройДом со скидкой <strong>10% от розничной цены на официальном сайте</strong>.</p>
+</div>
+<div class="finish-brand-grid">
+<article class="finish-brand-card">
+<div class="finish-brand-top"><span class="finish-brand-name">BIOFA</span><span class="finish-discount">−10%</span></div>
+<h3>Масла и покрытия BIOFA</h3>
+<p>Материалы для защиты и декоративной отделки древесины. Выберите подходящий продукт в каталоге производителя — мы уточним наличие и рассчитаем вашу цену.</p>
+<div class="finish-brand-actions"><a class="finish-catalog" href="https://biofa.ru/" rel="noopener noreferrer" target="_blank">Каталог производителя ↗</a><button class="finish-order" type="button" data-price-brand="BIOFA">Узнать цену со скидкой →</button></div>
+</article>
+<article class="finish-brand-card">
+<div class="finish-brand-top"><span class="finish-brand-name">Torvens</span><span class="finish-discount">−10%</span></div>
+<h3>Масла и покрытия Torvens</h3>
+<p>Защитные и декоративные материалы для деревянных домов. Посмотрите ассортимент на официальном сайте, а для заказа со скидкой обратитесь в ТатСтройДом.</p>
+<div class="finish-brand-actions"><a class="finish-catalog" href="https://torvens.ru/" rel="noopener noreferrer" target="_blank">Каталог производителя ↗</a><button class="finish-order" type="button" data-price-brand="Torvens">Узнать цену со скидкой →</button></div>
+</article>
+</div>
+<p class="finish-price-note">Скидка 10% рассчитывается от актуальной розничной цены на официальном сайте соответствующего производителя. Наличие, стоимость доставки и итоговую сумму подтверждаем при оформлении заказа. ТатСтройДом — продавец продукции, не официальный сайт производителей.</p>
+</div>
+</section><section class="accessories-section" id="accessories">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">ДОПОЛНИТЕЛЬНЫЕ МАТЕРИАЛЫ</span>
+<h2>Для герметизации и подготовки древесины</h2>
+<p>
+                Всё необходимое для качественной работы с деревянным домом.
+            </p>
+</div>
+<div class="accessories-grid">
+<a class="accessory-card" href="vilaterm.html">
+<span class="accessory-number">01</span>
+<div class="accessory-image">
+<img alt="Вилатерм разных диаметров" src="images/vilaterm-main.webp"/>
+</div>
+<h3>Вилатерм</h3>
+<p>
+                    Уплотнительный шнур для межвенцовых швов.
+                    Помогает снизить расход герметика и правильно сформировать шов.
+                </p>
+<span class="accessory-link">Подробнее →</span>
+</a>
+<a class="accessory-card" href="abrasives.html">
+<span class="accessory-number">02</span>
+<div class="accessory-image">
+<img alt="Шлифовальные диски 125 мм для дерева" src="images/abrasive-main.webp"/>
+</div>   
+&gt;
+                <h3>Шлифовальные круги и абразивы</h3>
+<p>
+                    Материалы для подготовки деревянных поверхностей
+                    перед покраской, маслом и защитной обработкой.
+                </p>
+<span class="accessory-link">Подробнее →</span>
+</a>
+</div>
+</div>
+</section><section class="partners-section" id="partners">
+<div class="partners-container">
+<div class="partners-content">
+<span class="section-label">ПАРТНЁРАМ</span>
+<h2>Оптовые цены на герметики для профессионалов</h2>
+<p class="partners-lead">Для строительных компаний, мастеров, магазинов и подрядчиков. Подберём ассортимент и подготовим индивидуальное предложение под объём закупки.</p>
+<div class="partners-benefits">
+<div class="partner-benefit">
+<strong>Специальные цены</strong>
+<span>Индивидуальные условия для постоянных партнёров</span>
+</div>
+<div class="partner-benefit">
+<strong>Оптовые поставки</strong>
+<span>Герметики, масла, краски и расходные материалы</span>
+</div>
+<div class="partner-benefit">
+<strong>Помощь с расчётом</strong>
+<span>Подберём материалы и рассчитаем количество под объект</span>
+</div>
+<div class="partner-benefit">
+<strong>Доставка по России</strong>
+<span>Поможем организовать отправку материалов на объект</span>
+</div>
+</div>
+<a class="partners-btn" href="#partner-request" data-open-partner-modal="true">
+                        Получить условия сотрудничества →
+                    </a>
+</div>
+<div class="partners-side">
+<span class="partners-number">B2B</span>
+<h3>Работаете с деревянными домами?</h3>
+<p>
+                        Расскажите о ваших задачах — подготовим предложение
+                        для регулярных закупок и комплектации объектов.
+                    </p>
+</div>
+</div>
+</section><div id="partner-request" class="partner-modal" hidden aria-hidden="true">
+<div class="partner-modal-backdrop" data-close-partner-modal="true"></div>
+<div class="partner-modal-panel" role="dialog" aria-modal="true" aria-labelledby="partner-modal-title" tabindex="-1">
+<button type="button" class="partner-modal-close" aria-label="Закрыть форму" data-close-partner-modal="true">×</button>
+<h2 id="partner-modal-title" style="color:#14263d">Запросить условия сотрудничества</h2><p>Заполните форму, чтобы отправить запрос менеджеру. После подключения сайта к серверу заявки будут поступать напрямую в компанию.</p>
+<form id="partnerForm" style="display:grid;gap:12px;margin-top:20px"><input name="name" placeholder="Ваше имя *" required=""/><input name="phone" placeholder="Телефон *" required="" type="tel"/><input name="company" placeholder="Компания (необязательно)"/><input name="products" placeholder="Интересующие материалы *" required=""/><input name="volume" placeholder="Ориентировочный объём закупки"/><label style="display:flex;gap:8px;align-items:start"><input required="" style="width:auto;margin-top:5px" type="checkbox"/> <span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label><button class="partners-btn" style="border:0;cursor:pointer;justify-self:start" type="submit">Отправить заявку →</button><small>Отправка станет доступна после подключения сайта к серверу. Пока заявку можно передать по телефону 8 (900) 325-60-90.</small></form></div></div><section class="calculator-section" id="calculator">
+<div class="section-container">
+<div class="calculator-box">
+<div class="calculator-text">
+<span class="section-label">ПРЕДВАРИТЕЛЬНЫЙ РАСЧЁТ</span>
+<h2>Поможем определить необходимое количество материала</h2>
+<p>
+                            Укажите параметры объекта. Мы подготовим ориентировочный расчёт
+                            и уточним его перед заказом.
+                        </p>
+<div class="calculator-note">
+                            Расчёт является предварительным. Фактический расход зависит от
+                            размеров и состояния швов, геометрии сруба, подготовки поверхности
+                            и технологии нанесения.
+                        </div>
+</div>
+<form class="calculator-form" id="materialCalc">
+<label>Материал<select id="calcType"><option value="sealant">Герметик для швов</option><option value="vilaterm">Вилатерм</option></select></label>
+<label>Длина швов, м<input id="calcLength" min="0.1" placeholder="Например, 250" required="" step="any" type="number"/></label>
+<div id="sealantFields"><label>Ширина шва, мм<input id="calcWidth" min="1" placeholder="Например, 20" step="any" type="number"/></label><label>Глубина заполнения, мм<input id="calcDepth" min="1" placeholder="Например, 10" step="any" type="number"/></label></div>
+<div hidden="" id="vilatermFields"><label>Диаметр шнура, мм<input id="calcDiameter" min="1" placeholder="Например, 20" step="any" type="number"/></label></div>
+<button class="btn btn-primary" type="submit">Рассчитать количество</button>
+<div aria-live="polite" id="calcResult" role="status" style="color:white;line-height:1.6"></div>
+<button type="button" id="openCalcRequest" style="color:#fff;text-decoration:underline;background:none;border:0;text-align:left;cursor:pointer;font:inherit">Уточнить расчёт у менеджера →</button>
+<small>Предварительная оценка по геометрическим размерам. Реальный расход и подбор диаметра подтверждает специалист.</small>
+</form>
+</div>
+</div>
+</section><section class="where-buy-section" id="where-buy">
+  <div class="where-buy-container" style="display:block;max-width:1120px">
+    <div class="where-buy-content" style="max-width:880px">
+      <span class="section-label">ГДЕ КУПИТЬ</span>
+      <h2>Материалы для деревянного дома с доставкой по России</h2>
+      <p class="where-buy-lead">Подберём герметики, масла, краски и расходные материалы. Поможем рассчитать количество и организуем доставку.</p>
+      <div class="where-buy-actions">
+        <a class="where-buy-btn" href="#contacts">Получить консультацию →</a>
+        <a class="where-buy-link" href="#calculator">Рассчитать материалы →</a>
+      </div>
+      <p style="margin:18px 0 0;color:#637184;font-size:13px;line-height:1.6">Розничные и оптовые поставки · Подбор материалов · Доставка по России</p>
+    </div>
+  </div>
+</section>
+<section class="services-section" id="services">
+<div class="section-container">
+<div class="section-heading">
+<span class="section-label">УСЛУГИ</span>
+<h2>Профессиональные работы по дереву</h2>
+<p>
+                    Не только продаём материалы — выполняем работы по герметизации,
+                    шлифовке и обработке деревянных домов.
+                </p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<span class="service-number">01</span>
+<h3>Герметизация и тёплый шов</h3>
+<p>
+                        Герметизация межвенцовых швов и трещин для защиты дома
+                        от продувания, влаги и потерь тепла.
+                    </p>
+<a href="services.html#sealing">Подробнее →</a>
+</div>
+<div class="service-card">
+<span class="service-number">02</span>
+<h3>Шлифовка</h3>
+<p>
+                        Подготовка древесины перед нанесением защитных и декоративных покрытий.
+                    </p>
+<a href="services.html#sanding">Подробнее →</a>
+</div>
+<div class="service-card">
+<span class="service-number">03</span>
+<h3>Покраска и обработка</h3>
+<p>
+                        Нанесение масел, красок и защитных составов для фасадов
+                        и деревянных поверхностей.
+                    </p>
+<a href="services.html#painting">Подробнее →</a>
+</div>
+<div class="service-card">
+<span class="service-number">04</span>
+<h3>Комплекс работ</h3>
+<p>
+                        Подберём материалы и выполним полный комплекс работ
+                        по защите и обновлению деревянного дома.
+                    </p>
+<a href="services.html#contact">Обсудить объект →</a>
+</div>
+</div>
+</div>
+
+<!-- PARTNERS SECTION -->
+<!-- WHERE TO BUY SECTION -->
+
+
+
+<!-- CONTACTS -->
+
+<!-- FOOTER -->
+<section class="contacts-section" id="contacts">
+<div class="contacts-container">
+<span class="section-label">КОНТАКТЫ</span>
+<h2>Свяжитесь с ТатСтройДом</h2>
+<p class="contacts-lead">
+            Поможем подобрать материалы, рассчитать необходимое количество
+            и ответим на вопросы по работам и доставке.
+        </p>
+<div class="contacts-layout-v6"><div class="contacts-grid contacts-grid-compact">
+<div class="contact-item contact-item-compact">
+<span>АДРЕС</span>
+<strong>г. Казань, ул. Хусаина Мавлютова, 48Б</strong>
+</div>
+<div class="contact-item contact-item-compact">
+<span>ТЕЛЕФОН</span>
+<strong><a href="tel:+79003256090">8 (900) 325-60-90</a><br/><a href="tel:+79036894128">8 (903) 689-41-28</a></strong>
+</div>
+<div class="contact-item contact-item-compact">
+<span>ЭЛЕКТРОННАЯ ПОЧТА</span>
+<strong><a href="mailto:tatstroydom@yandex.ru">tatstroydom@yandex.ru</a></strong>
+</div>
+<div class="contact-item contact-item-compact"><span>РЕЖИМ РАБОТЫ</span><strong>Пн–Пт 9:00–18:00 · Сб 9:00–12:00</strong><small>По предварительному звонку</small></div></div><div class="contacts-map-v6"><div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/43/kazan/?utm_medium=mapframe&amp;utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Казань</a><a href="https://yandex.ru/maps/43/kazan/house/ulitsa_khusaina_mavlyutova_48b/YEAYdw9nSUcOQFtvfXt1eH1jYg==/?ll=49.187029%2C55.749106&amp;utm_medium=mapframe&amp;utm_source=maps&amp;z=16.61" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс Карты — транспорт, навигация, поиск мест</a><iframe allowfullscreen="true" frameborder="1" height="400" src="https://yandex.ru/map-widget/v1/?ll=49.187029%2C55.749106&amp;mode=search&amp;ol=geo&amp;ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoxNjE0NjUyODI5EowB0KDQvtGB0YHQuNGPLCDQoNC10YHQv9GD0LHQu9C40LrQsCDQotCw0YLQsNGA0YHRgtCw0L0gKNCi0LDRgtCw0YDRgdGC0LDQvSksINCa0LDQt9Cw0L3RjCwg0YPQu9C40YbQsCDQpdGD0YHQsNC40L3QsCDQnNCw0LLQu9GO0YLQvtCy0LAsIDQ40JEiCg2Fv0RCFRX_XkI%2C&amp;utm_source=chatgpt.com&amp;z=16.61" style="position:relative;" width="560"></iframe></div><a href="https://yandex.ru/maps/43/kazan/house/ulitsa_khusaina_mavlyutova_48b/YEAYdw9nSUcOQFtvfXt1eH1jYg==/" rel="noopener noreferrer" target="_blank">Открыть маршрут в Яндекс Картах →</a></div></div>
+</div>
+</section>
+<footer>
+<div class="footer-inner">
+<div class="footer-brand">
+<img alt="ТатСтройДом" src="images/logo.webp"/>
+<p>Защищаем дерево. Сохраняем тепло.<br/>Подчёркиваем красоту дома.</p>
+</div>
+<div class="footer-nav">
+<strong>Навигация</strong>
+<a href="#products">Продукция</a>
+<a href="#services">Услуги</a>
+<a href="#calculator">Подбор и расчёт</a>
+<a href="#partners">Партнёрам</a>
+</div>
+<div class="footer-contact">
+<strong>ТатСтройДом</strong>
+<p>Казань</p>
+<a href="#contacts">Контакты</a>
+</div>
+</div>
+<div class="footer-bottom">
+<span>© 2026 ТатСтройДом. Все права защищены.</span>
+<div class="footer-legal">
+<a href="#" id="privacyLink">Политика конфиденциальности</a>
+<a href="#" id="consentLink">Согласие на обработку персональных данных</a>
+</div>
+</div>
+</footer>
+<!-- LEGAL MODALS -->
+<div class="legal-modal" id="privacyModal">
+<div class="legal-modal-content">
+<button aria-label="Закрыть" class="legal-modal-close" type="button">×</button>
+<span class="section-label">ДОКУМЕНТ</span>
+<h2>Политика конфиденциальности</h2>
+<div class="legal-modal-text">
+<p><strong>1. Общие положения</strong></p>
+<p>
+                Настоящая Политика конфиденциальности определяет порядок обработки
+                и защиты персональных данных посетителей сайта ТатСтройДом.
+            </p>
+<p><strong>2. Какие данные могут обрабатываться</strong></p>
+<p>
+                При обращении через сайт пользователь может добровольно предоставить
+                имя, номер телефона, адрес электронной почты и иную информацию,
+                необходимую для обработки обращения или заказа.
+            </p>
+<p><strong>3. Цели обработки данных</strong></p>
+<p>
+                Данные используются для связи с пользователем, консультации,
+                расчёта материалов и работ, обработки заказов и организации доставки.
+            </p>
+<p><strong>4. Защита информации</strong></p>
+<p>
+                Персональные данные не передаются третьим лицам без законных оснований,
+                кроме случаев, необходимых для исполнения заказа или предусмотренных
+                законодательством Российской Федерации.
+            </p>
+<p><strong>5. Контакты</strong></p>
+<p>
+                По вопросам обработки персональных данных пользователь может
+                обратиться в ТатСтройДом через контактные данные, указанные на сайте.
+            </p>
+</div>
+</div>
+</div>
+<div class="legal-modal" id="consentModal">
+<div class="legal-modal-content">
+<button aria-label="Закрыть" class="legal-modal-close" type="button">×</button>
+<span class="section-label">ДОКУМЕНТ</span>
+<h2>Согласие на обработку персональных данных</h2>
+<div class="legal-modal-text">
+<p>
+                Пользователь, предоставляя свои данные через формы сайта ТатСтройДом,
+                свободно, своей волей и в своём интересе даёт согласие на обработку
+                предоставленных персональных данных.
+            </p>
+<p>
+                Обработка данных может осуществляться в целях обратной связи,
+                консультирования, расчёта стоимости материалов и работ,
+                оформления и исполнения заказа.
+            </p>
+<p>
+                Согласие действует в течение срока, необходимого для достижения
+                указанных целей, либо до его отзыва пользователем в порядке,
+                предусмотренном законодательством Российской Федерации.
+            </p>
+<p>
+                Пользователь подтверждает, что ознакомился с Политикой
+                конфиденциальности сайта.
+            </p>
+</div>
+</div>
+</div>
+<script>
+            // Smooth scroll для навигации
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(link.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Интерактивность карточек
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const title = this.querySelector('.card-title').textContent;
+                    console.log('Clicked:', title);
+                    // Здесь можно добавить дальнейшую функциональность
+                });
+            });
+
+            // Анимация при скролле
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Обработчик кнопок (заглушки)
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const buttonText = this.textContent;
+                    console.log('Button clicked:', buttonText);
+                    // Добавьте здесь функциональность в будущем
+                });
+            });
+
+            // Эффект параллакса для фона
+            window.addEventListener('scroll', () => {
+                const hero = document.querySelector('.hero');
+                if (window.scrollY < window.innerHeight) {
+                    hero.style.backgroundPosition = `0 ${window.scrollY * 0.5}px`;
+                }
+            });
+        </script>
+<script>
+            const quickSelectorBtn = document.querySelector('.quick-selector-btn');
+            const taskSelect = document.getElementById('taskSelect');
+            const houseSelect = document.getElementById('houseSelect');
+
+            quickSelectorBtn.addEventListener('click', () => {
+                const task = taskSelect.value;
+                const house = houseSelect.value;
+
+                if (!task || !house) {
+                    alert('Пожалуйста, выберите оба варианта.');
+                    return;
+                }
+
+                const solutions = {
+                    seams: 'Рекомендуем герметизацию по технологии «тёплый шов» и расчёт необходимого объёма герметика.',
+                    protect: 'Подберём масло или защитный состав с учётом состояния древесины и условий эксплуатации.',
+                    color: 'Подберём краску или масло нужного оттенка и рассчитаем расход материала.',
+                    restore: 'Рекомендуем оценить состояние фасада, выполнить шлифовку и подобрать защитное финишное покрытие.'
+                };
+
+                let result = document.querySelector('.quick-selector-result');
+
+                if (!result) {
+                    result = document.createElement('div');
+                    result.className = 'quick-selector-result';
+                    document.querySelector('.quick-selector-inner').appendChild(result);
+                }
+
+                result.textContent = solutions[task];
+            });
+        </script>
+<script>
+    // Окна: политика конфиденциальности и согласие
+    const privacyLink = document.getElementById('privacyLink');
+    const consentLink = document.getElementById('consentLink');
+    const privacyModal = document.getElementById('privacyModal');
+    const consentModal = document.getElementById('consentModal');
+
+    function openLegalModal(modal) {
+        if (!modal) return;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLegalModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    privacyLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLegalModal(privacyModal);
+    });
+
+    consentLink?.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLegalModal(consentModal);
+    });
+
+    document.querySelectorAll('.legal-modal-close').forEach(button => {
+        button.addEventListener('click', () => {
+            closeLegalModal(button.closest('.legal-modal'));
+        });
+    });
+
+    document.querySelectorAll('.legal-modal').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeLegalModal(modal);
+            }
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.legal-modal.active').forEach(closeLegalModal);
+        }
+    });
+    // ===== Палитра герметиков: нажатие на цвет =====
+
+document.querySelectorAll('.sealant-color').forEach(color => {
+    color.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        document.querySelectorAll('.sealant-color.active').forEach(item => {
+            if (item !== color) {
+                item.classList.remove('active');
+            }
+        });
+
+        color.classList.toggle('active');
+    });
+});
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.sealant-color.active').forEach(item => {
+        item.classList.remove('active');
+    });
+});
+
+// ===== Фильтр палитры по герметику =====
+
+document.querySelectorAll('.choose-color-link').forEach(link => {
+    link.addEventListener('click', () => {
+        const product = link.dataset.product;
+const paletteCurrent = document.getElementById('paletteCurrent');
+
+if (paletteCurrent) {
+    paletteCurrent.textContent = 'Цвета для: ' + product;
+}
+        document.querySelectorAll('.sealant-color').forEach(color => {
+            const products = color.dataset.products || '';
+
+            if (products.includes(product)) {
+                color.classList.remove('color-muted');
+            } else {
+                color.classList.add('color-muted');
+            }
+        });
+    });
+});
+// ===== Показать все цвета =====
+
+const showAllColorsBtn = document.getElementById('showAllColors');
+
+if (showAllColorsBtn) {
+    showAllColorsBtn.addEventListener('click', () => {
+        document.querySelectorAll('.sealant-color').forEach(color => {
+            color.classList.remove('color-muted');
+        });
+
+        const paletteCurrent = document.getElementById('paletteCurrent');
+
+        if (paletteCurrent) {
+            paletteCurrent.textContent = 'Все доступные цвета герметиков';
+        }
+    });
+}
+</script>
+</section>
+
+<!-- POPULAR SEALANTS -->
+
+<!-- ===== МАСЛА И КРАСКИ: BIOFA И TORVENS ===== -->
+
+
+<script>
+(function(){
+ const input=document.getElementById('catalogSearch');
+ const results=document.getElementById('catalogSearchResults');
+ if(!input||!results)return;
+ const items=[];
+ function add(name,href,group){if(name&&href&&!items.some(x=>x.name===name&&x.href===href))items.push({name,href,group});}
+ document.querySelectorAll('.popular-product-card').forEach((el,i)=>{
+   const title=el.querySelector('h3'); const link=el.querySelector('a.product-title-link, .product-image a');
+   if(title){if(!el.id)el.id='search-product-'+i;add(title.textContent.trim(),link?link.getAttribute('href'):'#'+el.id,'Герметики');}
+ });
+ document.querySelectorAll('.product-category').forEach(el=>{
+   const title=el.querySelector('h3'),link=el.querySelector('a[href]');
+   if(title&&link)add(title.textContent.trim(),link.getAttribute('href'),'Категории');
+ });
+ document.querySelectorAll('.sealant-color').forEach((el,i)=>{
+   const title=el.querySelector('strong');if(!title)return;
+   if(!el.id)el.id='search-color-'+i;
+   add('Цвет «'+title.textContent.trim()+'»','#'+el.id,'Палитра герметиков');
+ });
+ function norm(s){return s.toLocaleLowerCase('ru').replace(/ё/g,'е').trim();}
+ function render(){
+   const q=norm(input.value);results.replaceChildren();
+   if(!q){results.hidden=true;input.setAttribute('aria-expanded','false');return;}
+   const matches=items.filter(x=>norm(x.name).includes(q)).slice(0,9);
+   if(!matches.length){const p=document.createElement('p');p.textContent='Ничего не найдено. Попробуйте другое название или цвет.';results.append(p);}
+   matches.forEach(x=>{const a=document.createElement('a');a.href=x.href;a.textContent=x.name;const small=document.createElement('small');small.textContent=x.group;a.append(small);a.addEventListener('click',()=>{results.hidden=true;input.setAttribute('aria-expanded','false');});results.append(a);});
+   results.hidden=false;input.setAttribute('aria-expanded','true');
+ }
+ input.addEventListener('input',render);
+ input.addEventListener('keydown',e=>{if(e.key==='Escape'){results.hidden=true;input.setAttribute('aria-expanded','false');}if(e.key==='Enter'&&!results.hidden){const a=results.querySelector('a');if(a){e.preventDefault();a.click();if(a.getAttribute('href').startsWith('#'))location.hash=a.getAttribute('href');else location.href=a.href;}}});
+ document.addEventListener('click',e=>{if(!e.target.closest('.catalog-search')){results.hidden=true;input.setAttribute('aria-expanded','false');}});
+})();
+</script><style>
+.where-buy-item{color:inherit;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s}.where-buy-item:hover{transform:translateY(-3px);box-shadow:0 10px 25px #14263d19}.where-buy-item>span:last-child{margin-top:auto;color:#b52a32;font-weight:800}
+#partnerForm>input{padding:13px 15px;border:1px solid #d6dce1;border-radius:8px;font:inherit}#partnerForm .partners-btn{font:inherit}
+#sealantFields,#vilatermFields{display:grid;gap:12px}#vilatermFields[hidden],#sealantFields[hidden]{display:none}
+
+/* Форма оптового запроса открывается поверх страницы, не занимает место при прокрутке */
+.partner-modal[hidden]{display:none!important}
+.partner-modal{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:18px}
+.partner-modal-backdrop{position:absolute;inset:0;background:rgba(10,25,43,.68)}
+.partner-modal-panel{position:relative;width:min(100%,760px);max-height:calc(100dvh - 36px);overflow-y:auto;background:#fff;border-radius:18px;padding:36px;box-shadow:0 24px 70px #0004;color:#14263d}
+.partner-modal-panel h2{padding-right:40px;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2}
+.partner-modal-panel p{margin-top:12px}
+.partner-modal-close{position:absolute;right:18px;top:12px;border:0;background:transparent;color:#14263d;font-size:34px;line-height:1;cursor:pointer;padding:6px 12px}
+body.partner-modal-open{overflow:hidden}
+@media(max-width:600px){.partner-modal-panel{padding:26px 18px}}
+[hidden]{display:none!important}
+
+/* Этап 1: компактная информация о доставке */
+.delivery-modal[hidden]{display:none!important}
+.delivery-modal{position:fixed;inset:0;z-index:10001;display:grid;place-items:center;padding:18px}
+.delivery-modal-backdrop{position:absolute;inset:0;background:rgba(10,25,43,.65)}
+.delivery-modal-panel{position:relative;width:min(100%,560px);max-height:calc(100dvh - 36px);overflow:auto;background:#fff;color:#14263d;border-radius:18px;padding:34px;box-shadow:0 24px 70px #0004}
+.delivery-modal-panel h2{font-size:clamp(1.5rem,3vw,2rem);margin:10px 30px 14px 0;line-height:1.2}
+.delivery-modal-panel p{margin:12px 0;line-height:1.65}
+.delivery-modal-panel a{color:#b52a32}
+.delivery-modal-close{position:absolute;right:15px;top:10px;border:0;background:none;font-size:32px;color:#14263d;cursor:pointer}
+.delivery-modal-action{display:inline-block;margin-top:12px;font-weight:700}
+</style>
+<script>
+(()=>{
+const type=document.getElementById('calcType'),seal=document.getElementById('sealantFields'),vil=document.getElementById('vilatermFields');
+type?.addEventListener('change',()=>{seal.hidden=type.value!=='sealant';vil.hidden=type.value!=='vilaterm';document.getElementById('calcResult').textContent='';});
+document.getElementById('materialCalc')?.addEventListener('submit',e=>{e.preventDefault();const num=id=>Number(document.getElementById(id).value);const L=num('calcLength'),out=document.getElementById('calcResult');if(!Number.isFinite(L)||L<=0){out.textContent='Укажите длину швов больше нуля.';return;}
+if(type.value==='sealant'){const w=num('calcWidth'),d=num('calcDepth');if(w<=0||d<=0){out.textContent='Укажите ширину и глубину шва больше нуля.';return;}const liters=L*w*d/1000;const reserve=liters*1.1;const packs=Math.ceil(reserve/0.6);out.textContent=`Геометрический объём: ${liters.toFixed(2)} л. С ориентировочным запасом 10%: ${reserve.toFixed(2)} л. При фасовке 600 мл потребуется примерно ${packs} шт. Уточните фактический расход, форму шва и фасовку выбранного герметика у менеджера.`;}
+else{const dia=num('calcDiameter');if(dia<=0){out.textContent='Укажите диаметр шнура.';return;}const pieces=Math.ceil(L/3);out.textContent=`Для ${L} м шва потребуется ориентировочно ${L} пог. м шнура диаметром ${dia} мм, или ${pieces} отрезков по 3 м (${pieces*3} м). Наличие нужного диаметра уточните у менеджера.`;}
+});
+document.getElementById('partnerForm')?.addEventListener('submit',async e=>{e.preventDefault();const f=e.currentTarget;if(!f.reportValidity())return;const d=new FormData(f);await window.tsdSendRequest(f,{kind:'wholesale',name:d.get('name'),phone:d.get('phone'),company:d.get('company'),products:d.get('products'),volume:d.get('volume')});});
+})();
+
+(()=>{
+const modal=document.getElementById('partner-request');if(!modal)return;
+const panel=modal.querySelector('.partner-modal-panel');let previousFocus=null;
+function open(e){if(e)e.preventDefault();previousFocus=document.activeElement;modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.classList.add('partner-modal-open');panel.focus();}
+function close(){modal.hidden=true;modal.setAttribute('aria-hidden','true');document.body.classList.remove('partner-modal-open');if(previousFocus?.focus)previousFocus.focus();}
+document.querySelectorAll('[data-open-partner-modal], a[href="#partner-request"]').forEach(a=>a.addEventListener('click',open));
+modal.querySelectorAll('[data-close-partner-modal]').forEach(el=>el.addEventListener('click',close));
+document.addEventListener('keydown',e=>{if(modal.hidden)return;if(e.key==='Escape'){close();return;}if(e.key==='Tab'){const f=[...modal.querySelectorAll('button,input,select,textarea,a[href]')].filter(x=>!x.disabled&&x.getClientRects().length);if(!f.length)return;const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}});
+})();
+</script>
+<div id="calcRequestModal" class="calc-request-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="calcRequestTitle">
+  <div class="calc-request-panel">
+    <button type="button" id="closeCalcRequest" class="calc-request-close" aria-label="Закрыть окно">×</button>
+    <span class="section-label">ЗАПРОС МЕНЕДЖЕРУ</span>
+    <h2 id="calcRequestTitle">Уточнить расчёт материалов</h2>
+    <p>Параметры расчёта уже заполнены. Оставьте имя и телефон для отправки запроса менеджеру.</p>
+    <form id="calcRequestForm">
+      <label>Ваше имя *<input name="name" required autocomplete="name" placeholder="Как к вам обращаться"></label>
+      <label>Телефон *<input name="phone" required type="tel" autocomplete="tel" placeholder="+7 ..."></label>
+      <label>Результат расчёта<textarea id="calcRequestDetails" name="details" rows="5" readonly></textarea></label>
+      <label class="calc-consent"><input type="checkbox" required> <span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label>
+      <button class="calc-request-primary" type="submit">Отправить расчёт менеджеру</button>
+    </form>
+    <div id="calcRequestReady" hidden>
+      <p>Обращение подготовлено, но пока <strong>не отправлено менеджеру автоматически</strong>. Скопируйте его и передайте по телефону или через удобный мессенджер.</p>
+      <textarea id="calcRequestCopyText" rows="7" readonly></textarea>
+      <button type="button" class="calc-request-primary" id="copyCalcRequest">Скопировать обращение</button>
+      <a href="tel:+79003256090" class="calc-request-phone">Позвонить менеджеру: 8 (900) 325-60-90</a>
+      <p id="calcCopyStatus" role="status"></p>
+    </div>
+  </div>
+</div>
+<style>
+.calc-request-overlay{position:fixed;inset:0;z-index:10000;background:rgba(12,27,44,.72);display:flex;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+.calc-request-panel{position:relative;background:#fff;color:#14263d;border-radius:18px;width:min(100%,560px);max-height:calc(100vh - 36px);overflow-y:auto;padding:32px;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+.calc-request-panel h2{font-size:clamp(23px,3vw,30px);margin:6px 40px 10px 0;line-height:1.2}.calc-request-panel p{color:#59687a;margin-bottom:16px}
+.calc-request-panel form{display:grid;gap:13px}.calc-request-panel label:not(.calc-consent){display:grid;gap:5px;font-weight:600}
+.calc-request-panel input:not([type=checkbox]),.calc-request-panel textarea{width:100%;border:1px solid #d4dbe3;border-radius:9px;padding:12px;font:inherit;color:#14263d;background:#fff}
+.calc-request-panel textarea{resize:vertical}.calc-consent{display:flex;gap:10px;align-items:start;font-size:13px}.calc-consent input{margin-top:4px}
+.calc-request-primary{background:#cda668;color:#14263d;border:0;border-radius:9px;padding:13px 18px;font-weight:750;cursor:pointer}
+.calc-request-close{position:absolute;right:17px;top:12px;background:none;border:0;font-size:32px;color:#14263d;cursor:pointer}
+.calc-request-phone{display:block;margin-top:14px;color:#14263d;font-weight:700}
+#calcRequestReady{margin-top:14px}#calcRequestCopyText{margin:6px 0 12px}body.calc-request-open{overflow:hidden}
+</style>
+<script>
+(()=>{
+const modal=document.getElementById('calcRequestModal'),open=document.getElementById('openCalcRequest'),close=document.getElementById('closeCalcRequest'),form=document.getElementById('calcRequestForm'),ready=document.getElementById('calcRequestReady'),details=document.getElementById('calcRequestDetails');
+let previous=null;
+function hide(){modal.hidden=true;document.body.classList.remove('calc-request-open');previous?.focus()}
+open?.addEventListener('click',()=>{
+ previous=document.activeElement;form.hidden=false;ready.hidden=true;form.reset();
+ const type=document.getElementById('calcType').value;
+ const val=id=>document.getElementById(id).value||'не указано';
+ const fields=type==='sealant'?[`Материал: герметик`,`Длина швов: ${val('calcLength')} м`,`Ширина: ${val('calcWidth')} мм`,`Глубина: ${val('calcDepth')} мм`]:[`Материал: Вилатерм`,`Длина швов: ${val('calcLength')} м`,`Диаметр: ${val('calcDiameter')} мм`];
+ const result=document.getElementById('calcResult').textContent.trim();
+ details.value=[...fields,`Предварительный результат: ${result||'расчёт ещё не выполнен'}`].join('\n');
+ modal.hidden=false;document.body.classList.add('calc-request-open');form.querySelector('[name=name]').focus();
+});
+close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)hide()});
+form.addEventListener('submit',async e=>{e.preventDefault();if(!form.reportValidity())return;const d=new FormData(form);await window.tsdSendRequest(form,{kind:'calculation',name:d.get('name'),phone:d.get('phone'),details:d.get('details')});});
+document.getElementById('copyCalcRequest').addEventListener('click',async()=>{const el=document.getElementById('calcRequestCopyText');el.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}document.getElementById('calcCopyStatus').textContent=ok?'Текст скопирован.':'Выделите текст и нажмите Ctrl+C.'});
+})();
+</script>
+
+<script>
+/* Единый интерфейс заявок. Для реальной доставки требуется сервер POST /api/requests. */
+window.tsdSendRequest=async function(form,payload){
+ const button=form.querySelector('button[type="submit"]');
+ let status=form.querySelector('[data-request-status]');
+ if(!status){status=document.createElement('p');status.setAttribute('data-request-status','');status.setAttribute('role','status');status.style.cssText='margin:10px 0;color:#b52a32;font-size:14px;line-height:1.5';form.appendChild(status)}
+ if(location.protocol==='file:'){
+  status.textContent='Автоматическая отправка пока не подключена: сайт открыт как файл на компьютере. После размещения на сервере подключим приём заявок. Сейчас позвоните 8 (900) 325-60-90.';
+  return;
+ }
+ const original=button.textContent;button.disabled=true;button.textContent='Отправляем…';status.textContent='';
+ try{
+  const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...payload,source:'tatstroydom-website'})});
+  if(!response.ok)throw new Error('Сервер не подтвердил приём заявки');
+  const data=await response.json();
+  if(data.success!==true)throw new Error('Нет подтверждения доставки');
+  status.style.color='#17643b';status.textContent='Заявка принята! Менеджер свяжется с вами.';form.reset();
+ }catch(error){status.style.color='#b52a32';status.textContent='Заявка не отправлена. Пожалуйста, позвоните 8 (900) 325-60-90 или попробуйте позже.'}
+ finally{button.disabled=false;button.textContent=original}
+};
+</script>
+
+<!-- Запрос цены BIOFA / Torvens -->
+<div id="priceRequestModal" class="partner-modal" hidden aria-hidden="true">
+  <div class="partner-modal-backdrop" data-close-price-modal></div>
+  <div class="partner-modal-panel" role="dialog" aria-modal="true" aria-labelledby="priceRequestTitle" tabindex="-1">
+    <button class="partner-modal-close" type="button" aria-label="Закрыть форму" data-close-price-modal>×</button>
+    <h2 id="priceRequestTitle">Узнать цену со скидкой 10%</h2>
+    <p>Укажите товар и количество. Мы уточним актуальную цену производителя, наличие и условия заказа.</p>
+    <form id="priceRequestForm" style="display:grid;gap:12px;margin-top:20px">
+      <label>Производитель<input name="brand" readonly required></label>
+      <label>Название товара *<input name="product" required placeholder="Например, масло для террасы, артикул или ссылка"></label>
+      <label>Количество *<input name="quantity" required placeholder="Например, 2 банки по 2,5 л"></label>
+      <label>Ваше имя *<input name="name" required autocomplete="name"></label>
+      <label>Телефон *<input name="phone" required type="tel" autocomplete="tel"></label>
+      <label style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" required style="width:auto;margin-top:5px"><span>Согласен(на) на обработку указанных данных для ответа на запрос</span></label>
+      <button class="partners-btn" type="submit" style="border:0;cursor:pointer">Отправить запрос цены →</button>
+      <small>Автоматическая отправка будет доступна после подключения серверного приёма заявок. Пока можно связаться по телефону 8 (900) 325-60-90.</small>
+    </form>
+  </div>
+</div>
+<style>
+#priceRequestForm label{display:grid;gap:5px;font-weight:600;color:#14263d}
+#priceRequestForm input:not([type=checkbox]){width:100%;padding:13px 14px;border:1px solid #d5dce5;border-radius:9px;font:inherit;font-weight:400}
+.finish-order{border:0;cursor:pointer;font:inherit;font-weight:700;text-align:center}
+</style>
+<script>
+(()=>{
+ const modal=document.getElementById('priceRequestModal'),panel=modal.querySelector('.partner-modal-panel'),form=document.getElementById('priceRequestForm');
+ let previous=null;
+ function close(){modal.hidden=true;modal.setAttribute('aria-hidden','true');document.body.classList.remove('partner-modal-open');previous?.focus()}
+ document.querySelectorAll('[data-price-brand]').forEach(button=>button.addEventListener('click',()=>{
+   previous=document.activeElement;form.reset();form.elements.brand.value=button.dataset.priceBrand;
+   modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.classList.add('partner-modal-open');panel.focus();
+ }));
+ modal.querySelectorAll('[data-close-price-modal]').forEach(el=>el.addEventListener('click',close));
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)close()});
+ form.addEventListener('submit',async e=>{
+   e.preventDefault();if(!form.reportValidity())return;
+   const d=new FormData(form);
+   await window.tsdSendRequest(form,{kind:'price_request',brand:d.get('brand'),product:d.get('product'),quantity:d.get('quantity'),name:d.get('name'),phone:d.get('phone')});
+ });
+})();
+</script>
+</body>
+</html>
