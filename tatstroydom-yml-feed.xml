@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2026-11-11 05:54">
+  <shop>
+    <name>ТатСтройДом</name>
+    <company>ТатСтройДом</company>
+    <url>https://tatstroydom116.ru/</url>
+    <currencies>
+      <currency id="RUR" rate="1"/>
+    </currencies>
+    <categories>
+      <category id="1">Герметики для деревянных домов</category>
+      <category id="2">Шлифовальные круги для древесины</category>
+    </categories>
+    <offers>
+      <offer id="1001" available="true">
+        <url>https://tatstroydom116.ru/alfaplast-136.html</url>
+        <price>690</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://tatstroydom116.ru/images/alfaplast-136.webp</picture>
+        <name>Герметик Альфапласт-136, 600 мл</name>
+        <vendor>Альфапласт</vendor>
+        <description>Герметик для деревянных домов и герметизации межвенцовых швов. Подбор цвета. Продажа оптом и в розницу.</description>
+        <param name="Объём">600 мл</param>
+        <param name="Назначение">Для деревянных домов и межвенцовых швов</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="1002" available="true">
+        <url>https://tatstroydom116.ru/mastigerm-136.html</url>
+        <price>480</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://tatstroydom116.ru/images/mastigerm-136.webp</picture>
+        <name>Герметик Мастигерм-136, 600 мл</name>
+        <vendor>Мастигерм</vendor>
+        <description>Герметик для герметизации швов и трещин в деревянных домах. Подбор цвета. Продажа оптом и в розницу.</description>
+        <param name="Объём">600 мл</param>
+        <param name="Назначение">Для деревянных домов, швов и трещин</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2001" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P36</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P36. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P36</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2002" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P40</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P40. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P40</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2003" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P60</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P60. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P60</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2004" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P80</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P80. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P80</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2005" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P100</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P100. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P100</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+      <offer id="2006" available="true">
+        <url>https://tatstroydom116.ru/abrasives.html</url>
+        <price>8</price>
+        <currencyId>RUR</currencyId>
+        <categoryId>2</categoryId>
+        <picture>https://tatstroydom116.ru/images/abrasive-main.webp</picture>
+        <name>Шлифовальный круг Ø125 мм для дерева, P120</name>
+        <vendor>ТатСтройДом</vendor>
+        <description>Самолип (крепление на липучке), диаметр 125 мм. Зернистость P120. Для обработки деревянных поверхностей. Исполнение с перфорацией или без перфорации — уточняйте при заказе.</description>
+        <param name="Диаметр">125 мм</param>
+        <param name="Зернистость">P120</param>
+        <param name="Крепление">Липучка (самолип)</param>
+        <param name="Материал обработки">Древесина</param>
+        <sales_notes>Продажа оптом и в розницу. Наличие и условия доставки уточняйте у продавца.</sales_notes>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>
