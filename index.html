@@ -3578,17 +3578,21 @@ body { background:#faf9f7; }
 </div>
 </div>
 </div>
-<script>
-            // Smooth scroll для навигации
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const target = document.querySelector(link.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
+<script>// Плавная прокрутка только для внутренних ссылок
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
+
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+        }
+    });
+});
 
             // Интерактивность карточек
             const cards = document.querySelectorAll('.card');
@@ -3965,6 +3969,84 @@ window.tsdSendRequest=async function(form,payload){
 #priceRequestForm label{display:grid;gap:5px;font-weight:600;color:#14263d}
 #priceRequestForm input:not([type=checkbox]){width:100%;padding:13px 14px;border:1px solid #d5dce5;border-radius:9px;font:inherit;font-weight:400}
 .finish-order{border:0;cursor:pointer;font:inherit;font-weight:700;text-align:center}
+/* TSD: компактная мобильная шапка */
+@media (max-width: 600px) {
+
+  .compact-header-inner {
+    padding: 7px 12px !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+    align-items: center !important;
+  }
+
+  .compact-logo {
+    flex: 0 0 65px !important;
+  }
+
+  .compact-logo img {
+    max-height: 52px !important;
+  }
+
+  .compact-header-right {
+    gap: 5px !important;
+    min-width: 0;
+  }
+
+  .compact-details {
+    display: block !important;
+  }
+
+  .compact-address,
+  .compact-hours,
+  .compact-email,
+  .compact-phones .compact-label {
+    display: none !important;
+  }
+
+  .compact-phones {
+    display: block !important;
+  }
+
+  .compact-phones strong {
+    font-size: 13px !important;
+  }
+
+  .compact-phones a[href="tel:+79003256090"] {
+    display: none !important;
+  }
+
+  .phone-separator {
+    display: none !important;
+  }
+
+  .compact-phones strong a:last-child::before {
+    content: "☎ ";
+  }
+
+  .header-bottom-row {
+    display: block !important;
+  }
+
+  .catalog-search {
+    display: none !important;
+  }
+
+  .compact-nav {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    justify-content: flex-start !important;
+    gap: 14px !important;
+    padding: 5px 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .compact-nav a {
+    font-size: 11px !important;
+    flex-shrink: 0;
+  }
+}
+    
 </style>
 <script>
 (()=>{
